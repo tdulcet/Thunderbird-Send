@@ -1,0 +1,7 @@
+@import "/common/modules/AutomaticSettings/css/photonOptions.css";
+
+a.button {
+	appearance: button;
+	text-decoration: none;
+	color: initial;
+}

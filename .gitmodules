@@ -1,0 +1,9 @@
+[submodule "common/modules/AddonSettings"]
+	path = common/modules/AddonSettings
+	url = https://github.com/TinyWebEx/AddonSettings
+[submodule "common/modules/MessageHandler"]
+	path = common/modules/MessageHandler
+	url = https://github.com/TinyWebEx/MessageHandler
+[submodule "common/modules/AutomaticSettings"]
+	path = common/modules/AutomaticSettings
+	url = https://github.com/TinyWebEx/AutomaticSettings

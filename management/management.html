@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/common/common.css">
+	<link rel="stylesheet" href="management.css">
+
+	<!-- <script defer src="../common/common.js" type="module"></script> -->
+	<script defer src="./management.js" type="module"></script>
+</head>
+
+<body>
+	<div class="message-container">
+		<div id="messageTips" aria-label="info message" class="message-box info invisible fade-hide">
+			<span class="message-text"></span>
+			<a href="#">
+				<button type="button" class="message-action-button micro-button info invisible"></button>
+			</a>
+			<img class="icon-dismiss invisible" src="/common/img/close.svg" width="24" height="24" tabindex="0"></span>
+		</div>
+		<div id="messageInfo" aria-label="info message" class="message-box info invisible fade-hide">
+			<span class="message-text">Some settings are managed by your administrator and cannot be changed.</span>
+			<a href="#">
+				<button type="button" class="message-action-button micro-button info invisible"></button>
+			</a>
+			<img class="icon-dismiss invisible" src="/common/img/close.svg" width="24" height="24" tabindex="0"></span>
+		</div>
+		<div id="messageSuccess" aria-label="success message" class="message-box success invisible fade-hide">
+			<span class="message-text">That worked!</span>
+			<a href="#">
+				<button type="button" class="message-action-button micro-button success invisible"></button>
+			</a>
+			<img class="icon-dismiss invisible" src="/common/img/close.svg" width="24" height="24" tabindex="0"></span>
+		</div>
+		<div id="messageError" aria-label="error message" class="message-box error invisible fade-hide">
+			<span class="message-text">An error happened.</span>
+			<a href="#">
+				<button type="button" class="message-action-button micro-button error invisible"></button>
+			</a>
+			<img class="icon-dismiss invisible" src="/common/img/close-white.svg" width="24" height="24"
+				tabindex="0"></span>
+		</div>
+		<div id="messageWarning" aria-label="warning message" class="message-box warning invisible fade-hide">
+			<span class="message-text">There were some difficulties.</span>
+			<a href="#">
+				<button type="button" class="message-action-button micro-button warning invisible"></button>
+			</a>
+			<img class="icon-dismiss invisible" src="/common/img/close.svg" width="24" height="24" tabindex="0"></span>
+		</div>
+	</div>
+	<form>
+		<section>
+			<ul>
+				<h3>📤 Thunderbird Send</h3>
+				<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank" class="button">ℹ️ Information</a>
+					<a href="https://www.tealdulcet.com/" target="_blank" class="button">❤️ Donate</a>
+				</p>
+				<span class="helper-text">
+					This is your account settings for the selected Thunderbird Send account. For the global options
+					page, go to the Thunderbird 🧩 Add-ons manager.
+				</span><br>
+				<span class="helper-text">
+					Click <a href="https://github.com/timvisee/send-instances/#instances" target="_blank">here</a> for a
+					list of public Send service instances and their respective maximum file size.
+				</span>
+
+				<li>
+					<div class="line">
+						<label for="service">Send service instance hostname or URL</label>
+						<input class="setting save-on-change" type="text" id="service" data-optiongroup="account" name="service" required>
+					</div>
+					<!-- <span class="line indent helper-text">For example, if the URL were
+						<code>https://send.firefox.com/</code>, the hostname would be
+						<code>send.firefox.com</code>.</span> -->
+				</li>
+
+				<li>
+					<div class="line">
+						<label for="downloads">Default download limit</label>
+						<input class="setting save-on-change" type="number" list="adownloads" id="downloads" data-optiongroup="account" name="downloads" min="1" required>
+						<datalist id="adownloads">
+							<option value="1">
+							<option value="2">
+							<option value="3">
+							<option value="4">
+							<option value="5">
+							<option value="20">
+							<option value="50">
+							<option value="100">
+						</datalist>
+					</div>
+					<span class="line indent helper-text">Make sure it is less than the maximum downloads supported by
+						this Send service instance.</span>
+				</li>
+
+				<li>
+					<div class="line">
+						<label for="time">Default time limit</label>
+						<input class="setting save-on-change" type="number" list="times" id="time" data-optiongroup="account" name="time" min="5" required>
+						<datalist id="times">
+							<option value="5">
+							<option value="60">
+							<option value="1440">
+							<option value="10080">
+						</datalist>
+						minutes
+					</div>
+					<span class="line indent helper-text">For example, <code>5</code>, <code>60</code>(1 hour),
+						<code>1440</code>(1 day) or <code>10080</code>minutes (7 days). Make sure it is less than the
+						maximum time supported by this Send service instance.</span>
+				</li>
+
+				<li>
+					<div class="line">
+						<label for="size">Maximum file size</label>
+						<input class="setting save-on-change" type="number" id="size" data-optiongroup="account" name="size" required>
+						GiB
+					</div>
+					<span class="line indent helper-text">Maximum file size supported by this Send service
+						instance.</span>
+				</li>
+			</ul>
+		</section>
+
+		<div>
+			<hr /><br />
+			<button type="button" id="resetButton">Reset all settings to defaults</button>
+		</div>
+	</form>
+</body>
+
+</html>

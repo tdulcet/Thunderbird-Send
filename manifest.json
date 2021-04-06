@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "FileLink provider for Send",
+  "version": "1.0",
+  "author": "Teal Dulcet",
+  "description": "Securely encrypt and upload large attachments to any Send service instance (formerly Firefox Send).",
+  "homepage_url": "https://github.com/tdulcet/Thunderbird-Send",
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+
+  "permissions": [
+    "storage",
+    "notifications",
+    "<all_urls>"
+  ],
+
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
+  },
+
+  "background": {
+    "page": "background.html"
+  },
+
+  "cloud_file": {
+    "name": "Thunderbird Send",
+    "data_format": "File",
+    "management_url": "management/management.html",
+    "service_url": "https://github.com/tdulcet/Thunderbird-Send"
+  },
+  
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "send@tealdulcet.com",
+      "strict_min_version": "78"
+    }
+  }
+}
