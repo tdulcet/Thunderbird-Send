@@ -14,7 +14,7 @@
 const defaultSettings = {
 	send: true,
 	account: {
-		service: "send.vis.ee",
+		service: "https://send.vis.ee",
 		downloads: 1,
 		time: 1440, // Minutes
 		size: 10, // GiB
