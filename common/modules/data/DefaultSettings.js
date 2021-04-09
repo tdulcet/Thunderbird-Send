@@ -17,7 +17,7 @@ const defaultSettings = {
 		service: "https://send.vis.ee",
 		downloads: 1,
 		time: 1440, // Minutes
-		size: 10, // GiB
+		size: 10 // GiB
 	}
 };
 

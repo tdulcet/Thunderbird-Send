@@ -4,6 +4,7 @@ import * as AddonSettings from "/common/modules/AddonSettings/AddonSettings.js";
 
 // communication type
 const BACKGROUND = "background";
+const VERIFY = "verify";
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
@@ -493,11 +494,11 @@ function transformStream(readable, transformer, oncancel) {
 /**
  * Check Send server version.
  *
- * @param {Object} account
+ * @param {string} service
  * @returns {boolean}
  */
-async function checkServerVersion(account) {
-	const url = `https://${new URL(account.service).hostname}/__version__`;
+async function checkServerVersion(service) {
+	const url = `https://${new URL(service).host}/__version__`;
 	const fetchInfo = {
 		// mode: "cors",
 		method: "GET"
@@ -513,13 +514,13 @@ async function checkServerVersion(account) {
 		if (version && version.startsWith("v") && parseInt(version.substring(1).split(".")[0]) >= 3) {
 			return true;
 		} else {
-			notification("❌ Unsupported Send server version", `Error: The “${account.service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);
+			notification("❌ Unsupported Send server version", `Error: The “${service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);
 			return false;
 		}
 	} else {
 		const text = await response.text();
 		console.error(text);
-		notification("❌ Unable to determine Send server version", `Error: Unable to determine the “${account.service}” Send service instance server version: ${text}. Please check your internet connection and settings.`);
+		notification("❌ Unable to determine Send server version", `Error: Unable to determine the “${service}” Send service instance server version. Please check your internet connection and settings.`);
 		return false;
 	}
 }
@@ -550,7 +551,7 @@ async function uploaded(account, { id, name, data }) {
 
 	notification("📤 Encrypting and uploading attachment", `📛: ${file.name}\n⬆: ${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`);
 
-	if (!await checkServerVersion(send)) {
+	if (!await checkServerVersion(send.service)) {
 		return { aborted: true };
 	}
 
@@ -620,7 +621,7 @@ async function uploaded(account, { id, name, data }) {
 	});
 	const rawAuth = await crypto.subtle.exportKey("raw", authKey);
 
-	const url = `wss://${new URL(send.service).hostname}/api/ws`;
+	const url = `wss://${new URL(send.service).host}/api/ws`;
 	const ws = await new Promise((resolve) => {
 		const ws = new WebSocket(url);
 		ws.addEventListener("open", () => resolve(ws), { once: true });
@@ -754,7 +755,7 @@ async function deleted(account, id) {
 
 	notification("ℹ️ Deleting file", `Deleting the “${upload.file.name}” uploaded file.`);
 
-	const url = `https://${new URL(aaccount.service).hostname}/api/delete/${upload.id}`;
+	const url = `https://${new URL(aaccount.service).host}/api/delete/${upload.id}`;
 	const fetchInfo = {
 		// mode: "cors",
 		method: "POST",
@@ -817,9 +818,16 @@ async function init() {
 
 init();
 
-browser.runtime.onMessage.addListener((message) => {
+browser.runtime.onMessage.addListener(async (message) => {
 	// console.log(message);
 	if (message.type === BACKGROUND) {
 		setSettings(message.optionValue);
+	} else if (message.type === VERIFY) {
+		const response = {
+			"type": VERIFY,
+			"value": await checkServerVersion(message.service)
+		};
+		// console.log(response);
+		return Promise.resolve(response);
 	}
 });

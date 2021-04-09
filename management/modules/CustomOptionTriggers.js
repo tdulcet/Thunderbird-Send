@@ -6,6 +6,10 @@
 
 import * as AutomaticSettings from "/common/modules/AutomaticSettings/AutomaticSettings.js";
 import * as AddonSettings from "/common/modules/AddonSettings/AddonSettings.js";
+import * as CommonMessages from "/common/modules/MessageHandler/CommonMessages.js";
+
+// communication type
+const VERIFY = "verify";
 
 let accountId = null;
 
@@ -69,6 +73,40 @@ function apply(optionValue) {
 
 	browser.cloudFile.updateAccount(accountId, { configured: true, uploadSizeLimit: optionValue.size * 1024 * 1024 * 1024 });
 }
+
+/**
+ * Verify Send server version.
+ *
+ * @param  {Object} event
+ * @returns {void}
+ */
+function verify(event) {
+	const service = document.getElementById("service");
+
+	if (service.value) {
+		// disable button (which triggered this) until process is finished
+		event.target.setAttribute("disabled", "");
+
+		browser.runtime.sendMessage({
+			"type": VERIFY,
+			"service": service.value
+		}).then((message) => {
+			// console.log(message);
+			if (message.type === VERIFY) {
+				if (message.value) {
+					CommonMessages.showSuccess("Send server verified!", true);
+				} else {
+					CommonMessages.showError("Unable to verify Send server", true);
+				}
+			}
+		}).finally(() => {
+			// re-enable button
+			event.target.removeAttribute("disabled");
+		});
+	}
+}
+
+document.getElementById("verify").addEventListener("click", verify);
 
 /**
  * Binds the triggers.
