@@ -29,7 +29,8 @@
     "name": "Thunderbird Send",
     "data_format": "File",
     "management_url": "management/management.html",
-    "service_url": "https://github.com/tdulcet/Thunderbird-Send"
+    "service_url": "https://github.com/tdulcet/Thunderbird-Send",
+    "browser_style": true
   },
   
   "browser_specific_settings": {

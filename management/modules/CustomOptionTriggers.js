@@ -85,7 +85,8 @@ function verify(event) {
 
 	if (service.value) {
 		// disable button (which triggered this) until process is finished
-		event.target.setAttribute("disabled", "");
+		event.target.disabled = true;
+		service.disabled = true;
 
 		browser.runtime.sendMessage({
 			"type": VERIFY,
@@ -101,12 +102,23 @@ function verify(event) {
 			}
 		}).finally(() => {
 			// re-enable button
-			event.target.removeAttribute("disabled");
+			event.target.disabled = false;
+			service.disabled = false;
 		});
 	}
 }
 
 document.getElementById("verify").addEventListener("click", verify);
+
+document.getElementById("settings").addEventListener("click", (event) => {
+	// disable button (which triggered this) until process is finished
+	event.target.disabled = true;
+
+	browser.runtime.openOptionsPage().finally(() => {
+		// re-enable button
+		event.target.disabled = false;
+	});
+});
 
 /**
  * Binds the triggers.

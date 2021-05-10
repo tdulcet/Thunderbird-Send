@@ -21,6 +21,7 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * Supports deleting the file(s) from server after upload(s) finish
 * Supports all v3 (or greater) Send service servers/instances
 * Does NOT require a Firefox Account (FxA) or any other accounts, all uploads are anonymous
+* Supports the light/dark mode of your system automatically
 * Follows the [Thunderbird Photon Design](https://style.thunderbird.net/)
 
 More information on the encryption used can be found in the official Send service documentation [here](https://github.com/timvisee/send/blob/master/docs/encryption.md).

@@ -3,5 +3,5 @@
 a.button {
 	appearance: button;
 	text-decoration: none;
-	color: initial;
+	color: unset;
 }
