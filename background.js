@@ -537,9 +537,13 @@ async function checkServerVersion(service) {
 async function uploaded(account, { id, name, data }) {
 	console.log(account, id, name, data);
 	console.time(id);
+
+	// clear cache by reloading all options
+	await AddonSettings.loadOptions();
 	let send = await AddonSettings.get("account");
 	console.log(send);
 	send = send[account.id] || send;
+
 	const upload = { cancelled: false };
 	const file = {
 		"name": name || data.name,
