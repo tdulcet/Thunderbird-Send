@@ -12,7 +12,9 @@
  * @type {Object}
  */
 const defaultSettings = {
-	send: true,
+	settings: {
+		send: true
+	},
 	account: {
 		service: "https://send.vis.ee",
 		downloads: 1,

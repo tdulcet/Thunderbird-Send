@@ -13,3 +13,13 @@ import * as CustomOptionTriggers from "./modules/CustomOptionTriggers.js";
 CustomOptionTriggers.registerTrigger();
 AutomaticSettings.setDefaultOptionProvider(AddonSettings.getDefaultValue);
 AutomaticSettings.init();
+
+document.getElementById("settings").addEventListener("click", (event) => {
+	// disable button (which triggered this) until process is finished
+	event.target.disabled = true;
+
+	browser.runtime.openOptionsPage().finally(() => {
+		// re-enable button
+		event.target.disabled = false;
+	});
+});

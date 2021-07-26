@@ -2,10 +2,6 @@
 
 import * as AddonSettings from "/common/modules/AddonSettings/AddonSettings.js";
 
-// communication type
-const BACKGROUND = "background";
-const VERIFY = "verify";
-
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
 const KEY_LENGTH = 16;
@@ -17,12 +13,13 @@ const uploads = new Map();
 
 const encoder = new TextEncoder();
 
-const suffix_power_char = Object.freeze(["", "K", "M", "G", "T", "P", "E", "Z", "Y"]);
-
+const numberFormat = new Intl.NumberFormat();
 const numberFormat1 = new Intl.NumberFormat(undefined, { style: "unit", unit: "day", unitDisplay: "long" });
 const numberFormat2 = new Intl.NumberFormat(undefined, { style: "unit", unit: "hour", unitDisplay: "long" });
 const numberFormat3 = new Intl.NumberFormat(undefined, { style: "unit", unit: "minute", unitDisplay: "long" });
 const numberFormat4 = new Intl.NumberFormat(undefined, { style: "unit", unit: "second", unitDisplay: "long" });
+
+const promiseMap = new Map();
 
 // Display notifications
 let SEND = true;
@@ -46,51 +43,6 @@ function notification(title, message, date) {
 			"eventTime": date
 		});
 	}
-}
-
-/**
- * Auto-scale number to unit.
- * Adapted from: https://github.com/tdulcet/Numbers-Tool/blob/master/numbers.cpp
- *
- * @param {number} number
- * @param {boolean} scale
- * @returns {string}
- */
-function outputunit(number, scale) {
-	let str = "";
-
-	const scale_base = scale ? 1000 : 1024;
-
-	let power = 0;
-	while (Math.abs(number) >= scale_base) {
-		++power;
-		number /= scale_base;
-	}
-
-	let anumber = Math.abs(number);
-	anumber += anumber < 10 ? 0.0005 : (anumber < 100 ? 0.005 : (anumber < 1000 ? 0.05 : 0.5));
-
-	if (number !== 0 && anumber < 1000 && power > 0) {
-		str = number.toString();
-
-		const length = 5 + (number < 0 ? 1 : 0);
-		if (str.length > length) {
-			const prec = anumber < 10 ? 3 : (anumber < 100 ? 2 : (anumber < 1000 ? 1 : 0));
-			str = number.toFixed(prec);
-		}
-	} else {
-		str = number.toFixed(0);
-	}
-
-	str = str.toLocaleString();
-
-	str += ` ${power < 9 ? suffix_power_char[power] : "(error)"}`;
-
-	if (!scale && power > 0) {
-		str += "i";
-	}
-
-	return str;
 }
 
 /**
@@ -543,8 +495,9 @@ async function uploaded(account, { id, name, data }) {
 	let send = await AddonSettings.get("account");
 	console.log(send);
 	send = send[account.id] || send;
+	let { time, downloads } = send;
 
-	const upload = { cancelled: false };
+	const upload = { canceled: false };
 	const file = {
 		"name": name || data.name,
 		size: data.size,
@@ -553,13 +506,36 @@ async function uploaded(account, { id, name, data }) {
 	upload.file = file;
 	uploads.set(id, upload);
 
-	notification("📤 Encrypting and uploading attachment", `📛: ${file.name}\n⬆: ${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`);
+	const window = await browser.windows.create({
+		url: "popup/popup.html",
+		type: "popup",
+		allowScriptsToClose: true
+	});
+	console.log(window);
+
+	const message = await new Promise((resolve) => {
+		promiseMap.set(window.id, { resolve, send, file });
+	});
+
+	if (message.canceled) {
+		upload.canceled = message.canceled;
+	} else {
+		time = message.time;
+		downloads = message.downloads;
+	}
+	// console.log(message);
+
+	if (upload.canceled) {
+		return { aborted: true };
+	}
+
+	notification("📤 Encrypting and uploading attachment", `📛: ${file.name}\n⬆️: ${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`);
 
 	if (!await checkServerVersion(send.service)) {
 		return { aborted: true };
 	}
 
-	if (upload.cancelled) {
+	if (upload.canceled) {
 		notification("❌ Upload of attachment aborted", `Upload of the “${file.name}” file was aborted.`);
 		return { aborted: true };
 	}
@@ -635,8 +611,8 @@ async function uploaded(account, { id, name, data }) {
 		fileMetadata: arrayToB64(new Uint8Array(metadata)),
 		authorization: `send-v1 ${arrayToB64(new Uint8Array(rawAuth))}`,
 		// bearer: bearerToken,
-		timeLimit: send.time * 60,
-		dlimit: send.downloads
+		timeLimit: time * 60,
+		dlimit: downloads
 	};
 	const uploadInfoResponse = new Promise((resolve) => {
 		ws.addEventListener("message", (msg) => {
@@ -670,7 +646,7 @@ async function uploaded(account, { id, name, data }) {
 	const reader = encStream.getReader();
 	let state = await reader.read();
 	while (!state.done) {
-		if (upload.cancelled) {
+		if (upload.canceled) {
 			ws.close();
 		}
 		if (ws.readyState !== WebSocket.OPEN) {
@@ -679,7 +655,7 @@ async function uploaded(account, { id, name, data }) {
 		const buf = state.value;
 		ws.send(buf);
 		state = await reader.read();
-		while (ws.bufferedAmount > ECE_RECORD_SIZE * 2 && ws.readyState === WebSocket.OPEN && !upload.cancelled) {
+		while (ws.bufferedAmount > ECE_RECORD_SIZE * 2 && ws.readyState === WebSocket.OPEN && !upload.canceled) {
 			await delay();
 		}
 	}
@@ -687,7 +663,7 @@ async function uploaded(account, { id, name, data }) {
 		ws.send(new Uint8Array([0])); // EOF
 	}
 
-	if (upload.cancelled) {
+	if (upload.canceled) {
 		console.timeEnd(id);
 		notification("❌ Upload of attachment aborted", `Upload of the “${file.name}” file was aborted.`);
 		return { aborted: true };
@@ -706,7 +682,7 @@ async function uploaded(account, { id, name, data }) {
 	const aurl = `${uploadInfo.url}#${arrayToB64(rawSecret)}`;
 	// console.info(aurl);
 	if (json.ok) {
-		notification("🔗 Attachment encrypted and upload", `The “${file.name}” file was successfully encrypted and upload! Expires after:\n⬇: ${send.downloads.toLocaleString()}\n⏲: ${getSecondsAsDigitalClock(send.time * 60)}\n\n${aurl}`);
+		notification("🔗 Attachment encrypted and upload", `The “${file.name}” file was successfully encrypted and upload! Expires after:\n⬇️: ${numberFormat.format(send.downloads)}\n⏲️: ${getSecondsAsDigitalClock(send.time * 60)}\n\n${aurl}`);
 	} else {
 		notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${json.error}. Please check your internet connection.`);
 	}
@@ -727,8 +703,8 @@ function canceled(account, id) {
 	console.log(account, id);
 	const upload = uploads.get(id);
 	if (upload) {
-		if (!upload.cancelled) {
-			upload.cancelled = true;
+		if (!upload.canceled) {
+			upload.canceled = true;
 			notification("ℹ️ Canceling upload", `Canceling upload of the “${upload.file.name}” file.`);
 		} else {
 			notification("❌ Upload already canceled", `Error: Upload of the “${upload.file.name}” file was already canceled.`);
@@ -800,13 +776,13 @@ browser.cloudFile.onAccountAdded.addListener((account) => {
 });
 
 /**
- * Set Send settings.
+ * Set settings.
  *
- * @param {Object} send
+ * @param {Object} settings
  * @returns {void}
  */
-function setSettings(send) {
-	SEND = send;
+function setSettings(asettings) {
+	SEND = asettings.send;
 }
 
 /**
@@ -815,14 +791,14 @@ function setSettings(send) {
  * @returns {void}
  */
 async function init() {
-	const send = await AddonSettings.get("send");
+	const asettings = await AddonSettings.get("settings");
 
-	setSettings(send);
+	setSettings(asettings);
 }
 
 init();
 
-browser.runtime.onMessage.addListener(async (message) => {
+browser.runtime.onMessage.addListener(async (message, sender) => {
 	// console.log(message);
 	if (message.type === BACKGROUND) {
 		setSettings(message.optionValue);
@@ -833,5 +809,22 @@ browser.runtime.onMessage.addListener(async (message) => {
 		};
 		// console.log(response);
 		return Promise.resolve(response);
+	} else if (message.type === POPUP) {
+		const promise = promiseMap.get(sender.tab.windowId);
+		if (promise) {
+			if (message.time || message.downloads || message.canceled) {
+				promise.resolve(message);
+
+				promiseMap.delete(sender.tab.windowId);
+			} else {
+				const response = {
+					"type": POPUP,
+					"send": promise.send,
+					"file": promise.file
+				};
+				// console.log(response);
+				return Promise.resolve(response);
+			}
+		}
 	}
 });

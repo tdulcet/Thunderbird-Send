@@ -110,16 +110,6 @@ function verify(event) {
 
 document.getElementById("verify").addEventListener("click", verify);
 
-document.getElementById("settings").addEventListener("click", (event) => {
-	// disable button (which triggered this) until process is finished
-	event.target.disabled = true;
-
-	browser.runtime.openOptionsPage().finally(() => {
-		// re-enable button
-		event.target.disabled = false;
-	});
-});
-
 /**
  * Binds the triggers.
  *

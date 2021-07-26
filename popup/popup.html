@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="/common/common.css">
+	<link rel="stylesheet" href="popup.css">
+
+	<!-- <script defer src="../common/common.js" type="module"></script> -->
+	<script src="../common.js"></script>
+	<script src="./popup.js" type="module"></script>
+	<title>📤 Thunderbird Send</title>
+</head>
+
+<body>
+	<form>
+		<section>
+			<h3><img src="/icons/icon.svg" class="icon"> Thunderbird Send</h3>
+			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button">ℹ️ Information</button></a>
+				<button type="button" id="settings">⚙️ Options</button>
+				<a href="https://www.tealdulcet.com/" target="_blank"><button type="button">❤️ Donate</button></a>
+			</p>
+			<hr>
+			<ul>
+				<p>Filename: <span id="name"></span></p>
+				<p>Size: <span id="size"></span></p>
+
+				<li>
+					<div class="line">
+						<label for="downloads">Download limit</label>
+						<input class="setting" type="number" list="adownloads" id="downloads" name="downloads" min="1" required>
+						<datalist id="adownloads">
+							<option value="1">
+							<option value="2">
+							<option value="3">
+							<option value="4">
+							<option value="5">
+							<option value="20">
+							<option value="50">
+							<option value="100">
+						</datalist>
+					</div>
+					<span class="line indent helper-text">Make sure it is less than the maximum downloads supported by
+						this Send service instance.</span>
+				</li>
+
+				<li>
+					<div class="line">
+						<label for="time">Time limit</label>
+						<input class="setting" type="number" list="times" id="time" name="time" min="5" required>
+						<datalist id="times">
+							<option value="5">
+							<option value="60">
+							<option value="1440">
+							<option value="10080">
+						</datalist>
+						minutes
+					</div>
+					<span class="line indent helper-text">For example, <code>5</code>, <code>60</code>(1 hour),
+						<code>1440</code>(1 day) or <code>10080</code>minutes (7 days). Make sure it is less than the
+						maximum time supported by this Send service instance.</span>
+				</li>
+			</ul>
+		</section>
+
+		<div>
+			<hr />
+			<button type="button" id="cancel" disabled>❌ Cancel</button>
+			<button type="button" id="upload" disabled>📤 Encrypt and Upload</button>
+		</div>
+	</form>
+</body>
+
+</html>

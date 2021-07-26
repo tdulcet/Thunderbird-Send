@@ -34,5 +34,5 @@ function apply(optionValue) {
  * @returns {Promise}
  */
 export function registerTrigger() {
-	AutomaticSettings.Trigger.registerSave("send", apply);
+	AutomaticSettings.Trigger.registerSave("settings", apply);
 }
