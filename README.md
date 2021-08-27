@@ -15,7 +15,7 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * Link(s) automatically expire after the download and time limit
 * Desktop notifications when the upload(s) start and finish
 * Users can specify the Send service instance(s) to use, defaults to the one provided by @timvisee: https://send.vis.ee
-* Users can specify the default download and time limits for each Send service instance
+* Users can specify the download and time limits for each file and defaults for each Send service instance
 * Supports the maximum file size supported by each Send service instance, currently 10 GiB
 * Supports canceling the upload(s)
 * Supports deleting the file(s) from server after upload(s) finish
@@ -28,9 +28,7 @@ More information on the encryption used can be found in the official Send servic
 
 ❤️ Please visit [tealdulcet.com](https://www.tealdulcet.com/) to support this extension and my other software development.
 
-🔜 This will soon be published to Addons.thunderbird.net (ATN).
-
-Options page does not work in Thunderbird 78 because of [Bug 1641577](https://bugzilla.mozilla.org/show_bug.cgi?id=1641577), although the account management pages work fine. Fixed in Thunderbird 86 Beta.
+⬇️ Download from [Addons.thunderbird.net](https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-provider-for-send/) (ATN).
 
 This add-on is not affiliated with Mozilla, Firefox or any Send service instance.
 
