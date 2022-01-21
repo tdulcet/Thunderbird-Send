@@ -23,6 +23,8 @@ const promiseMap = new Map();
 
 // Display notifications
 let SEND = true;
+// Display link to Send service
+let LINK = false;
 
 /**
  * Create notification.
@@ -481,12 +483,11 @@ async function checkServerVersion(service) {
  * Upload file.
  *
  * @param {Object} account
- * @param {number} id
- * @param {string} name
- * @param {Object} data
+ * @param {Object} fileInfo
+ * @param {Object} tab
  * @returns {Object}
  */
-async function uploaded(account, { id, name, data }) {
+async function uploaded(account, { id, name, data }, tab) {
 	console.log(account, id, name, data);
 	console.time(id);
 
@@ -601,9 +602,9 @@ async function uploaded(account, { id, name, data }) {
 	});
 	const rawAuth = await crypto.subtle.exportKey("raw", authKey);
 
-	const url = `wss://${new URL(send.service).host}/api/ws`;
+	const url = new URL(send.service).host;
 	const ws = await new Promise((resolve) => {
-		const ws = new WebSocket(url);
+		const ws = new WebSocket(`wss://${url}/api/ws`);
 		ws.addEventListener("open", () => resolve(ws), { once: true });
 	});
 
@@ -679,6 +680,9 @@ async function uploaded(account, { id, name, data }) {
 
 	console.timeEnd(id);
 
+	const date = new Date();
+	date.setMinutes(date.getMinutes() + send.time);
+
 	const aurl = `${uploadInfo.url}#${arrayToB64(rawSecret)}`;
 	// console.info(aurl);
 	if (json.ok) {
@@ -687,7 +691,21 @@ async function uploaded(account, { id, name, data }) {
 		notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${json.error}. Please check your internet connection.`);
 	}
 
-	return { "url": aurl };
+	const icon = `https://${url}/icon.26e159f8.svg`;
+	const response = await fetch(icon, { method: "HEAD" });
+	// console.log(response);
+
+	return {
+		"url": aurl,
+		templateInfo: {
+			service_icon: response.ok ? icon : null,
+			service_url: LINK ? send.service : null,
+			download_expiry_date: {
+				timestamp: date.getTime()
+			},
+			download_limit: send.downloads
+		}
+	};
 }
 
 browser.cloudFile.onFileUpload.addListener(uploaded);
@@ -697,9 +715,10 @@ browser.cloudFile.onFileUpload.addListener(uploaded);
  *
  * @param {Object} account
  * @param {number} id
+ * @param {Object} tab
  * @returns {void}
  */
-function canceled(account, id) {
+function canceled(account, id, tab) {
 	console.log(account, id);
 	const upload = uploads.get(id);
 	if (upload) {
@@ -721,9 +740,10 @@ browser.cloudFile.onFileUploadAbort.addListener(canceled);
  *
  * @param {Object} account
  * @param {number} id
+ * @param {Object} tab
  * @returns {void}
  */
-async function deleted(account, id) {
+async function deleted(account, id, tab) {
 	console.log(account, id);
 	let aaccount = await AddonSettings.get("account");
 	aaccount = aaccount[account.id] || aaccount;
@@ -778,11 +798,12 @@ browser.cloudFile.onAccountAdded.addListener((account) => {
 /**
  * Set settings.
  *
- * @param {Object} settings
+ * @param {Object} asettings
  * @returns {void}
  */
 function setSettings(asettings) {
 	SEND = asettings.send;
+	LINK = asettings.link;
 }
 
 /**

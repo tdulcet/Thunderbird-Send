@@ -53,7 +53,8 @@
 	<form>
 		<section>
 			<h3><img src="/icons/icon.svg" class="icon"> Thunderbird Send</h3>
-			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button">ℹ️ Information</button></a>
+			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button">ℹ️
+						Information</button></a>
 				<a href="https://www.tealdulcet.com/" target="_blank"><button type="button">❤️ Donate</button></a>
 			</p>
 			<span class="helper-text">
@@ -68,6 +69,15 @@
 						<input class="setting save-on-change" type="checkbox" id="send" data-optiongroup="settings" name="send">
 						<label for="send">Display Desktop notifications</label>
 					</div>
+				</li>
+
+				<li>
+					<div class="line">
+						<input class="setting save-on-change" type="checkbox" id="link" data-optiongroup="settings" name="link">
+						<label for="link">Create link for Send service instance</label>
+					</div>
+					<span class="line indent helper-text">Adds a “Learn more about” link for the Send service instance
+						to footer of messages. Requires Thunderbird 91.4.1 or greater.</span>
 				</li>
 			</ul>
 		</section>

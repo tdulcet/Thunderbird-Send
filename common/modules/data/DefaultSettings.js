@@ -13,7 +13,8 @@
  */
 const defaultSettings = {
 	settings: {
-		send: true
+		send: true,
+		link: false
 	},
 	account: {
 		service: "https://send.vis.ee",
