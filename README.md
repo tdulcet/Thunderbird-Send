@@ -40,7 +40,6 @@ Pull requests welcome! Ideas for contributions:
 * Show the upload progress (also see [Bug 736169](https://bugzilla.mozilla.org/show_bug.cgi?id=736169))
 * [Improve the management page](https://github.com/TinyWebEx/AutomaticSettings/issues/13)
 	* [Check validity of input before saving values](https://github.com/TinyWebEx/AutomaticSettings/issues/14)
-* Add more information to the e-mail with the link, such as the download limit and expiry time (see [Bug 1643729](https://bugzilla.mozilla.org/show_bug.cgi?id=1643729))
 * Support showing notifications in the notification bar (see [Bug 1674002](https://bugzilla.mozilla.org/show_bug.cgi?id=1674002))
 * Support Firefox Account (FxA) authentication (see [here](https://gitlab.com/timvisee/ffsend/-/issues/58))
 * Improve the performance
