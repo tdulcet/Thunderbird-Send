@@ -34,7 +34,7 @@ function outputunit(number, scale) {
 
 		const length = 5 + (number < 0 ? 1 : 0);
 		if (str.length > length) {
-			const prec = anumber < 10 ? 3 : (anumber < 100 ? 2 : (anumber < 1000 ? 1 : 0));
+			const prec = anumber < 10 ? 3 : (anumber < 100 ? 2 : 1);
 			str = number.toFixed(prec);
 		}
 	} else {

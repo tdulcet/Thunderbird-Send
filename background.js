@@ -397,7 +397,7 @@ class StreamSlicer {
 
 /**
  * TransformStream wrapper.
- * Firefox/Thunderbird does not support pipeThrough: https://bugzilla.mozilla.org/show_bug.cgi?id=1502355 or TransformStream https://bugzilla.mozilla.org/show_bug.cgi?id=1493537
+ * pipeThrough: https://bugzilla.mozilla.org/show_bug.cgi?id=1734243 and TransformStream: https://bugzilla.mozilla.org/show_bug.cgi?id=1730586 require Firefox/Thunderbird 102
  * Adapted from: Adapted from: https://github.com/mozilla/send/blob/master/app/streams.js
  *
  * @param {Object} readable
@@ -485,9 +485,10 @@ async function checkServerVersion(service) {
  * @param {Object} account
  * @param {Object} fileInfo
  * @param {Object} tab
+ * @param {Object} relatedFileInfo
  * @returns {Object}
  */
-async function uploaded(account, { id, name, data }, tab) {
+async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	console.log(account, id, name, data);
 	console.time(id);
 
@@ -496,7 +497,13 @@ async function uploaded(account, { id, name, data }, tab) {
 	let send = await AddonSettings.get("account");
 	console.log(send);
 	send = send[account.id] || send;
-	let { time, downloads } = send;
+	if (relatedFileInfo?.id) {
+		const upload = uploads.get(relatedFileInfo.id);
+		if (upload) {
+			send.time = upload.time || send.time;
+			send.downloads = upload.downloads || send.downloads;
+		}
+	}
 
 	const upload = { canceled: false };
 	const file = {
@@ -508,8 +515,9 @@ async function uploaded(account, { id, name, data }, tab) {
 	uploads.set(id, upload);
 
 	const window = await browser.windows.create({
-		url: "popup/popup.html",
+		url: browser.runtime.getURL("popup/popup.html"),
 		type: "popup",
+		// Should not be needed: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create#parameters
 		allowScriptsToClose: true
 	});
 	console.log(window);
@@ -521,8 +529,8 @@ async function uploaded(account, { id, name, data }, tab) {
 	if (message.canceled) {
 		upload.canceled = message.canceled;
 	} else {
-		time = message.time;
-		downloads = message.downloads;
+		upload.time = message.time;
+		upload.downloads = message.downloads;
 	}
 	// console.log(message);
 
@@ -612,23 +620,24 @@ async function uploaded(account, { id, name, data }, tab) {
 		fileMetadata: arrayToB64(new Uint8Array(metadata)),
 		authorization: `send-v1 ${arrayToB64(new Uint8Array(rawAuth))}`,
 		// bearer: bearerToken,
-		timeLimit: time * 60,
-		dlimit: downloads
+		timeLimit: upload.time * 60,
+		dlimit: upload.downloads
 	};
 	const uploadInfoResponse = new Promise((resolve) => {
 		ws.addEventListener("message", (msg) => {
 			// console.log(msg);
 			const response = JSON.parse(msg.data);
 			console.log(response);
-			if (response.error) {
-				throw new Error(response.error);
-			} else {
-				resolve(response);
-			}
+			resolve(response);
 		}, { once: true });
 	});
 	ws.send(JSON.stringify(fileMeta));
 	const uploadInfo = await uploadInfoResponse;
+	if (uploadInfo.error) {
+		notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${uploadInfo.error}. The download or time limit is likely above the maximum supported by this Send service instance.`);
+		return { error: true };
+		// throw new Error(uploadInfo.error);
+	}
 	console.timeLog(id);
 
 	const completedResponse = new Promise((resolve) => {
@@ -680,13 +689,13 @@ async function uploaded(account, { id, name, data }, tab) {
 
 	console.timeEnd(id);
 
-	const date = new Date();
-	date.setMinutes(date.getMinutes() + send.time);
+	const expiresAt = new Date();
+	expiresAt.setMinutes(expiresAt.getMinutes() + upload.time);
 
 	const aurl = `${uploadInfo.url}#${arrayToB64(rawSecret)}`;
 	// console.info(aurl);
 	if (json.ok) {
-		notification("🔗 Attachment encrypted and upload", `The “${file.name}” file was successfully encrypted and upload! Expires after:\n⬇️: ${numberFormat.format(send.downloads)}\n⏲️: ${getSecondsAsDigitalClock(send.time * 60)}\n\n${aurl}`);
+		notification("🔗 Attachment encrypted and upload", `The “${file.name}” file was successfully encrypted and upload! Expires after:\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${aurl}`);
 	} else {
 		notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${json.error}. Please check your internet connection.`);
 	}
@@ -701,9 +710,9 @@ async function uploaded(account, { id, name, data }, tab) {
 			service_icon: response.ok ? icon : null,
 			service_url: LINK ? send.service : null,
 			download_expiry_date: {
-				timestamp: date.getTime()
+				timestamp: expiresAt.getTime()
 			},
-			download_limit: send.downloads
+			download_limit: upload.downloads
 		}
 	};
 }

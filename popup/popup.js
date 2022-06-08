@@ -5,6 +5,9 @@ const time = document.getElementById("time");
 const upload = document.getElementById("upload");
 const cancel = document.getElementById("cancel");
 
+// Only send one event, no matter what happens here.
+let eventHasBeenSend = false;
+
 document.getElementById("settings").addEventListener("click", (event) => {
 	// disable button (which triggered this) until process is finished
 	event.target.disabled = true;
@@ -15,6 +18,21 @@ document.getElementById("settings").addEventListener("click", (event) => {
 	});
 });
 
+window.addEventListener("unload", (event) => {
+	if (!eventHasBeenSend) {
+		const response = {
+			"type": POPUP,
+			canceled: true
+		};
+		// console.log(response);
+
+		// Does not work: https://bugzilla.mozilla.org/show_bug.cgi?id=1534041
+		browser.runtime.sendMessage(response);
+	}
+	
+	eventHasBeenSend = true;
+});
+
 upload.addEventListener("click", (event) => {
 	// disable button (which triggered this) until process is finished
 	event.target.disabled = true;
@@ -22,12 +40,14 @@ upload.addEventListener("click", (event) => {
 
 	const response = {
 		"type": POPUP,
-		"downloads": downloads.value,
-		"time": time.value
+		"downloads": downloads.valueAsNumber,
+		"time": time.valueAsNumber
 	};
 	// console.log(response);
 
 	browser.runtime.sendMessage(response);
+	
+	eventHasBeenSend = true;
 
 	setTimeout(() => {
 		window.close();
@@ -46,6 +66,8 @@ cancel.addEventListener("click", (event) => {
 	// console.log(response);
 
 	browser.runtime.sendMessage(response);
+	
+	eventHasBeenSend = true;
 
 	setTimeout(() => {
 		window.close();
