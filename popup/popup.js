@@ -29,7 +29,7 @@ window.addEventListener("unload", (event) => {
 		// Does not work: https://bugzilla.mozilla.org/show_bug.cgi?id=1534041
 		browser.runtime.sendMessage(response);
 	}
-	
+
 	eventHasBeenSend = true;
 });
 
@@ -46,7 +46,7 @@ upload.addEventListener("click", (event) => {
 	// console.log(response);
 
 	browser.runtime.sendMessage(response);
-	
+
 	eventHasBeenSend = true;
 
 	setTimeout(() => {
@@ -66,7 +66,7 @@ cancel.addEventListener("click", (event) => {
 	// console.log(response);
 
 	browser.runtime.sendMessage(response);
-	
+
 	eventHasBeenSend = true;
 
 	setTimeout(() => {

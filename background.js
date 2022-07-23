@@ -14,10 +14,12 @@ const uploads = new Map();
 const encoder = new TextEncoder();
 
 const numberFormat = new Intl.NumberFormat();
-const numberFormat1 = new Intl.NumberFormat(undefined, { style: "unit", unit: "day", unitDisplay: "long" });
-const numberFormat2 = new Intl.NumberFormat(undefined, { style: "unit", unit: "hour", unitDisplay: "long" });
-const numberFormat3 = new Intl.NumberFormat(undefined, { style: "unit", unit: "minute", unitDisplay: "long" });
-const numberFormat4 = new Intl.NumberFormat(undefined, { style: "unit", unit: "second", unitDisplay: "long" });
+const numberFormat1 = new Intl.NumberFormat([], { style: "unit", unit: "day", unitDisplay: "long" });
+const numberFormat2 = new Intl.NumberFormat([], { style: "unit", unit: "hour", unitDisplay: "long" });
+const numberFormat3 = new Intl.NumberFormat([], { style: "unit", unit: "minute", unitDisplay: "long" });
+const numberFormat4 = new Intl.NumberFormat([], { style: "unit", unit: "second", unitDisplay: "long" });
+
+const formatter = new Intl.ListFormat();
 
 const promiseMap = new Map();
 
@@ -35,7 +37,7 @@ let LINK = false;
  * @returns {void}
  */
 function notification(title, message, date) {
-	console.log(title, message, date ? new Date(date) : date);
+	console.log(title, message, date && new Date(date));
 	if (SEND) {
 		browser.notifications.create({
 			"type": "basic",
@@ -59,24 +61,20 @@ function getSecondsAsDigitalClock(sec_num) {
 	const h = Math.floor((sec_num % 86400) / 3600);
 	const m = Math.floor((sec_num % 86400 % 3600) / 60);
 	const s = sec_num % 86400 % 3600 % 60;
-	let text = "";
+	const text = [];
 	if (d > 0) {
-		// text += d.toLocaleString() + ' days ';
-		text += `${numberFormat1.format(d)} `;
+		text.push(numberFormat1.format(d));
 	}
 	if (h > 0) {
-		// text += ((h < 10) ? '0' + h : h) + ' hours ';
-		text += `${numberFormat2.format(h)} `;
+		text.push(numberFormat2.format(h));
 	}
 	if (m > 0) {
-		// text += ((m < 10) ? '0' + m : m) + ' minutes ';
-		text += `${numberFormat3.format(m)} `;
+		text.push(numberFormat3.format(m));
 	}
 	if (s > 0) {
-		// text += ((s < 10) ? '0' + s : s) + ' seconds';
-		text += numberFormat4.format(s);
+		text.push(numberFormat4.format(s));
 	}
-	return text;
+	return formatter.format(text);
 }
 
 /**
@@ -402,47 +400,10 @@ class StreamSlicer {
  *
  * @param {Object} readable
  * @param {Object} transformer
- * @param {function} oncancel
  * @returns {Object}
  */
-function transformStream(readable, transformer, oncancel) {
-	try {
-		return readable.pipeThrough(new TransformStream(transformer));
-	} catch (e) {
-		const reader = readable.getReader();
-		return new ReadableStream({
-			start(controller) {
-				if (transformer.start) {
-					return transformer.start(controller);
-				}
-			},
-			async pull(controller) {
-				let enqueued = false;
-				const wrappedController = {
-					enqueue(d) {
-						enqueued = true;
-						controller.enqueue(d);
-					}
-				};
-				while (!enqueued) {
-					const data = await reader.read();
-					if (data.done) {
-						if (transformer.flush) {
-							await transformer.flush(controller);
-						}
-						return controller.close();
-					}
-					await transformer.transform(data.value, wrappedController);
-				}
-			},
-			cancel(reason) {
-				readable.cancel(reason);
-				if (oncancel) {
-					oncancel(reason);
-				}
-			}
-		});
-	}
+function transformStream(readable, transformer) {
+	return readable.pipeThrough(new TransformStream(transformer));
 }
 
 /**
@@ -465,7 +426,7 @@ async function checkServerVersion(service) {
 		console.log(json);
 
 		const version = json.version;
-		if (version && version.startsWith("v") && parseInt(version.substring(1).split(".")[0]) >= 3) {
+		if (version && version.startsWith("v") && parseInt(version.substring(1).split(".")[0], 10) >= 3) {
 			return true;
 		} else {
 			notification("❌ Unsupported Send server version", `Error: The “${service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);

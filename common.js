@@ -43,7 +43,7 @@ function outputunit(number, scale) {
 
 	str = str.toLocaleString();
 
-	str += ` ${power < 9 ? suffix_power_char[power] : "(error)"}`;
+	str += `\xa0${power < suffix_power_char.length ? suffix_power_char[power] : "(error)"}`;
 
 	if (!scale && power > 0) {
 		str += "i";

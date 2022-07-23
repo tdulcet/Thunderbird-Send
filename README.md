@@ -5,7 +5,7 @@ Copyright © 2020 Teal Dulcet
 
 ![](icons/icon.svg)
 
-Thunderbird add-on/MailExtension to easily and securely encrypt and upload large attachments to any [Send service instance](https://github.com/timvisee/send-instances/#instances) (formerly [Firefox Send](https://github.com/mozilla/send)) and send the links via e-mail using the [CloudFile/FileLink API](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html). Firefox Send was [discontinued by Mozilla](https://support.mozilla.org/en-US/kb/what-happened-firefox-send) in 2020. It is now maintained by @timvisee and called just [Send](https://github.com/timvisee/send).
+Thunderbird add-on/MailExtension to easily and securely encrypt and upload large attachments to any [Send service instance](https://github.com/timvisee/send-instances/#instances) (formerly [Firefox Send](https://github.com/mozilla/send)) and send the links via e-mail using the [CloudFile/FileLink API](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html). Firefox Send was [discontinued by Mozilla](https://support.mozilla.org/kb/what-happened-firefox-send) in 2020. It is now maintained by @timvisee and called just [Send](https://github.com/timvisee/send).
 
 * Enables simple, yet private file sharing with end-to-end encryption
 * Files are securely [encrypted](https://github.com/timvisee/send/blob/master/docs/encryption.md) and uploaded locally in Thunderbird using the [Web Crypto](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) and [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) APIs
@@ -28,7 +28,7 @@ More information on the encryption used can be found in the official Send servic
 
 ❤️ Please visit [tealdulcet.com](https://www.tealdulcet.com/) to support this extension and my other software development.
 
-⬇️ Download from [Addons.thunderbird.net](https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-provider-for-send/) (ATN).
+⬇️ Download from [Addons.thunderbird.net](https://addons.thunderbird.net/thunderbird/addon/filelink-provider-for-send/) (ATN).
 
 This add-on is not affiliated with Mozilla, Firefox or any Send service instance.
 
@@ -36,10 +36,12 @@ This add-on is not affiliated with Mozilla, Firefox or any Send service instance
 
 Pull requests welcome! Ideas for contributions:
 
+* Convert to [Manifest V3](https://extensionworkshop.com/documentation/develop/manifest-v3-migration-guide/) (MV3)
 * Allow users to specify a password for each file (see [Bug 1711446](https://bugzilla.mozilla.org/show_bug.cgi?id=1711446))
 * Show the upload progress (also see [Bug 736169](https://bugzilla.mozilla.org/show_bug.cgi?id=736169))
 * [Improve the management page](https://github.com/TinyWebEx/AutomaticSettings/issues/13)
 	* [Check validity of input before saving values](https://github.com/TinyWebEx/AutomaticSettings/issues/14)
+* Sync settings (see [bug 446444](https://bugzilla.mozilla.org/show_bug.cgi?id=446444))
 * Support showing notifications in the notification bar (see [Bug 1674002](https://bugzilla.mozilla.org/show_bug.cgi?id=1674002))
 * Support Firefox Account (FxA) authentication (see [here](https://gitlab.com/timvisee/ffsend/-/issues/58))
 * Improve the performance
