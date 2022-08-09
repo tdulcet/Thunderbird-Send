@@ -21,7 +21,7 @@ document.getElementById("settings").addEventListener("click", (event) => {
 window.addEventListener("unload", (event) => {
 	if (!eventHasBeenSend) {
 		const response = {
-			"type": POPUP,
+			type: POPUP,
 			canceled: true
 		};
 		// console.log(response);
@@ -39,9 +39,9 @@ upload.addEventListener("click", (event) => {
 	cancel.disabled = true;
 
 	const response = {
-		"type": POPUP,
-		"downloads": downloads.valueAsNumber,
-		"time": time.valueAsNumber
+		type: POPUP,
+		downloads: downloads.valueAsNumber,
+		time: time.valueAsNumber
 	};
 	// console.log(response);
 
@@ -60,7 +60,7 @@ cancel.addEventListener("click", (event) => {
 	upload.disabled = true;
 
 	const response = {
-		"type": POPUP,
+		type: POPUP,
 		canceled: true
 	};
 	// console.log(response);
@@ -74,7 +74,7 @@ cancel.addEventListener("click", (event) => {
 	}, 1000);
 });
 
-browser.runtime.sendMessage({ "type": POPUP }).then((message) => {
+browser.runtime.sendMessage({ type: POPUP }).then((message) => {
 	// console.log(message);
 	if (message.type === POPUP) {
 		const send = message.send;

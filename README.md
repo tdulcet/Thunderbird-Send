@@ -37,6 +37,7 @@ This add-on is not affiliated with Mozilla, Firefox or any Send service instance
 Pull requests welcome! Ideas for contributions:
 
 * Convert to [Manifest V3](https://extensionworkshop.com/documentation/develop/manifest-v3-migration-guide/) (MV3)
+* Refactor into more modules
 * Allow users to specify a password for each file (see [Bug 1711446](https://bugzilla.mozilla.org/show_bug.cgi?id=1711446))
 * Show the upload progress (also see [Bug 736169](https://bugzilla.mozilla.org/show_bug.cgi?id=736169))
 * [Improve the management page](https://github.com/TinyWebEx/AutomaticSettings/issues/13)

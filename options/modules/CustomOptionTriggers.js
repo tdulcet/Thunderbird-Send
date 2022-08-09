@@ -16,13 +16,13 @@ const BACKGROUND = "background";
  * @param  {Object} optionValue
  * @param  {string} [option]
  * @param  {Object} [event]
- * @returns {Promise}
+ * @returns {void}
  */
 function apply(optionValue) {
 	// trigger update for current session
 	browser.runtime.sendMessage({
-		"type": BACKGROUND,
-		"optionValue": optionValue
+		type: BACKGROUND,
+		optionValue
 	});
 }
 
@@ -31,7 +31,7 @@ function apply(optionValue) {
  *
  * This is basically the "init" method.
  *
- * @returns {Promise}
+ * @returns {void}
  */
 export function registerTrigger() {
 	AutomaticSettings.Trigger.registerSave("settings", apply);

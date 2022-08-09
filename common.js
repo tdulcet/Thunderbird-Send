@@ -27,14 +27,14 @@ function outputunit(number, scale) {
 	}
 
 	let anumber = Math.abs(number);
-	anumber += anumber < 10 ? 0.0005 : (anumber < 100 ? 0.005 : (anumber < 1000 ? 0.05 : 0.5));
+	anumber += anumber < 10 ? 0.0005 : anumber < 100 ? 0.005 : anumber < 1000 ? 0.05 : 0.5;
 
 	if (number !== 0 && anumber < 1000 && power > 0) {
 		str = number.toString();
 
 		const length = 5 + (number < 0 ? 1 : 0);
 		if (str.length > length) {
-			const prec = anumber < 10 ? 3 : (anumber < 100 ? 2 : 1);
+			const prec = anumber < 10 ? 3 : anumber < 100 ? 2 : 1;
 			str = number.toFixed(prec);
 		}
 	} else {

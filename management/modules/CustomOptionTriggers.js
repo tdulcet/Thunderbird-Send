@@ -52,7 +52,7 @@ async function set(param) {
 	// Get the existing + default options
 	let account = await AddonSettings.get(param.option);
 	// Remove the default options
-	account = Object.entries(account).reduce((a, [k, v]) => (v === Object(v) ? (a[k] = v, a) : a), {});
+	account = Object.entries(account).reduce((a, [k, v]) => v === Object(v) ? (a[k] = v, a) : a, {});
 	// Set the new options
 	account[accountId] = param.optionValue;
 
@@ -66,7 +66,7 @@ async function set(param) {
  * @param  {Object} optionValue
  * @param  {string} [option]
  * @param  {Object} [event]
- * @returns {Promise}
+ * @returns {void}
  */
 function apply(optionValue) {
 	// console.log(optionValue);
@@ -89,8 +89,8 @@ function verify(event) {
 		service.disabled = true;
 
 		browser.runtime.sendMessage({
-			"type": VERIFY,
-			"service": service.value
+			type: VERIFY,
+			service: service.value
 		}).then((message) => {
 			// console.log(message);
 			if (message.type === VERIFY) {
@@ -115,7 +115,7 @@ document.getElementById("verify").addEventListener("click", verify);
  *
  * This is basically the "init" method.
  *
- * @returns {Promise}
+ * @returns {void}
  */
 export function registerTrigger() {
 	accountId = new URL(location.href).searchParams.get("accountId");

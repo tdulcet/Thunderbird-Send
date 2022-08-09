@@ -40,11 +40,11 @@ function notification(title, message, date) {
 	console.log(title, message, date && new Date(date));
 	if (SEND) {
 		browser.notifications.create({
-			"type": "basic",
-			"iconUrl": browser.runtime.getURL("icons/icon.svg"),
-			"title": title,
-			"message": message,
-			"eventTime": date
+			type: "basic",
+			iconUrl: browser.runtime.getURL("icons/icon.svg"),
+			title,
+			message,
+			eventTime: date
 		});
 	}
 }
@@ -58,8 +58,8 @@ function notification(title, message, date) {
 function getSecondsAsDigitalClock(sec_num) {
 	// console.log(sec_num);
 	const d = Math.floor(sec_num / 86400);
-	const h = Math.floor((sec_num % 86400) / 3600);
-	const m = Math.floor((sec_num % 86400 % 3600) / 60);
+	const h = Math.floor(sec_num % 86400 / 3600);
+	const m = Math.floor(sec_num % 86400 % 3600 / 60);
 	const s = sec_num % 86400 % 3600 % 60;
 	const text = [];
 	if (d > 0) {
@@ -81,14 +81,14 @@ function getSecondsAsDigitalClock(sec_num) {
  * Array to Base64.
  * Adapted from: https://github.com/mozilla/send/blob/master/app/utils.js
  *
- * @param {Object[]} array
- * @returns {void}
+ * @param {Uint8Array} array
+ * @returns {string}
  */
 function arrayToB64(array) {
 	return btoa(String.fromCharCode(...array))
-		.replace(/\+/g, "-")
-		.replace(/\//g, "_")
-		.replace(/=/g, "");
+		.replace(/\+/gu, "-")
+		.replace(/\//gu, "_")
+		.replace(/=/gu, "");
 }
 
 /**
@@ -106,9 +106,9 @@ function delay(delay = 100) {
  * Concatenate arrays.
  * Adapted from: https://github.com/mozilla/send/blob/master/app/utils.js
  *
- * @param {Object[]} b1
- * @param {Object[]} b2
- * @returns {Object[]}
+ * @param {Uint8Array} b1
+ * @param {Uint8Array} b2
+ * @returns {Uint8Array}
  */
 function concat(b1, b2) {
 	const result = new Uint8Array(b1.length + b2.length);
@@ -122,7 +122,7 @@ function concat(b1, b2) {
  * Adapted from: https://github.com/mozilla/send/blob/master/app/ece.js
  *
  * @param {number} len
- * @returns {Object[]}
+ * @returns {ArrayBuffer}
  */
 function generateSalt(len) {
 	const randSalt = new Uint8Array(len);
@@ -132,6 +132,12 @@ function generateSalt(len) {
 
 // Adapted from: https://github.com/mozilla/send/blob/master/app/ece.js
 class ECETransformer {
+	/**
+	 * @param {string} mode
+	 * @param {Uint8Array} ikm
+	 * @param {number} rs
+	 * @param {ArrayBuffer} salt
+	 */
 	constructor(mode, ikm, rs, salt) {
 		this.mode = mode;
 		this.prevChunk = null;
@@ -142,6 +148,9 @@ class ECETransformer {
 		this.salt = salt;
 	}
 
+	/**
+	 * @returns {Promise<CryptoKey>}
+	 */
 	async generateKey() {
 		const inputKey = await crypto.subtle.importKey(
 			"raw",
@@ -168,6 +177,9 @@ class ECETransformer {
 		);
 	}
 
+	/**
+	 * @returns {Promise<ArrayBuffer>}
+	 */
 	async generateNonceBase() {
 		const inputKey = await crypto.subtle.importKey(
 			"raw",
@@ -199,6 +211,10 @@ class ECETransformer {
 		return base.slice(0, NONCE_LENGTH);
 	}
 
+	/**
+	 * @param {number} seq
+	 * @returns {Uint8Array}
+	 */
 	generateNonce(seq) {
 		if (seq > 0xffffffff) {
 			throw new Error("record sequence number exceeds limit");
@@ -210,6 +226,11 @@ class ECETransformer {
 		return new Uint8Array(nonce.buffer);
 	}
 
+	/**
+	 * @param {Uint8Array} data
+	 * @param {boolean} isLast
+	 * @returns {Uint8Array}
+	 */
 	pad(data, isLast) {
 		const len = data.length;
 		if (len + TAG_LENGTH >= this.rs) {
@@ -218,13 +239,18 @@ class ECETransformer {
 
 		if (isLast) {
 			return concat(data, Uint8Array.of(2));
-		} else {
-			const padding = new Uint8Array(this.rs - len - TAG_LENGTH);
-			padding[0] = 1;
-			return concat(data, padding);
 		}
+		const padding = new Uint8Array(this.rs - len - TAG_LENGTH);
+		padding[0] = 1;
+		return concat(data, padding);
+
 	}
 
+	/**
+	 * @param {Uint8Array} data
+	 * @param {boolean} isLast
+	 * @returns {Uint8Array}
+	 */
 	unpad(data, isLast) {
 		for (let i = data.length - 1; i >= 0; --i) {
 			if (data[i]) {
@@ -232,10 +258,8 @@ class ECETransformer {
 					if (data[i] !== 2) {
 						throw new Error("delimiter of final record is not 2");
 					}
-				} else {
-					if (data[i] !== 1) {
-						throw new Error("delimiter of not final record is not 1");
-					}
+				} else if (data[i] !== 1) {
+					throw new Error("delimiter of not final record is not 1");
 				}
 				return data.slice(0, i);
 			}
@@ -243,12 +267,19 @@ class ECETransformer {
 		throw new Error("no delimiter found");
 	}
 
+	/**
+	 * @returns {Uint8Array}
+	 */
 	createHeader() {
 		const nums = new DataView(new ArrayBuffer(5));
 		nums.setUint32(0, this.rs);
 		return concat(new Uint8Array(this.salt), new Uint8Array(nums.buffer));
 	}
 
+	/**
+	 * @param {Uint8Array} buffer
+	 * @returns {Object}
+	 */
 	readHeader(buffer) {
 		if (buffer.length < 21) {
 			throw new Error("chunk too small for reading header");
@@ -262,6 +293,12 @@ class ECETransformer {
 		return header;
 	}
 
+	/**
+	 * @param {Uint8Array} buffer
+	 * @param {number} seq
+	 * @param {boolean} isLast
+	 * @returns {Promise<Uint8Array>}
+	 */
 	async encryptRecord(buffer, seq, isLast) {
 		const nonce = this.generateNonce(seq);
 		const encrypted = await crypto.subtle.encrypt(
@@ -272,6 +309,12 @@ class ECETransformer {
 		return new Uint8Array(encrypted);
 	}
 
+	/**
+	 * @param {BufferSource} buffer
+	 * @param {number} seq
+	 * @param {boolean} isLast
+	 * @returns {Promise<Uint8Array>}
+	 */
 	async decryptRecord(buffer, seq, isLast) {
 		const nonce = this.generateNonce(seq);
 		const data = await crypto.subtle.decrypt(
@@ -287,6 +330,9 @@ class ECETransformer {
 		return this.unpad(new Uint8Array(data), isLast);
 	}
 
+	/**
+	 * @param {TransformStreamDefaultController} controller
+	 */
 	async start(controller) {
 		if (this.mode === MODE_ENCRYPT) {
 			this.key = await this.generateKey();
@@ -297,6 +343,10 @@ class ECETransformer {
 		}
 	}
 
+	/**
+	 * @param {boolean} isLast
+	 * @param {TransformStreamDefaultController} controller
+	 */
 	async transformPrevChunk(isLast, controller) {
 		if (this.mode === MODE_ENCRYPT) {
 			controller.enqueue(
@@ -320,6 +370,10 @@ class ECETransformer {
 		}
 	}
 
+	/**
+	 * @param {Uint8Array} chunk
+	 * @param {TransformStreamDefaultController} controller
+	 */
 	async transform(chunk, controller) {
 		if (!this.firstchunk) {
 			await this.transformPrevChunk(false, controller);
@@ -328,6 +382,9 @@ class ECETransformer {
 		this.prevChunk = new Uint8Array(chunk.buffer);
 	}
 
+	/**
+	 * @param {TransformStreamDefaultController} controller
+	 */
 	async flush(controller) {
 		// console.log('ece stream ends')
 		if (this.prevChunk) {
@@ -338,6 +395,10 @@ class ECETransformer {
 
 // Adapted from: https://github.com/mozilla/send/blob/master/app/ece.js
 class StreamSlicer {
+	/**
+	 * @param {number} rs
+	 * @param {string} mode
+	 */
 	constructor(rs, mode) {
 		this.mode = mode;
 		this.rs = rs;
@@ -346,6 +407,10 @@ class StreamSlicer {
 		this.offset = 0;
 	}
 
+	/**
+	 * @param {Uint8Array} buf
+	 * @param {TransformStreamDefaultController} controller
+	 */
 	send(buf, controller) {
 		controller.enqueue(buf);
 		if (this.chunkSize === 21 && this.mode === MODE_DECRYPT) {
@@ -356,6 +421,10 @@ class StreamSlicer {
 	}
 
 	// reslice input into record sized chunks
+	/**
+	 * @param {Uint8Array} chunk
+	 * @param {TransformStreamDefaultController} controller
+	 */
 	transform(chunk, controller) {
 		// console.log('Received chunk with %d bytes.', chunk.byteLength)
 		let i = 0;
@@ -386,6 +455,9 @@ class StreamSlicer {
 		}
 	}
 
+	/**
+	 * @param {TransformStreamDefaultController} controller
+	 */
 	flush(controller) {
 		if (this.offset > 0) {
 			controller.enqueue(this.partialChunk.slice(0, this.offset));
@@ -398,9 +470,9 @@ class StreamSlicer {
  * pipeThrough: https://bugzilla.mozilla.org/show_bug.cgi?id=1734243 and TransformStream: https://bugzilla.mozilla.org/show_bug.cgi?id=1730586 require Firefox/Thunderbird 102
  * Adapted from: Adapted from: https://github.com/mozilla/send/blob/master/app/streams.js
  *
- * @param {Object} readable
- * @param {Object} transformer
- * @returns {Object}
+ * @param {ReadableStream} readable
+ * @param {Transformer} transformer
+ * @returns {ReadableStream}
  */
 function transformStream(readable, transformer) {
 	return readable.pipeThrough(new TransformStream(transformer));
@@ -410,7 +482,7 @@ function transformStream(readable, transformer) {
  * Check Send server version.
  *
  * @param {string} service
- * @returns {boolean}
+ * @returns {Promise<boolean>}
  */
 async function checkServerVersion(service) {
 	const url = `https://${new URL(service).host}/__version__`;
@@ -428,16 +500,16 @@ async function checkServerVersion(service) {
 		const version = json.version;
 		if (version && version.startsWith("v") && parseInt(version.substring(1).split(".")[0], 10) >= 3) {
 			return true;
-		} else {
-			notification("❌ Unsupported Send server version", `Error: The “${service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);
-			return false;
 		}
-	} else {
-		const text = await response.text();
-		console.error(text);
-		notification("❌ Unable to determine Send server version", `Error: Unable to determine the “${service}” Send service instance server version. Please check your internet connection and settings.`);
+		notification("❌ Unsupported Send server version", `Error: The “${service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);
 		return false;
+
 	}
+	const text = await response.text();
+	console.error(text);
+	notification("❌ Unable to determine Send server version", `Error: Unable to determine the “${service}” Send service instance server version. Please check your internet connection and settings.`);
+	return false;
+
 }
 
 /**
@@ -447,7 +519,7 @@ async function checkServerVersion(service) {
  * @param {Object} fileInfo
  * @param {Object} tab
  * @param {Object} relatedFileInfo
- * @returns {Object}
+ * @returns {Promise<Object>}
  */
 async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	console.log(account, id, name, data);
@@ -468,9 +540,9 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 
 	const upload = { canceled: false };
 	const file = {
-		"name": name || data.name,
+		name: name || data.name,
 		size: data.size,
-		type: data.type || "application/octet-stream",
+		type: data.type || "application/octet-stream"
 	};
 	upload.file = file;
 	uploads.set(id, upload);
@@ -524,14 +596,14 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	const metaKey = await secretKeyPromise.then((secretKey) => {
 		return crypto.subtle.deriveKey(
 			{
-				"name": "HKDF",
+				name: "HKDF",
 				salt: new Uint8Array(),
 				info: encoder.encode("metadata"),
 				hash: "SHA-256"
 			},
 			secretKey,
 			{
-				"name": "AES-GCM",
+				name: "AES-GCM",
 				length: 128
 			},
 			false,
@@ -540,7 +612,7 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	});
 	const metadata = await crypto.subtle.encrypt(
 		{
-			"name": "AES-GCM",
+			name: "AES-GCM",
 			iv: new Uint8Array(12),
 			tagLength: 128
 		},
@@ -555,15 +627,15 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	const authKey = await secretKeyPromise.then((secretKey) => {
 		return crypto.subtle.deriveKey(
 			{
-				"name": "HKDF",
+				name: "HKDF",
 				salt: new Uint8Array(),
 				info: encoder.encode("authentication"),
 				hash: "SHA-256"
 			},
 			secretKey,
 			{
-				"name": "HMAC",
-				hash: { "name": "SHA-256" }
+				name: "HMAC",
+				hash: { name: "SHA-256" }
 			},
 			true,
 			["sign"]
@@ -666,7 +738,7 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	// console.log(response);
 
 	return {
-		"url": aurl,
+		url: aurl,
 		templateInfo: {
 			service_icon: response.ok ? icon : null,
 			service_url: LINK ? send.service : null,
@@ -711,7 +783,7 @@ browser.cloudFile.onFileUploadAbort.addListener(canceled);
  * @param {Object} account
  * @param {number} id
  * @param {Object} tab
- * @returns {void}
+ * @returns {Promise<void>}
  */
 async function deleted(account, id, tab) {
 	console.log(account, id);
@@ -730,7 +802,7 @@ async function deleted(account, id, tab) {
 		// mode: "cors",
 		method: "POST",
 		headers: { "content-type": "application/json" },
-		body: JSON.stringify({ "owner_token": upload.owner_token, "delete_token": upload.owner_token }),
+		body: JSON.stringify({ owner_token: upload.owner_token, delete_token: upload.owner_token })
 	};
 	const response = await fetch(url, fetchInfo);
 	// console.log(response);
@@ -779,7 +851,7 @@ function setSettings(asettings) {
 /**
  * Init.
  *
- * @returns {void}
+ * @returns {Promise<void>}
  */
 async function init() {
 	const asettings = await AddonSettings.get("settings");
@@ -795,8 +867,8 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
 		setSettings(message.optionValue);
 	} else if (message.type === VERIFY) {
 		const response = {
-			"type": VERIFY,
-			"value": await checkServerVersion(message.service)
+			type: VERIFY,
+			value: await checkServerVersion(message.service)
 		};
 		// console.log(response);
 		return Promise.resolve(response);
@@ -809,9 +881,9 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
 				promiseMap.delete(sender.tab.windowId);
 			} else {
 				const response = {
-					"type": POPUP,
-					"send": promise.send,
-					"file": promise.file
+					type: POPUP,
+					send: promise.send,
+					file: promise.file
 				};
 				// console.log(response);
 				return Promise.resolve(response);
