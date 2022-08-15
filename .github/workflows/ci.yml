@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron:  '0 0 1 * *'
+
+jobs:
+  eslint:
+    name: ESLint
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+    - name: Install
+      run: npm install -g eslint
+    - name: Script
+      run: eslint --report-unused-disable-directives . || true
+
+  tsc:
+    name: TypeScript Compiler
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - uses: actions/setup-node@v3
+    - name: Install
+      run: npm install -g typescript
+    - name: Script
+      run: tsc -p jsconfig.json --noEmit || true

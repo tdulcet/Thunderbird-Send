@@ -96,10 +96,12 @@ function arrayToB64(array) {
  * Adapted from: https://github.com/mozilla/send/blob/master/app/utils.js
  *
  * @param {number} [delay]
- * @returns {Promise}
+ * @returns {Promise<void>}
  */
 function delay(delay = 100) {
-	return new Promise((resolve) => setTimeout(resolve, delay));
+	return new Promise((resolve) => {
+		setTimeout(resolve, delay);
+	});
 }
 
 /**
