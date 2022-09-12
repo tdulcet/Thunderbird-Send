@@ -7,3 +7,6 @@
 [submodule "common/modules/AutomaticSettings"]
 	path = common/modules/AutomaticSettings
 	url = https://github.com/TinyWebEx/AutomaticSettings
+[submodule "common/modules/CommonCss"]
+	path = common/modules/CommonCss
+	url = https://github.com/TinyWebEx/CommonCss
