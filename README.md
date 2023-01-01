@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/tdulcet/Thunderbird-Send/workflows/CI/badge.svg?branch=main)](https://github.com/tdulcet/Thunderbird-Send/actions)
+
 # Thunderbird Send
 FileLink provider for Send
 
@@ -38,7 +40,8 @@ Pull requests welcome! Ideas for contributions:
 
 * Convert to [Manifest V3](https://extensionworkshop.com/documentation/develop/manifest-v3-migration-guide/) (MV3)
 * Refactor into more modules
-* Allow users to specify a password for each file (see [Bug 1711446](https://bugzilla.mozilla.org/show_bug.cgi?id=1711446))
+* Allow users to specify a password for each file
+* Open the popup in the compose window instead of a separate standalone window (see [Bug 1711446](https://bugzilla.mozilla.org/show_bug.cgi?id=1711446) and [Bug 1752114](https://bugzilla.mozilla.org/show_bug.cgi?id=1752114))
 * Show the upload progress (also see [Bug 736169](https://bugzilla.mozilla.org/show_bug.cgi?id=736169))
 * [Improve the management page](https://github.com/TinyWebEx/AutomaticSettings/issues/13)
 	* [Check validity of input before saving values](https://github.com/TinyWebEx/AutomaticSettings/issues/14)

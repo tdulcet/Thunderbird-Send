@@ -1,7 +1,9 @@
 "use strict";
 
 const downloads = document.getElementById("downloads");
-const time = document.getElementById("time");
+const days = document.getElementById("days");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
 const upload = document.getElementById("upload");
 const cancel = document.getElementById("cancel");
 
@@ -33,15 +35,22 @@ window.addEventListener("unload", (event) => {
 	eventHasBeenSend = true;
 });
 
-upload.addEventListener("click", (event) => {
+document.getElementById("form").addEventListener("submit", (event) => {
+	event.preventDefault();
+
+	if (!event.target.checkValidity()) {
+		// event.target.reportValidity();
+		return;
+	}
+
 	// disable button (which triggered this) until process is finished
-	event.target.disabled = true;
+	event.submitter.disabled = true;
 	cancel.disabled = true;
 
 	const response = {
 		type: POPUP,
 		downloads: downloads.valueAsNumber,
-		time: time.valueAsNumber
+		time: days.valueAsNumber * 1440 + hours.valueAsNumber * 60 + minutes.valueAsNumber
 	};
 	// console.log(response);
 
@@ -79,7 +88,9 @@ browser.runtime.sendMessage({ type: POPUP }).then((message) => {
 	if (message.type === POPUP) {
 		const send = message.send;
 		downloads.value = send.downloads;
-		time.value = send.time;
+		days.value = Math.floor(send.time / 1440);
+		hours.value = Math.floor(send.time % 1440 / 60);
+		minutes.value = send.time % 1440 % 60;
 
 		const file = message.file;
 		document.getElementById("name").textContent = file.name;

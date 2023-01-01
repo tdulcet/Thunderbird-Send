@@ -14,7 +14,7 @@ const VERIFY = "verify";
 let accountId = null;
 
 /**
- * Adjusts account setting for saving.
+ * Adjusts account setting for loading.
  *
  * @private
  * @param {Object} param
@@ -120,12 +120,32 @@ document.getElementById("verify").addEventListener("click", verify);
 export function registerTrigger() {
 	accountId = new URL(location.href).searchParams.get("accountId");
 
+	const days = document.getElementById("days");
+	const hours = document.getElementById("hours");
+	const minutes = document.getElementById("minutes");
+
 	AutomaticSettings.Trigger.addCustomLoadOverride("service", get);
 	AutomaticSettings.Trigger.addCustomLoadOverride("downloads", get);
 	AutomaticSettings.Trigger.addCustomLoadOverride("time", get);
+	AutomaticSettings.Trigger.addCustomLoadOverride("time", (param) => {
+		// console.log(param.optionValue, param.optionValues);
+
+		days.value = Math.floor(param.optionValue / 1440);
+		hours.value = Math.floor(param.optionValue % 1440 / 60);
+		minutes.value = param.optionValue % 1440 % 60;
+
+		return {};
+	});
 	AutomaticSettings.Trigger.addCustomLoadOverride("size", get);
 
 	AutomaticSettings.Trigger.addCustomSaveOverride("account", set);
+	AutomaticSettings.Trigger.addCustomSaveOverride("account", (param) => {
+		// console.log(param.optionValue);
+
+		param.optionValue[accountId].time = days.valueAsNumber * 1440 + hours.valueAsNumber * 60 + minutes.valueAsNumber;
+
+		return AutomaticSettings.Trigger.overrideContinue(param.optionValue);
+	});
 
 	AutomaticSettings.Trigger.registerSave("account", apply);
 }

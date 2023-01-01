@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<form>
+	<form id="form">
 		<section>
 			<h3><img src="/icons/icon.svg" class="icon"> Thunderbird Send</h3>
 			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button">ℹ️
@@ -47,19 +47,16 @@
 
 				<li>
 					<div class="line">
-						<label for="time">Time limit</label>
-						<input class="setting" type="number" list="times" id="time" name="time" min="5" required>
-						<datalist id="times">
-							<option value="5">
-							<option value="60">
-							<option value="1440">
-							<option value="10080">
-						</datalist>
-						minutes
+						<label for="days">Time limit</label>
+						<input class="setting" type="number" id="days" name="time" min="0" required>
+						<label for="days">days</label>
+						<input class="setting" type="number" id="hours" name="time" min="0" required>
+						<label for="hours">hours</label>
+						<input class="setting" type="number" id="minutes" name="time" min="0" required>
+						<label for="minutes">minutes</label>
 					</div>
-					<span class="line indent helper-text">For example, <code>5</code>, <code>60</code>(1 hour),
-						<code>1440</code>(1 day) or <code>10080</code>minutes (7 days). The file will expire after this
-						time. Make sure it is less than the maximum time supported by this Send service instance.</span>
+					<span class="line indent helper-text">The file will expire after this time. Make sure it is less
+						than the maximum time supported by this Send service instance.</span>
 				</li>
 			</ul>
 		</section>
@@ -67,7 +64,7 @@
 		<div>
 			<hr />
 			<button type="button" id="cancel" disabled>❌ Cancel</button>
-			<button type="button" id="upload" disabled>📤 Encrypt and Upload</button>
+			<button id="upload" disabled>📤 Encrypt and Upload</button>
 		</div>
 	</form>
 </body>

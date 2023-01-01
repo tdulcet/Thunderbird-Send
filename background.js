@@ -13,7 +13,6 @@ const uploads = new Map();
 
 const encoder = new TextEncoder();
 
-const numberFormat = new Intl.NumberFormat();
 const numberFormat1 = new Intl.NumberFormat([], { style: "unit", unit: "day", unitDisplay: "long" });
 const numberFormat2 = new Intl.NumberFormat([], { style: "unit", unit: "hour", unitDisplay: "long" });
 const numberFormat3 = new Intl.NumberFormat([], { style: "unit", unit: "minute", unitDisplay: "long" });
@@ -86,9 +85,9 @@ function getSecondsAsDigitalClock(sec_num) {
  */
 function arrayToB64(array) {
 	return btoa(String.fromCharCode(...array))
-		.replace(/\+/gu, "-")
-		.replace(/\//gu, "_")
-		.replace(/=/gu, "");
+		.replaceAll("+", "-")
+		.replaceAll("/", "_")
+		.replaceAll("=", "");
 }
 
 /**
@@ -218,7 +217,7 @@ class ECETransformer {
 	 * @returns {Uint8Array}
 	 */
 	generateNonce(seq) {
-		if (seq > 0xffffffff) {
+		if (seq > 0xFFFFFFFF) {
 			throw new Error("record sequence number exceeds limit");
 		}
 		const nonce = new DataView(this.nonceBase.slice());
@@ -500,7 +499,7 @@ async function checkServerVersion(service) {
 		console.log(json);
 
 		const version = json.version;
-		if (version && version.startsWith("v") && parseInt(version.substring(1).split(".")[0], 10) >= 3) {
+		if (version && version.startsWith("v") && Number.parseInt(version.slice(1).split(".")[0], 10) >= 3) {
 			return true;
 		}
 		notification("❌ Unsupported Send server version", `Error: The “${service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);
@@ -865,31 +864,38 @@ init();
 
 browser.runtime.onMessage.addListener(async (message, sender) => {
 	// console.log(message);
-	if (message.type === BACKGROUND) {
-		setSettings(message.optionValue);
-	} else if (message.type === VERIFY) {
-		const response = {
-			type: VERIFY,
-			value: await checkServerVersion(message.service)
-		};
-		// console.log(response);
-		return Promise.resolve(response);
-	} else if (message.type === POPUP) {
-		const promise = promiseMap.get(sender.tab.windowId);
-		if (promise) {
-			if (message.time || message.downloads || message.canceled) {
-				promise.resolve(message);
-
-				promiseMap.delete(sender.tab.windowId);
-			} else {
-				const response = {
-					type: POPUP,
-					send: promise.send,
-					file: promise.file
-				};
-				// console.log(response);
-				return Promise.resolve(response);
-			}
+	switch (message.type) {
+		case BACKGROUND: {
+			setSettings(message.optionValue);
+			break;
 		}
+		case VERIFY: {
+			const response = {
+				type: VERIFY,
+				value: await checkServerVersion(message.service)
+			};
+			// console.log(response);
+			return response;
+		}
+		case POPUP: {
+			const promise = promiseMap.get(sender.tab.windowId);
+			if (promise) {
+				if (message.time || message.downloads || message.canceled) {
+					promise.resolve(message);
+
+					promiseMap.delete(sender.tab.windowId);
+				} else {
+					const response = {
+						type: POPUP,
+						send: promise.send,
+						file: promise.file
+					};
+					// console.log(response);
+					return response;
+				}
+			}
+			break;
+		}
+		// No default
 	}
 });

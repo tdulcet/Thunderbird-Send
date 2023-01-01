@@ -7,6 +7,8 @@ const VERIFY = "verify";
 
 const suffix_power_char = Object.freeze(["", "K", "M", "G", "T", "P", "E", "Z", "Y"]);
 
+const numberFormat = new Intl.NumberFormat();
+
 /**
  * Auto-scale number to unit.
  * Adapted from: https://github.com/tdulcet/Numbers-Tool/blob/master/numbers.cpp
@@ -30,20 +32,18 @@ function outputunit(number, scale) {
 	anumber += anumber < 10 ? 0.0005 : anumber < 100 ? 0.005 : anumber < 1000 ? 0.05 : 0.5;
 
 	if (number !== 0 && anumber < 1000 && power > 0) {
-		str = number.toString();
+		str = numberFormat.format(number);
 
 		const length = 5 + (number < 0 ? 1 : 0);
 		if (str.length > length) {
 			const prec = anumber < 10 ? 3 : anumber < 100 ? 2 : 1;
-			str = number.toFixed(prec);
+			str = number.toLocaleString([], { maximumFractionDigits: prec });
 		}
 	} else {
-		str = number.toFixed(0);
+		str = number.toLocaleString([], { maximumFractionDigits: 0 });
 	}
 
-	str = str.toLocaleString();
-
-	str += `\xa0${power < suffix_power_char.length ? suffix_power_char[power] : "(error)"}`;
+	str += `\u00A0${power < suffix_power_char.length ? suffix_power_char[power] : "(error)"}`;
 
 	if (!scale && power > 0) {
 		str += "i";
