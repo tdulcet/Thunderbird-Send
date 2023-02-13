@@ -565,6 +565,7 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	} else {
 		upload.time = message.time;
 		upload.downloads = message.downloads;
+		upload.password = message.password;
 	}
 	// console.log(message);
 
@@ -573,6 +574,8 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	}
 
 	notification("📤 Encrypting and uploading attachment", `📛: ${file.name}\n⬆️: ${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`);
+
+	const start = performance.now();
 
 	if (!await checkServerVersion(send.service)) {
 		return { aborted: true };
@@ -644,9 +647,9 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	});
 	const rawAuth = await crypto.subtle.exportKey("raw", authKey);
 
-	const url = new URL(send.service).host;
+	const aurl = new URL(send.service).host;
 	const ws = await new Promise((resolve) => {
-		const ws = new WebSocket(`wss://${url}/api/ws`);
+		const ws = new WebSocket(`wss://${aurl}/api/ws`);
 		ws.addEventListener("open", () => resolve(ws), { once: true });
 	});
 
@@ -721,32 +724,73 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 		ws.close();
 	}
 
+	const date = new Date();
+	date.setMinutes(date.getMinutes() + upload.time);
+	const expiresAt = date.getTime();
+
+	const url = `${uploadInfo.url}#${arrayToB64(rawSecret)}`;
+	// console.info(url);
+
+	if (upload.password) {
+		const authKey = await crypto.subtle.importKey("raw", encoder.encode(upload.password), { name: "PBKDF2" }, false, [
+			"deriveKey"
+		]).then((passwordKey) =>
+			crypto.subtle.deriveKey(
+				{
+					name: "PBKDF2",
+					salt: encoder.encode(url),
+					iterations: 100,
+					hash: "SHA-256"
+				},
+				passwordKey,
+				{
+					name: "HMAC",
+					hash: "SHA-256"
+				},
+				true,
+				["sign"]
+			)
+		);
+		const rawAuth = await crypto.subtle.exportKey("raw", authKey);
+
+		const aaurl = `https://${aurl}/api/password/${upload.id}`;
+		const fetchInfo = {
+			// mode: "cors",
+			method: "POST",
+			headers: { "content-type": "application/json" },
+			body: JSON.stringify({ owner_token: upload.owner_token, auth: arrayToB64(new Uint8Array(rawAuth)) })
+		};
+		const response = await fetch(aaurl, fetchInfo);
+		// console.log(response);
+
+		if (!response.ok) {
+			notification("❌ Unable add password to attachment", `Error: Unable to add password to the “${file.name}” file.`);
+		}
+	}
+
+	const end = performance.now();
 	console.timeEnd(id);
 
-	const expiresAt = new Date();
-	expiresAt.setMinutes(expiresAt.getMinutes() + upload.time);
-
-	const aurl = `${uploadInfo.url}#${arrayToB64(rawSecret)}`;
-	// console.info(aurl);
 	if (json.ok) {
-		notification("🔗 Attachment encrypted and upload", `The “${file.name}” file was successfully encrypted and upload! Expires after:\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${aurl}`);
+		notification("🔗 Attachment encrypted and upload", `The “${file.name}” file was successfully encrypted and upload in ${getSecondsAsDigitalClock(Math.floor((end - start) / 1000))}! Expires after:\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
 	} else {
 		notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${json.error}. Please check your internet connection.`);
 	}
 
-	const icon = `https://${url}/icon.26e159f8.svg`;
+	const icon = `https://${aurl}/icon.718f87fb.svg`;
 	const response = await fetch(icon, { method: "HEAD" });
 	// console.log(response);
 
 	return {
-		url: aurl,
+		url,
 		templateInfo: {
 			service_icon: response.ok ? icon : null,
 			service_url: LINK ? send.service : null,
 			download_expiry_date: {
-				timestamp: expiresAt.getTime()
+				timestamp: expiresAt
 			},
-			download_limit: upload.downloads
+			download_limit: upload.downloads,
+			download_password_protected: Boolean(upload.password)
 		}
 	};
 }

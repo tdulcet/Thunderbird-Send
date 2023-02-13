@@ -12,15 +12,16 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * Enables simple, yet private file sharing with end-to-end encryption
 * Files are securely [encrypted](https://github.com/timvisee/send/blob/master/docs/encryption.md) and uploaded locally in Thunderbird using the [Web Crypto](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) and [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) APIs
 * Files are encrypted and uploaded in chunks, so it requires very little memory (RAM) for even large files
-* Link(s) are automatically added to the e-mail by Thunderbird when upload(s) finish, which includes the encryption secret needed to decrypt the file(s)
-* When recipient clicks the link(s), the files securely download and decrypt locally in their browser using that encryption secret
-* Link(s) automatically expire after the download and time limit
-* Desktop notifications when the upload(s) start and finish
+* Links are automatically added to the e-mail by Thunderbird when uploads finish, which includes the encryption secret needed to decrypt the file
+* When recipient clicks a link, the file will securely download and decrypt locally in their browser using that encryption secret
+* Links automatically expire after the download and time limit
+* Desktop notifications when the uploads start and finish
 * Users can specify the Send service instance(s) to use, defaults to the one provided by @timvisee: https://send.vis.ee
 * Users can specify the download and time limits for each file and defaults for each Send service instance
+* Users can optionally protect each file with a password
 * Supports the maximum file size supported by each Send service instance, currently 20 GiB
-* Supports canceling the upload(s)
-* Supports deleting the file(s) from server after upload(s) finish
+* Supports canceling the uploads
+* Supports deleting the files from server after uploads finish
 * Supports all v3 (or greater) Send service servers/instances
 * Does NOT require a Firefox Account (FxA) or any other accounts, all uploads are anonymous
 * Supports the light/dark mode of your system automatically
@@ -40,7 +41,6 @@ Pull requests welcome! Ideas for contributions:
 
 * Convert to [Manifest V3](https://extensionworkshop.com/documentation/develop/manifest-v3-migration-guide/) (MV3)
 * Refactor into more modules
-* Allow users to specify a password for each file
 * Open the popup in the compose window instead of a separate standalone window (see [Bug 1711446](https://bugzilla.mozilla.org/show_bug.cgi?id=1711446) and [Bug 1752114](https://bugzilla.mozilla.org/show_bug.cgi?id=1752114))
 * Show the upload progress (also see [Bug 736169](https://bugzilla.mozilla.org/show_bug.cgi?id=736169))
 * [Improve the management page](https://github.com/TinyWebEx/AutomaticSettings/issues/13)

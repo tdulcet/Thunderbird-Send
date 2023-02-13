@@ -6,9 +6,16 @@ const hours = document.getElementById("hours");
 const minutes = document.getElementById("minutes");
 const upload = document.getElementById("upload");
 const cancel = document.getElementById("cancel");
+const password = document.getElementById("password");
 
 // Only send one event, no matter what happens here.
 let eventHasBeenSend = false;
+
+document.getElementById("toggle").addEventListener("change", (event) => {
+	password.type = event.target.checked ? "text" : "password";
+
+	password.focus();
+});
 
 document.getElementById("settings").addEventListener("click", (event) => {
 	// disable button (which triggered this) until process is finished
@@ -50,7 +57,8 @@ document.getElementById("form").addEventListener("submit", (event) => {
 	const response = {
 		type: POPUP,
 		downloads: downloads.valueAsNumber,
-		time: days.valueAsNumber * 1440 + hours.valueAsNumber * 60 + minutes.valueAsNumber
+		time: days.valueAsNumber * 1440 + hours.valueAsNumber * 60 + minutes.valueAsNumber,
+		password: password.value
 	};
 	// console.log(response);
 

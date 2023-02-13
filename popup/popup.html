@@ -58,6 +58,27 @@
 					<span class="line indent helper-text">The file will expire after this time. Make sure it is less
 						than the maximum time supported by this Send service instance.</span>
 				</li>
+
+				<li>
+					<details>
+						<summary>Protect with password (click to add)</summary>
+						<div class="message-container">
+							<div aria-label="warning message" class="message-box warning">
+								<span class="message-text">Use different methods to send the password and file to the
+									recipients. Including the password in the same e-mail as the link to the file does
+									not provide any additional security.</span>
+							</div>
+						</div>
+						<div class="line">
+							<label for="password">Optional password</label>
+							<input class="setting" type="password" id="password" name="password" placeholder="Password"
+								size="60">
+							<input class="setting" type="checkbox" id="toggle" name="toggle">
+							<label for="toggle">Show password</label>
+						</div>
+						<span class="line indent helper-text">Optionally protect the file with a password.</span>
+					</details>
+				</li>
 			</ul>
 		</section>
 
