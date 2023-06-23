@@ -19,6 +19,7 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * Users can specify the Send service instance(s) to use, defaults to the one provided by @timvisee: https://send.vis.ee
 * Users can specify the download and time limits for each file and defaults for each Send service instance
 * Users can optionally protect each file with a password
+* Can securely generate a strong password or passphrase
 * Supports the maximum file size supported by each Send service instance, currently 20 GiB
 * Supports canceling the uploads
 * Supports deleting the files from server after uploads finish

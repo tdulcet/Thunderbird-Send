@@ -69,14 +69,41 @@
 									not provide any additional security.</span>
 							</div>
 						</div>
+						<br>
 						<div class="line">
 							<label for="password">Optional password</label>
-							<input class="setting" type="password" id="password" name="password" placeholder="Password"
-								size="60">
+							<input class="setting" type="password" id="password" name="password" placeholder="Password" size="60">
 							<input class="setting" type="checkbox" id="toggle" name="toggle">
 							<label for="toggle">Show password</label>
 						</div>
 						<span class="line indent helper-text">Optionally protect the file with a password.</span>
+						<div class="line hidden" id="pronunciation">
+							<label for="text">Password pronunciation</label>
+							<input class="setting" type="text" id="text" name="text" size="100" readonly>
+						</div>
+						<div class="line indent">
+							<details>
+								<summary>Suggest strong password (click to show)</summary>
+								<br>
+								<div class="line">
+									<select name="random" id="random">
+										<option value="1" title="Password with upper/lowercase letters, numbers and symbols">Password
+											with symbols (15 characters)</option>
+										<option value="2" title="Password with only upper/lowercase letters and numbers">Password (15
+											characters)</option>
+										<option value="3" title="Passphrase with long words up to 9 characters">
+											Passphrase, long words (6)</option>
+										<option value="4" title="Passphrase with short words up to 5 characters">
+											Passphrase, short words (8)</option>
+										<option value="5" title="Emoji password with basic emoji and the family, role, gendered, hair and other sequences">
+											Emoji password with sequences (7)</option>
+										<option value="6" title="Emoji password with only the basic emoji">Emoji
+											password (8)</option>
+									</select>
+									<button type="button" id="generate">🔒 Securely Generate</button>
+								</div>
+							</details>
+						</div>
 					</details>
 				</li>
 			</ul>

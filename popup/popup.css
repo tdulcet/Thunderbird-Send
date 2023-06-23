@@ -6,6 +6,10 @@ a.button {
 	color: unset;
 }
 
+.hidden {
+	display: none;
+}
+
 .icon {
 	vertical-align: middle;
 	width: 2em;
