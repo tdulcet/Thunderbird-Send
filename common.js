@@ -5,7 +5,7 @@ const BACKGROUND = "background";
 const POPUP = "popup";
 const VERIFY = "verify";
 
-const suffix_power_char = Object.freeze(["", "K", "M", "G", "T", "P", "E", "Z", "Y"]);
+const suffix_power_char = Object.freeze(["", "K", "M", "G", "T", "P", "E", "Z", "Y", "R", "Q"]);
 
 const numberFormat = new Intl.NumberFormat();
 

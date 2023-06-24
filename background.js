@@ -2,6 +2,8 @@
 
 import * as AddonSettings from "/common/modules/AddonSettings/AddonSettings.js";
 
+const TITLE = "FileLink provider for Send";
+
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
 const KEY_LENGTH = 16;
@@ -21,11 +23,16 @@ const numberFormat4 = new Intl.NumberFormat([], { style: "unit", unit: "second",
 const formatter = new Intl.ListFormat();
 
 const promiseMap = new Map();
+const tabs = new Map();
+
+const notifications = new Map();
 
 // Display notifications
 let SEND = true;
 // Display link to Send service
 let LINK = false;
+// Use compose action popups in the compose window
+let composeAction = false;
 
 /**
  * Create notification.
@@ -47,6 +54,19 @@ function notification(title, message, date) {
 		});
 	}
 }
+
+browser.notifications.onClicked.addListener((notificationId) => {
+	const url = notifications.get(notificationId);
+
+	if (url) {
+		browser.tabs.create({ url });
+		// browser.windows.openDefaultBrowser(url);
+	}
+});
+
+browser.notifications.onClosed.addListener((notificationId) => {
+	notifications.delete(notificationId);
+});
 
 /**
  * Get seconds as digital clock.
@@ -548,17 +568,58 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	upload.file = file;
 	uploads.set(id, upload);
 
-	const window = await browser.windows.create({
-		url: browser.runtime.getURL("popup/popup.html"),
-		type: "popup",
-		// Should not be needed: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create#parameters
-		allowScriptsToClose: true
-	});
-	console.log(window);
+	let message = null;
+	if (tab && composeAction) {
+		const tabId = tab.id;
 
-	const message = await new Promise((resolve) => {
-		promiseMap.set(window.id, { resolve, send, file });
-	});
+		if (!tabs.has(tabId)) {
+			tabs.set(tabId, Promise.resolve());
+		}
+
+		const promise = tabs.get(tabId).then(async () => {
+			browser.composeAction.enable(tabId);
+			browser.composeAction.setBadgeText({
+				text: numberFormat.format(promiseMap.size + 1),
+				// tabId
+			});
+
+			await delay(1000);
+
+			await browser.composeAction.openPopup().catch((error) => {
+				console.error(error);
+
+				notification("ℹ️ Open compose action popup to continue", "The add-on was unable to open the popup directly, so please click the “Thunderbird Send” button in the compose window toolbar to continue.");
+			});
+
+			message = await new Promise((resolve) => {
+				promiseMap.set(tabId, { resolve, send, file });
+			});
+
+			browser.composeAction.setBadgeText({
+				text: promiseMap.size ? numberFormat.format(promiseMap.size) : null,
+				// tabId
+			});
+			browser.composeAction.disable(tabId);
+		});
+
+		tabs.set(tabId, promise);
+
+		await promise;
+	} else {
+		const awindow = await browser.windows.create({
+			url: browser.runtime.getURL("popup/popup.html"),
+			type: "popup",
+			// Should not be needed: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create#parameters
+			allowScriptsToClose: true
+		});
+		console.log(awindow);
+
+		const tabId = awindow.tabs[0].id;
+
+		message = await new Promise((resolve) => {
+			promiseMap.set(tabId, { resolve, send, file });
+		});
+	}
 
 	if (message.canceled) {
 		upload.canceled = message.canceled;
@@ -772,7 +833,7 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	console.timeEnd(id);
 
 	if (json.ok) {
-		notification("🔗 Attachment encrypted and upload", `The “${file.name}” file was successfully encrypted and upload in ${getSecondsAsDigitalClock(Math.floor((end - start) / 1000))}! Expires after:\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
+		notification("🔗 Attachment encrypted and uploaded", `The “${file.name}” file was successfully encrypted and uploaded in ${getSecondsAsDigitalClock(Math.floor((end - start) / 1000))}! Expires after:\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
 	} else {
 		notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${json.error}. Please check your internet connection.`);
 	}
@@ -891,6 +952,7 @@ browser.cloudFile.onAccountAdded.addListener((account) => {
 function setSettings(asettings) {
 	SEND = asettings.send;
 	LINK = asettings.link;
+	composeAction = asettings.composeAction;
 }
 
 /**
@@ -899,6 +961,8 @@ function setSettings(asettings) {
  * @returns {Promise<void>}
  */
 async function init() {
+	browser.composeAction.disable();
+
 	const asettings = await AddonSettings.get("settings");
 
 	setSettings(asettings);
@@ -922,12 +986,12 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
 			return response;
 		}
 		case POPUP: {
-			const promise = promiseMap.get(sender.tab.windowId);
+			const promise = promiseMap.get(sender.tab.id);
 			if (promise) {
 				if (message.time || message.downloads || message.canceled) {
 					promise.resolve(message);
 
-					promiseMap.delete(sender.tab.windowId);
+					promiseMap.delete(sender.tab.id);
 				} else {
 					const response = {
 						type: POPUP,
@@ -943,3 +1007,29 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
 		// No default
 	}
 });
+
+browser.runtime.onInstalled.addListener((details) => {
+	console.log(details);
+
+	const manifest = browser.runtime.getManifest();
+	switch (details.reason) {
+		case "install":
+			notification(`🎉 ${manifest.name} installed`, `Thank you for installing the “${TITLE}” add-on!\nVersion: ${manifest.version}`);
+			break;
+		case "update":
+			if (SEND) {
+				browser.notifications.create({
+					type: "basic",
+					iconUrl: browser.runtime.getURL("icons/icon.svg"),
+					title: `✨ ${manifest.name} updated`,
+					message: `The “${TITLE}” add-on has been updated to version ${manifest.version}. Click to see the release notes.\n\n❤️ Huge thanks to the generous donors that have allowed me to continue to work on this extension!`
+				}).then((notificationId) => {
+					const url = `https://addons.thunderbird.net/thunderbird/addon/filelink-provider-for-send/versions/${manifest.version}`;
+					notifications.set(notificationId, url);
+				});
+			}
+			break;
+	}
+});
+
+browser.runtime.setUninstallURL("https://forms.gle/6ysbRNd7T1z7VLQBA");

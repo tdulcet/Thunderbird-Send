@@ -16,6 +16,14 @@
     "<all_urls>"
   ],
 
+  "compose_action": {
+    "browser_style": true,
+    "default_icon": "icons/icon.svg",
+    "default_title": "Thunderbird Send, Add attachment to get started",
+    "default_label": "Thunderbird Send",
+    "default_popup": "popup/popup.html"
+  },
+
   "options_ui": {
     "page": "options/options.html",
     "browser_style": true
