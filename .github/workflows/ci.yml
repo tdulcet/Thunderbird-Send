@@ -7,7 +7,7 @@ on:
     - cron:  '0 0 1 * *'
 
 jobs:
-  eslint:
+  ESLint:
     name: ESLint
 
     runs-on: ubuntu-latest
@@ -17,9 +17,10 @@ jobs:
     - name: Install
       run: npm install -g eslint
     - name: Script
-      run: eslint --report-unused-disable-directives . || true
+      run: eslint --report-unused-disable-directives .
+      continue-on-error: true
 
-  tsc:
+  TSC:
     name: TypeScript Compiler
 
     runs-on: ubuntu-latest
@@ -31,4 +32,5 @@ jobs:
     - name: Install
       run: npm install -g typescript
     - name: Script
-      run: tsc -p jsconfig.json --noEmit || true
+      run: tsc -p jsconfig.json --noEmit
+      continue-on-error: true
