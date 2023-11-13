@@ -1,5 +1,7 @@
 "use strict";
 
+import { POPUP, outputunit } from "/common.js";
+
 import * as characters from "/common/modules/data/Characters.js";
 import * as words from "/common/modules/data/Words.js";
 import * as emojis from "/common/modules/data/Emojis.js";
@@ -264,13 +266,12 @@ cancel.addEventListener("click", (event) => {
 browser.runtime.sendMessage({ type: POPUP }).then((message) => {
 	// console.log(message);
 	if (message.type === POPUP) {
-		const send = message.send;
+		const { send, file } = message;
 		downloads.value = send.downloads;
 		days.value = Math.floor(send.time / 1440);
 		hours.value = Math.floor(send.time % 1440 / 60);
-		minutes.value = send.time % 1440 % 60;
+		minutes.value = send.time % 60;
 
-		const file = message.file;
 		document.getElementById("name").textContent = file.name;
 		document.getElementById("size").textContent = `${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`;
 

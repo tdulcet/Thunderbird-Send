@@ -7,7 +7,7 @@ Copyright © 2020 Teal Dulcet
 
 ![](icons/icon.svg)
 
-Thunderbird add-on/MailExtension to easily and securely encrypt and upload large attachments to any [Send service instance](https://github.com/timvisee/send-instances/#instances) (formerly [Firefox Send](https://github.com/mozilla/send)) and send the links via e-mail using the [CloudFile/FileLink API](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html). Firefox Send was [discontinued by Mozilla](https://support.mozilla.org/kb/what-happened-firefox-send) in 2020. It is now maintained by @timvisee and called just [Send](https://github.com/timvisee/send).
+Thunderbird add-on/MailExtension to easily and securely encrypt and upload large attachments to any [Send service instance](https://github.com/timvisee/send-instances/#instances) (formerly [Firefox Send](https://github.com/mozilla/send)) and send the links via e-mail using the [CloudFile/FileLink API](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html). Firefox Send was [discontinued by Mozilla](https://support.mozilla.org/kb/what-happened-firefox-send) in 2020. It is now maintained by @timvisee and called just [Send](https://github.com/timvisee/send), but soon will be [resurrected by Thunderbird](https://youtu.be/zt_2xiNjQBo).
 
 * Enables simple, yet private file sharing with end-to-end encryption
 * Files are securely [encrypted](https://github.com/timvisee/send/blob/master/docs/encryption.md) and uploaded locally in Thunderbird using the [Web Crypto](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) and [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) APIs
@@ -44,6 +44,7 @@ Pull requests welcome! Ideas for contributions:
 * Refactor into more modules
 * Open the popup in the compose window instead of a separate standalone window (see [Bug 1711446](https://bugzilla.mozilla.org/show_bug.cgi?id=1711446) and [Bug 1752114](https://bugzilla.mozilla.org/show_bug.cgi?id=1752114))
 * Show the upload progress (also see [Bug 736169](https://bugzilla.mozilla.org/show_bug.cgi?id=736169))
+* Support consolidation/zipping of multiple attachments into a single link (see [Bug 1856232](https://bugzilla.mozilla.org/show_bug.cgi?id=1856232))
 * [Improve the management page](https://github.com/TinyWebEx/AutomaticSettings/issues/13)
 	* [Check validity of input before saving values](https://github.com/TinyWebEx/AutomaticSettings/issues/14)
 * Sync settings (see [bug 446444](https://bugzilla.mozilla.org/show_bug.cgi?id=446444))

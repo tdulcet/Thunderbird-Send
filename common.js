@@ -1,13 +1,13 @@
 "use strict";
 
 // communication type
-const BACKGROUND = "background";
-const POPUP = "popup";
-const VERIFY = "verify";
+export const BACKGROUND = "background";
+export const POPUP = "popup";
+export const VERIFY = "verify";
 
 const suffix_power_char = Object.freeze(["", "K", "M", "G", "T", "P", "E", "Z", "Y", "R", "Q"]);
 
-const numberFormat = new Intl.NumberFormat();
+export const numberFormat = new Intl.NumberFormat();
 
 /**
  * Auto-scale number to unit.
@@ -17,7 +17,7 @@ const numberFormat = new Intl.NumberFormat();
  * @param {boolean} scale
  * @returns {string}
  */
-function outputunit(number, scale) {
+export function outputunit(number, scale) {
 	let str = "";
 
 	const scale_base = scale ? 1000 : 1024;

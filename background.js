@@ -1,5 +1,7 @@
 "use strict";
 
+import { BACKGROUND, POPUP, VERIFY, numberFormat, outputunit } from "/common.js";
+
 import * as AddonSettings from "/common/modules/AddonSettings/AddonSettings.js";
 
 const TITLE = "FileLink provider for Send";
@@ -78,8 +80,8 @@ function getSecondsAsDigitalClock(sec_num) {
 	// console.log(sec_num);
 	const d = Math.floor(sec_num / 86400);
 	const h = Math.floor(sec_num % 86400 / 3600);
-	const m = Math.floor(sec_num % 86400 % 3600 / 60);
-	const s = sec_num % 86400 % 3600 % 60;
+	const m = Math.floor(sec_num % 3600 / 60);
+	const s = sec_num % 60;
 	const text = [];
 	if (d > 0) {
 		text.push(numberFormat1.format(d));
@@ -518,7 +520,7 @@ async function checkServerVersion(service) {
 		const json = await response.json();
 		console.log(json);
 
-		const version = json.version;
+		const { version } = json;
 		if (version && version.startsWith("v") && Number.parseInt(version.slice(1).split(".")[0], 10) >= 3) {
 			return true;
 		}
@@ -579,7 +581,7 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 		const promise = tabs.get(tabId).then(async () => {
 			browser.composeAction.enable(tabId);
 			browser.composeAction.setBadgeText({
-				text: numberFormat.format(promiseMap.size + 1),
+				text: numberFormat.format(promiseMap.size + 1)
 				// tabId
 			});
 
@@ -596,7 +598,7 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 			});
 
 			browser.composeAction.setBadgeText({
-				text: promiseMap.size ? numberFormat.format(promiseMap.size) : null,
+				text: promiseMap.size ? numberFormat.format(promiseMap.size) : null
 				// tabId
 			});
 			browser.composeAction.disable(tabId);
@@ -791,6 +793,7 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 
 	const url = `${uploadInfo.url}#${arrayToB64(rawSecret)}`;
 	// console.info(url);
+	console.assert(!URL.canParse || URL.canParse(url), "Error: Invalid URL", url);
 
 	if (upload.password) {
 		const authKey = await crypto.subtle.importKey("raw", encoder.encode(upload.password), { name: "PBKDF2" }, false, [
@@ -866,7 +869,7 @@ browser.cloudFile.onFileUpload.addListener(uploaded);
  * @param {Object} tab
  * @returns {void}
  */
-function canceled(account, id, tab) {
+function canceled(account, id/* , tab */) {
 	console.log(account, id);
 	const upload = uploads.get(id);
 	if (upload) {
@@ -891,7 +894,7 @@ browser.cloudFile.onFileUploadAbort.addListener(canceled);
  * @param {Object} tab
  * @returns {Promise<void>}
  */
-async function deleted(account, id, tab) {
+async function deleted(account, id/* , tab */) {
 	console.log(account, id);
 	let aaccount = await AddonSettings.get("account");
 	aaccount = aaccount[account.id] || aaccount;
@@ -950,9 +953,11 @@ browser.cloudFile.onAccountAdded.addListener((account) => {
  * @returns {void}
  */
 function setSettings(asettings) {
-	SEND = asettings.send;
-	LINK = asettings.link;
-	composeAction = asettings.composeAction;
+	({
+		send: SEND,
+		link: LINK,
+		composeAction
+	} = asettings);
 }
 
 /**
