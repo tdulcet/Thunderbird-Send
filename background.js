@@ -873,11 +873,11 @@ function canceled(account, id/* , tab */) {
 	console.log(account, id);
 	const upload = uploads.get(id);
 	if (upload) {
-		if (!upload.canceled) {
+		if (upload.canceled) {
+			notification("❌ Upload already canceled", `Error: Upload of the “${upload.file.name}” file was already canceled.`);
+		} else {
 			upload.canceled = true;
 			notification("ℹ️ Canceling upload", `Canceling upload of the “${upload.file.name}” file.`);
-		} else {
-			notification("❌ Upload already canceled", `Error: Upload of the “${upload.file.name}” file was already canceled.`);
 		}
 	} else {
 		notification("❌ Unable to find file", "Error: Unable to find file to cancel upload. It may have already been deleted.");
@@ -978,10 +978,9 @@ init();
 browser.runtime.onMessage.addListener(async (message, sender) => {
 	// console.log(message);
 	switch (message.type) {
-		case BACKGROUND: {
+		case BACKGROUND:
 			setSettings(message.optionValue);
 			break;
-		}
 		case VERIFY: {
 			const response = {
 				type: VERIFY,

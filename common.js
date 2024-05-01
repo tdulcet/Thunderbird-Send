@@ -18,7 +18,7 @@ export const numberFormat = new Intl.NumberFormat();
  * @returns {string}
  */
 export function outputunit(number, scale) {
-	let str = "";
+	let str;
 
 	const scale_base = scale ? 1000 : 1024;
 

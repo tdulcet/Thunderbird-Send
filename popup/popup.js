@@ -153,7 +153,7 @@ document.getElementById("toggle").addEventListener("change", (event) => {
 	password.focus();
 });
 
-document.getElementById("generate").addEventListener("click", (event) => {
+document.getElementById("generate").addEventListener("click", (/* event */) => {
 	let apassword = "";
 	let atext = "";
 
@@ -199,7 +199,7 @@ document.getElementById("settings").addEventListener("click", (event) => {
 	});
 });
 
-addEventListener("beforeunload", (event) => {
+addEventListener("beforeunload", (/* event */) => {
 	if (!eventHasBeenSend) {
 		const response = {
 			type: POPUP,
