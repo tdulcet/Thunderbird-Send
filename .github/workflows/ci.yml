@@ -15,9 +15,11 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
     - name: Install
-      run: npm install -g eslint
+      run: npm install -g eslint @eslint/js globals
     - name: Script
-      run: eslint --report-unused-disable-directives .
+      run: |
+        export NODE_PATH=$(npm root -g)
+        eslint .
       continue-on-error: true
 
   TSC:

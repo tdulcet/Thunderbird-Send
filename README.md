@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/tdulcet/Thunderbird-Send/workflows/CI/badge.svg?branch=main)](https://github.com/tdulcet/Thunderbird-Send/actions)
+[![Actions Status](https://github.com/tdulcet/Thunderbird-Send/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/tdulcet/Thunderbird-Send/actions/workflows/ci.yml)
 
 # Thunderbird Send
 FileLink provider for Send
