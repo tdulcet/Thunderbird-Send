@@ -15,3 +15,19 @@ a.button {
 	width: 2em;
 	height: 2em;
 }
+
+.flex {
+	display: flex;
+}
+
+.items-center {
+	align-items: center;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+.w-full {
+	width: 100%;
+}

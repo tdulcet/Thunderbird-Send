@@ -22,10 +22,25 @@
 				<a href="https://www.tealdulcet.com/" target="_blank"><button type="button">❤️ Donate</button></a>
 			</p>
 			<hr>
-			<ul>
-				<p>Filename: <span id="name"></span></p>
-				<p>Size: <span id="size"></span></p>
+			<div id="table"></div>
+			<div class="flex justify-end">
+				<div>Total Size: <span id="total"></span></div>
+			</div>
 
+			<template id="send-file">
+				<td class="flex items-center">
+					<svg class="icon">
+						<use xlink:href="/icons/blue_file.svg#icon" />
+					</svg>
+					<div class="w-full">
+						<!-- Filename:  --><strong><span id="name"></span></strong>
+						<br>
+						Size: <span id="size"></span>
+					</div>
+				</td>
+			</template>
+
+			<ul>
 				<li>
 					<div class="line">
 						<label for="downloads">Download limit</label>

@@ -25,7 +25,6 @@ const numberFormat4 = new Intl.NumberFormat([], { style: "unit", unit: "second",
 const formatter = new Intl.ListFormat();
 
 const promiseMap = new Map();
-const tabs = new Map();
 
 const notifications = new Map();
 
@@ -521,7 +520,7 @@ async function checkServerVersion(service) {
 		console.log(json);
 
 		const { version } = json;
-		if (version && version.startsWith("v") && Number.parseInt(version.slice(1).split(".")[0], 10) >= 3) {
+		if (version?.startsWith("v") && Number.parseInt(version.slice(1).split(".")[0], 10) >= 3) {
 			return true;
 		}
 		notification("❌ Unsupported Send server version", `Error: The “${service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);
@@ -540,12 +539,16 @@ async function checkServerVersion(service) {
  *
  * @param {Object} account
  * @param {Object} fileInfo
- * @param {Object} tab
- * @param {Object} relatedFileInfo
+ * @param {number} fileInfo.id
+ * @param {string} fileInfo.name
+ * @param {File} fileInfo.data
+ * @param {Object} [tab]
+ * @param {Object} [relatedFileInfo]
  * @returns {Promise<Object>}
  */
-async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
-	console.log(account, id, name, data);
+async function uploaded(account, fileInfo, tab, relatedFileInfo) {
+	console.log(account, fileInfo);
+	const { id, name, data } = fileInfo;
 	console.time(id);
 
 	// clear cache by reloading all options
@@ -570,57 +573,96 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 	upload.file = file;
 	uploads.set(id, upload);
 
-	let message = null;
+	let message;
 	if (tab && composeAction) {
 		const tabId = tab.id;
 
-		if (!tabs.has(tabId)) {
-			tabs.set(tabId, Promise.resolve());
-		}
-
-		const promise = tabs.get(tabId).then(async () => {
+		if (!promiseMap.has(tabId)) {
 			browser.composeAction.enable(tabId);
 			browser.composeAction.setBadgeText({
 				text: numberFormat.format(promiseMap.size + 1)
 				// tabId
 			});
 
-			await delay(1000);
+			const promise = { send, files: [] };
+
+			// const { promise, resolve, reject } = Promise.withResolvers();
+			promise.message = new Promise((resolve) => {
+				promise.resolve = resolve;
+			});
+
+			promiseMap.set(tabId, promise);
+
+			// await delay(1000);
 
 			await browser.composeAction.openPopup().catch((error) => {
 				console.error(error);
 
 				notification("ℹ️ Open compose action popup to continue", "The add-on was unable to open the popup directly, so please click the “Thunderbird Send” button in the compose window toolbar to continue.");
 			});
+		}
 
-			message = await new Promise((resolve) => {
-				promiseMap.set(tabId, { resolve, send, file });
-			});
+		const promise = promiseMap.get(tabId);
+		promise.files.push(file);
 
-			browser.composeAction.setBadgeText({
-				text: promiseMap.size ? numberFormat.format(promiseMap.size) : null
-				// tabId
-			});
-			browser.composeAction.disable(tabId);
+		const response = {
+			type: POPUP,
+			files: promise.files
+		};
+		// console.log(response);
+		browser.runtime.sendMessage(response);
+
+		message = await promise.message;
+
+		browser.composeAction.setBadgeText({
+			text: promiseMap.size ? numberFormat.format(promiseMap.size) : null
+			// tabId
 		});
-
-		tabs.set(tabId, promise);
-
-		await promise;
+		browser.composeAction.disable(tabId);
 	} else {
-		const awindow = await browser.windows.create({
-			url: browser.runtime.getURL("popup/popup.html"),
-			type: "popup",
-			// Should not be needed: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create#parameters
-			allowScriptsToClose: true
-		});
-		console.log(awindow);
+		let tabId = tab?.id;
 
-		const tabId = awindow.tabs[0].id;
+		if (!tab || !promiseMap.has(tabId)) {
+			const promise = { send, files: [] };
 
-		message = await new Promise((resolve) => {
-			promiseMap.set(tabId, { resolve, send, file });
-		});
+			// const { promise, resolve, reject } = Promise.withResolvers();
+			promise.message = new Promise((resolve) => {
+				promise.resolve = resolve;
+			});
+
+			if (tab) {
+				promiseMap.set(tabId, promise);
+			}
+
+			const awindow = await browser.windows.create({
+				url: browser.runtime.getURL("popup/popup.html"),
+				type: "popup",
+				// Should not be needed: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create#parameters
+				allowScriptsToClose: true
+			});
+			console.log(awindow);
+
+			const atabId = awindow.tabs[0].id;
+			// promise.tabId = atabId;
+
+			promiseMap.set(atabId, { ...promise, tabId });
+
+			tabId = atabId;
+		}
+
+		const promise = promiseMap.get(tabId);
+		promise.files.push(file);
+
+		if (tab) {
+			const response = {
+				type: POPUP,
+				files: promise.files
+			};
+			// console.log(response);
+			browser.runtime.sendMessage(response);
+		}
+
+		message = await promise.message;
 	}
 
 	if (message.canceled) {
@@ -747,9 +789,8 @@ async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
 			console.log(response);
 			if (response.error) {
 				throw new Error(response.error);
-			} else {
-				resolve(response);
 			}
+			resolve(response);
 		}, { once: true });
 	});
 
@@ -866,7 +907,7 @@ browser.cloudFile.onFileUpload.addListener(uploaded);
  *
  * @param {Object} account
  * @param {number} id
- * @param {Object} tab
+ * @param {Object} [tab]
  * @returns {void}
  */
 function canceled(account, id/* , tab */) {
@@ -891,7 +932,7 @@ browser.cloudFile.onFileUploadAbort.addListener(canceled);
  *
  * @param {Object} account
  * @param {number} id
- * @param {Object} tab
+ * @param {Object} [tab]
  * @returns {Promise<void>}
  */
 async function deleted(account, id/* , tab */) {
@@ -995,12 +1036,15 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
 				if (message.time || message.downloads || message.canceled) {
 					promise.resolve(message);
 
+					if (promise.tabId != null) {
+						promiseMap.delete(promise.tabId);
+					}
 					promiseMap.delete(sender.tab.id);
 				} else {
 					const response = {
 						type: POPUP,
 						send: promise.send,
-						file: promise.file
+						files: promise.files
 					};
 					// console.log(response);
 					return response;

@@ -31,6 +31,8 @@ const random = document.getElementById("random");
 // Only send one event, no matter what happens here.
 let eventHasBeenSend = false;
 
+let total = 0;
+
 /**
 * Random UInt8 number in range [0, range).
 *
@@ -263,19 +265,51 @@ cancel.addEventListener("click", (event) => {
 	}, 1000);
 });
 
+/**
+* Update files.
+*
+* @param {{name: string, size: number}[]} files
+* @returns {void}
+*/
+function updatefiles(files) {
+	const table = document.createElement("table");
+
+	for (const file of files) {
+		const row = table.insertRow(0);
+		const template = document.getElementById("send-file");
+		const clone = template.content.cloneNode(true);
+
+		clone.getElementById("name").textContent = file.name;
+		clone.getElementById("size").textContent = `${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`;
+
+		row.append(clone);
+
+		total += file.size;
+	}
+
+	document.getElementById("table").replaceChildren(table);
+
+	document.getElementById("total").textContent = `${outputunit(total, false)}B${total >= 1000 ? ` (${outputunit(total, true)}B)` : ""}`;
+}
+
 browser.runtime.sendMessage({ type: POPUP }).then((message) => {
 	// console.log(message);
 	if (message.type === POPUP) {
-		const { send, file } = message;
+		const { send } = message;
 		downloads.value = send.downloads;
 		days.value = Math.floor(send.time / 1440);
 		hours.value = Math.floor(send.time % 1440 / 60);
 		minutes.value = send.time % 60;
 
-		document.getElementById("name").textContent = file.name;
-		document.getElementById("size").textContent = `${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`;
+		updatefiles(message.files);
 
 		upload.disabled = false;
 		cancel.disabled = false;
+	}
+});
+
+browser.runtime.onMessage.addListener((message, _sender) => {
+	if (message.type === POPUP) {
+		updatefiles(message.files);
 	}
 });
