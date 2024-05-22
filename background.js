@@ -1,10 +1,9 @@
 "use strict";
 
-import { BACKGROUND, POPUP, VERIFY, numberFormat, outputunit } from "/common.js";
-
 import * as AddonSettings from "/common/modules/AddonSettings/AddonSettings.js";
 
-const TITLE = "FileLink provider for Send";
+//const TITLE = "FileLink provider for Send";
+const TITLE = browser.i18n.getMessage("extensionName");
 
 const NONCE_LENGTH = 12;
 const TAG_LENGTH = 16;
@@ -25,6 +24,7 @@ const numberFormat4 = new Intl.NumberFormat([], { style: "unit", unit: "second",
 const formatter = new Intl.ListFormat();
 
 const promiseMap = new Map();
+const tabs = new Map();
 
 const notifications = new Map();
 
@@ -79,8 +79,8 @@ function getSecondsAsDigitalClock(sec_num) {
 	// console.log(sec_num);
 	const d = Math.floor(sec_num / 86400);
 	const h = Math.floor(sec_num % 86400 / 3600);
-	const m = Math.floor(sec_num % 3600 / 60);
-	const s = sec_num % 60;
+	const m = Math.floor(sec_num % 86400 % 3600 / 60);
+	const s = sec_num % 86400 % 3600 % 60;
 	const text = [];
 	if (d > 0) {
 		text.push(numberFormat1.format(d));
@@ -519,17 +519,19 @@ async function checkServerVersion(service) {
 		const json = await response.json();
 		console.log(json);
 
-		const { version } = json;
-		if (version?.startsWith("v") && Number.parseInt(version.slice(1).split(".")[0], 10) >= 3) {
+		const version = json.version;
+		if (version && version.startsWith("v") && Number.parseInt(version.slice(1).split(".")[0], 10) >= 3) {
 			return true;
 		}
-		notification("❌ Unsupported Send server version", `Error: The “${service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);
+		//notification("❌ Unsupported Send server version", `Error: The “${service}” Send service instance has an unsupported server version: ${version}. This extension requires at least version 3.`);
+		notification(browser.i18n.getMessage("notifUnsupportedVersionTitle"), `${browser.i18n.getMessage("notifUnsupportedVersionMessage", [service, version])}`);
 		return false;
 
 	}
 	const text = await response.text();
 	console.error(text);
-	notification("❌ Unable to determine Send server version", `Error: Unable to determine the “${service}” Send service instance server version. Please check your internet connection and settings.`);
+	//notification("❌ Unable to determine Send server version", `Error: Unable to determine the “${service}” Send service instance server version. Please check your internet connection and settings.`);
+	notification(browser.i18n.getMessage("notifUnableVersionTitle"), `${browser.i18n.getMessage("notifUnableVersionMessage", service)}`);
 	return false;
 
 }
@@ -539,16 +541,12 @@ async function checkServerVersion(service) {
  *
  * @param {Object} account
  * @param {Object} fileInfo
- * @param {number} fileInfo.id
- * @param {string} fileInfo.name
- * @param {File} fileInfo.data
- * @param {Object} [tab]
- * @param {Object} [relatedFileInfo]
+ * @param {Object} tab
+ * @param {Object} relatedFileInfo
  * @returns {Promise<Object>}
  */
-async function uploaded(account, fileInfo, tab, relatedFileInfo) {
-	console.log(account, fileInfo);
-	const { id, name, data } = fileInfo;
+async function uploaded(account, { id, name, data }, tab, relatedFileInfo) {
+	console.log(account, id, name, data);
 	console.time(id);
 
 	// clear cache by reloading all options
@@ -573,96 +571,59 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 	upload.file = file;
 	uploads.set(id, upload);
 
-	let message;
+	let message = null;
 	if (tab && composeAction) {
 		const tabId = tab.id;
 
-		if (!promiseMap.has(tabId)) {
+		if (!tabs.has(tabId)) {
+			tabs.set(tabId, Promise.resolve());
+		}
+
+		const promise = tabs.get(tabId).then(async () => {
 			browser.composeAction.enable(tabId);
 			browser.composeAction.setBadgeText({
-				text: numberFormat.format(promiseMap.size + 1)
+				text: numberFormat.format(promiseMap.size + 1),
 				// tabId
 			});
 
-			const promise = { send, files: [] };
-
-			// const { promise, resolve, reject } = Promise.withResolvers();
-			promise.message = new Promise((resolve) => {
-				promise.resolve = resolve;
-			});
-
-			promiseMap.set(tabId, promise);
-
-			// await delay(1000);
+			await delay(1000);
 
 			await browser.composeAction.openPopup().catch((error) => {
 				console.error(error);
 
-				notification("ℹ️ Open compose action popup to continue", "The add-on was unable to open the popup directly, so please click the “Thunderbird Send” button in the compose window toolbar to continue.");
+				//notification("ℹ️ Open compose action popup to continue", "The add-on was unable to open the popup directly, so please click the “Thunderbird Send” button in the compose window toolbar to continue.");
+				notification(browser.i18n.getMessage("notifOpenPopupTitle"), browser.i18n.getMessage("notifOpenPopupMessage"));
 			});
-		}
 
-		const promise = promiseMap.get(tabId);
-		promise.files.push(file);
 
-		const response = {
-			type: POPUP,
-			files: promise.files
-		};
-		// console.log(response);
-		browser.runtime.sendMessage(response);
+			message = await new Promise((resolve) => {
+				promiseMap.set(tabId, { resolve, send, file });
+			});
 
-		message = await promise.message;
-
-		browser.composeAction.setBadgeText({
-			text: promiseMap.size ? numberFormat.format(promiseMap.size) : null
-			// tabId
+			browser.composeAction.setBadgeText({
+				text: promiseMap.size ? numberFormat.format(promiseMap.size) : null,
+				// tabId
+			});
+			browser.composeAction.disable(tabId);
 		});
-		browser.composeAction.disable(tabId);
+
+		tabs.set(tabId, promise);
+
+		await promise;
 	} else {
-		let tabId = tab?.id;
+		const awindow = await browser.windows.create({
+			url: browser.runtime.getURL("popup/popup.html"),
+			type: "popup",
+			// Should not be needed: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create#parameters
+			allowScriptsToClose: true
+		});
+		console.log(awindow);
 
-		if (!tab || !promiseMap.has(tabId)) {
-			const promise = { send, files: [] };
+		const tabId = awindow.tabs[0].id;
 
-			// const { promise, resolve, reject } = Promise.withResolvers();
-			promise.message = new Promise((resolve) => {
-				promise.resolve = resolve;
-			});
-
-			if (tab) {
-				promiseMap.set(tabId, promise);
-			}
-
-			const awindow = await browser.windows.create({
-				url: browser.runtime.getURL("popup/popup.html"),
-				type: "popup",
-				// Should not be needed: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create#parameters
-				allowScriptsToClose: true
-			});
-			console.log(awindow);
-
-			const atabId = awindow.tabs[0].id;
-			// promise.tabId = atabId;
-
-			promiseMap.set(atabId, { ...promise, tabId });
-
-			tabId = atabId;
-		}
-
-		const promise = promiseMap.get(tabId);
-		promise.files.push(file);
-
-		if (tab) {
-			const response = {
-				type: POPUP,
-				files: promise.files
-			};
-			// console.log(response);
-			browser.runtime.sendMessage(response);
-		}
-
-		message = await promise.message;
+		message = await new Promise((resolve) => {
+			promiseMap.set(tabId, { resolve, send, file });
+		});
 	}
 
 	if (message.canceled) {
@@ -678,7 +639,8 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 		return { aborted: true };
 	}
 
-	notification("📤 Encrypting and uploading attachment", `📛: ${file.name}\n⬆️: ${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`);
+	//notification("📤 Encrypting and uploading attachment", `📛: ${file.name}\n⬆️: ${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`);
+	notification(browser.i18n.getMessage("notifUploadTitle"), `📛 : ${file.name}\n⬆️ : ${outputunit(file.size, false)}${browser.i18n.getMessage("popupB")}${file.size >= 1000 ? ` (${outputunit(file.size, true)}${browser.i18n.getMessage("popupB")})` : ""}`);
 
 	const start = performance.now();
 
@@ -687,7 +649,8 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 	}
 
 	if (upload.canceled) {
-		notification("❌ Upload of attachment aborted", `Upload of the “${file.name}” file was aborted.`);
+		//notification("❌ Upload of attachment aborted", `Upload of the “${file.name}” file was aborted.`);
+		notification(browser.i18n.getMessage("notifUploadCancelTitle"), `${browser.i18n.getMessage("notifUploadCancelMessage", file.name)}`);
 		return { aborted: true };
 	}
 
@@ -776,7 +739,8 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 	ws.send(JSON.stringify(fileMeta));
 	const uploadInfo = await uploadInfoResponse;
 	if (uploadInfo.error) {
-		notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${uploadInfo.error}. The download or time limit is likely above the maximum supported by this Send service instance.`);
+		//notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${uploadInfo.error}. The download or time limit is likely above the maximum supported by this Send service instance.`);
+		notification(browser.i18n.getMessage("notifUploadUnableTitle"), `${browser.i18n.getMessage("notifUploadUnableMessage", [file.name, uploadInfo.error])}`);
 		return { error: true };
 		// throw new Error(uploadInfo.error);
 	}
@@ -789,8 +753,9 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 			console.log(response);
 			if (response.error) {
 				throw new Error(response.error);
+			} else {
+				resolve(response);
 			}
-			resolve(response);
 		}, { once: true });
 	});
 
@@ -816,7 +781,8 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 
 	if (upload.canceled) {
 		console.timeEnd(id);
-		notification("❌ Upload of attachment aborted", `Upload of the “${file.name}” file was aborted.`);
+		//notification("❌ Upload of attachment aborted", `Upload of the “${file.name}” file was aborted.`);
+		notification(browser.i18n.getMessage("notifUploadCancelTitle"), `${browser.i18n.getMessage("notifUploadCancelMessage", file.name)}`);
 		return { aborted: true };
 	}
 
@@ -834,7 +800,6 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 
 	const url = `${uploadInfo.url}#${arrayToB64(rawSecret)}`;
 	// console.info(url);
-	console.assert(!URL.canParse || URL.canParse(url), "Error: Invalid URL", url);
 
 	if (upload.password) {
 		const authKey = await crypto.subtle.importKey("raw", encoder.encode(upload.password), { name: "PBKDF2" }, false, [
@@ -869,7 +834,8 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 		// console.log(response);
 
 		if (!response.ok) {
-			notification("❌ Unable add password to attachment", `Error: Unable to add password to the “${file.name}” file.`);
+			//notification("❌ Unable add password to attachment", `Error: Unable to add password to the “${file.name}” file.`);
+			notification(browser.i18n.getMessage("notifUnablePasswordTitle"), `${browser.i18n.getMessage("notifUnablePasswordMessage", file.name)}`);
 		}
 	}
 
@@ -877,9 +843,11 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 	console.timeEnd(id);
 
 	if (json.ok) {
-		notification("🔗 Attachment encrypted and uploaded", `The “${file.name}” file was successfully encrypted and uploaded in ${getSecondsAsDigitalClock(Math.floor((end - start) / 1000))}! Expires after:\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
+		//notification("🔗 Attachment encrypted and uploaded", `The “${file.name}” file was successfully encrypted and uploaded in ${getSecondsAsDigitalClock(Math.floor((end - start) / 1000))}! Expires after:\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
+		notification(browser.i18n.getMessage("notifUploadDoneTitle"), `${browser.i18n.getMessage("notifUploadDoneMessage", getSecondsAsDigitalClock(Math.floor((end - start) / 1000)))}\n⬇️ : ${numberFormat.format(upload.downloads)}\n⏲️ : ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
 	} else {
-		notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${json.error}. Please check your internet connection.`);
+		//notification("❌ Unable upload attachment", `Error: Unable to upload the “${file.name}” file: ${json.error}. Please check your internet connection.`);
+		notification(browser.i18n.getMessage("notifUploadUnableTitle"), `${browser.i18n.getMessage("notifUploadErrorMessage", [file.name, json.error])}`);
 	}
 
 	const icon = `https://${aurl}/icon.718f87fb.svg`;
@@ -907,21 +875,24 @@ browser.cloudFile.onFileUpload.addListener(uploaded);
  *
  * @param {Object} account
  * @param {number} id
- * @param {Object} [tab]
+ * @param {Object} tab
  * @returns {void}
  */
-function canceled(account, id/* , tab */) {
+function canceled(account, id, tab) {
 	console.log(account, id);
 	const upload = uploads.get(id);
 	if (upload) {
-		if (upload.canceled) {
-			notification("❌ Upload already canceled", `Error: Upload of the “${upload.file.name}” file was already canceled.`);
-		} else {
+		if (!upload.canceled) {
 			upload.canceled = true;
-			notification("ℹ️ Canceling upload", `Canceling upload of the “${upload.file.name}” file.`);
+			//notification("ℹ️ Canceling upload", `Canceling upload of the “${upload.file.name}” file.`);
+			notification(browser.i18n.getMessage("notifUploadCancelingTitle"), `${browser.i18n.getMessage("notifUploadCancelingMessage", upload.file.name)}`);
+		} else {
+			//notification("❌ Upload already canceled", `Error: Upload of the “${upload.file.name}” file was already canceled.`);
+			notification(browser.i18n.getMessage("notifCancelAlreadyTitle"), `${browser.i18n.getMessage("notifCancelAlreadyMessage", upload.file.name)}`);
 		}
 	} else {
-		notification("❌ Unable to find file", "Error: Unable to find file to cancel upload. It may have already been deleted.");
+		//notification("❌ Unable to find file", "Error: Unable to find file to cancel upload. It may have already been deleted.");
+		notification(browser.i18n.getMessage("notifNotFoundTitle"), browser.i18n.getMessage("notifNotFoundCancelMessage"));
 	}
 }
 
@@ -932,20 +903,22 @@ browser.cloudFile.onFileUploadAbort.addListener(canceled);
  *
  * @param {Object} account
  * @param {number} id
- * @param {Object} [tab]
+ * @param {Object} tab
  * @returns {Promise<void>}
  */
-async function deleted(account, id/* , tab */) {
+async function deleted(account, id, tab) {
 	console.log(account, id);
 	let aaccount = await AddonSettings.get("account");
 	aaccount = aaccount[account.id] || aaccount;
 	const upload = uploads.get(id);
 	if (!upload || !("id" in upload)) {
-		notification("❌ Unable to find file", "Error: Unable to find uploaded file to delete. It may have already been deleted.");
+		//notification("❌ Unable to find file", "Error: Unable to find uploaded file to delete. It may have already been deleted.");
+		notification(browser.i18n.getMessage("notifNotFoundTitle"), browser.i18n.getMessage("notifNotFoundDeleteMessage"));
 		return;
 	}
 
-	notification("ℹ️ Deleting file", `Deleting the “${upload.file.name}” uploaded file.`);
+	//notification("ℹ️ Deleting file", `Deleting the “${upload.file.name}” uploaded file.`);
+	notification(browser.i18n.getMessage("notifDeletingTitle"), `${browser.i18n.getMessage("notifDeletingMessage", upload.file.name)}`);
 
 	const url = `https://${new URL(aaccount.service).host}/api/delete/${upload.id}`;
 	const fetchInfo = {
@@ -958,11 +931,13 @@ async function deleted(account, id/* , tab */) {
 	// console.log(response);
 
 	if (response.ok) {
-		notification("🗑️ File deleted", `The “${upload.file.name}” uploaded file was successfully deleted.`);
+		//notification("🗑️ File deleted", `The “${upload.file.name}” uploaded file was successfully deleted.`);
+		notification(browser.i18n.getMessage("notifDeleteSuccessTitle"), `${browser.i18n.getMessage("notifDeleteSuccessMessage", upload.file.name)}`);
 	} else {
 		const text = await response.text();
 		console.error(text);
-		notification("❌ Unable delete file", `Error: Unable to delete the “${upload.file.name}” uploaded file: ${text}. It may have expired or already been deleted.`);
+		//notification("❌ Unable delete file", `Error: Unable to delete the “${upload.file.name}” uploaded file: ${text}. It may have expired or already been deleted.`);
+		notification(browser.i18n.getMessage("notifDeleteUnableTitle"), `${browser.i18n.getMessage("notifDeleteUnableMessage", [upload.file.name, text])}`);
 	}
 
 	uploads.delete(id);
@@ -994,11 +969,9 @@ browser.cloudFile.onAccountAdded.addListener((account) => {
  * @returns {void}
  */
 function setSettings(asettings) {
-	({
-		send: SEND,
-		link: LINK,
-		composeAction
-	} = asettings);
+	SEND = asettings.send;
+	LINK = asettings.link;
+	composeAction = asettings.composeAction;
 }
 
 /**
@@ -1019,9 +992,10 @@ init();
 browser.runtime.onMessage.addListener(async (message, sender) => {
 	// console.log(message);
 	switch (message.type) {
-		case BACKGROUND:
+		case BACKGROUND: {
 			setSettings(message.optionValue);
 			break;
+		}
 		case VERIFY: {
 			const response = {
 				type: VERIFY,
@@ -1036,15 +1010,12 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
 				if (message.time || message.downloads || message.canceled) {
 					promise.resolve(message);
 
-					if (promise.tabId != null) {
-						promiseMap.delete(promise.tabId);
-					}
 					promiseMap.delete(sender.tab.id);
 				} else {
 					const response = {
 						type: POPUP,
 						send: promise.send,
-						files: promise.files
+						file: promise.file
 					};
 					// console.log(response);
 					return response;
@@ -1062,15 +1033,18 @@ browser.runtime.onInstalled.addListener((details) => {
 	const manifest = browser.runtime.getManifest();
 	switch (details.reason) {
 		case "install":
-			notification(`🎉 ${manifest.name} installed`, `Thank you for installing the “${TITLE}” add-on!\nVersion: ${manifest.version}`);
+			//notification(`🎉 ${manifest.name} installed`, `Thank you for installing the “${TITLE}” add-on!\nVersion: ${manifest.version}`);
+			notification(`🎉 ${browser.i18n.getMessage("notifInstallTitle", manifest.name)}`, `${browser.i18n.getMessage("notifInstallMessage", [TITLE, manifest.version])}`);
 			break;
 		case "update":
 			if (SEND) {
 				browser.notifications.create({
 					type: "basic",
 					iconUrl: browser.runtime.getURL("icons/icon.svg"),
-					title: `✨ ${manifest.name} updated`,
-					message: `The “${TITLE}” add-on has been updated to version ${manifest.version}. Click to see the release notes.\n\n❤️ Huge thanks to the generous donors that have allowed me to continue to work on this extension!`
+					//title: `✨ ${manifest.name} updated`,
+					title: `✨ ${browser.i18n.getMessage("notifUpdateTitle", manifest.name)}`,
+					//message: `The “${TITLE}” add-on has been updated to version ${manifest.version}. Click to see the release notes.\n\n❤️ Huge thanks to the generous donors that have allowed me to continue to work on this extension!`
+					message: `${browser.i18n.getMessage("notifUpdateMessage", [TITLE, manifest.version])}`
 				}).then((notificationId) => {
 					const url = `https://addons.thunderbird.net/thunderbird/addon/filelink-provider-for-send/versions/${manifest.version}`;
 					notifications.set(notificationId, url);
