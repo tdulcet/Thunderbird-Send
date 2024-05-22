@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="/common/common.css">
 	<link rel="stylesheet" href="options.css">
 
-	<!-- <script defer src="../common/common.js" type="module"></script> -->
+	<script defer src="../common/common.js" type="module"></script>
 	<script defer src="./options.js" type="module"></script>
 </head>
 
@@ -52,15 +52,15 @@
 	<form>
 		<section>
 			<h3><img src="/icons/icon.svg" class="icon"> Thunderbird Send</h3>
-			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button">ℹ️
+			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button data-i18n="__MSG_infoButton__" type="button">ℹ️
 						Information</button></a>
-				<a href="https://www.tealdulcet.com/" target="_blank"><button type="button">❤️ Donate</button></a>
+				<a href="https://www.tealdulcet.com/" target="_blank"><button data-i18n="__MSG_donateButton__" type="button">❤️ Donate</button></a>
 			</p>
 		</section>
 
 		<section>
-			<h1>Options</h1>
-			<span class="helper-text">
+			<h1 data-i18n="__MSG_optionsTitle__">Options</h1>
+			<span class="helper-text" data-i18n="__MSG_optionsNote__">
 				This is your global options/preferences for Thunderbird Send. For the account management pages, go to
 				the Thunderbird ⚙️ Options/Preferences.
 			</span>
@@ -70,16 +70,16 @@
 				<li>
 					<div class="line">
 						<input class="setting save-on-change" type="checkbox" id="send" data-optiongroup="settings" name="send">
-						<label for="send">Display Desktop notifications</label>
+						<label for="send" data-i18n="__MSG_optionsNotifLabel__">Display Desktop notifications</label>
 					</div>
 				</li>
 
 				<li>
 					<div class="line">
 						<input class="setting save-on-change" type="checkbox" id="composeAction" data-optiongroup="settings" name="composeAction">
-						<label for="composeAction">Use compose action popups</label>
+						<label for="composeAction" data-i18n="__MSG_optionsPopupLabel__">Use compose action popups</label>
 					</div>
-					<span class="line indent helper-text">Use compose action popups in the compose window instead of
+					<span class="line indent helper-text" data-i18n="__MSG_optionsPopupDesc__">Use compose action popups in the compose window instead of
 						standalone popup windows. Experimental and requires Thunderbird 115 or greater to automatically
 						open the compose action popups.</span>
 				</li>
@@ -87,9 +87,9 @@
 				<li>
 					<div class="line">
 						<input class="setting save-on-change" type="checkbox" id="link" data-optiongroup="settings" name="link">
-						<label for="link">Create link for Send service instance</label>
+						<label for="link" data-i18n="__MSG_optionsLinkLabel__">Create link for Send service instance</label>
 					</div>
-					<span class="line indent helper-text">Adds a “Learn more about” link for the Send service instance
+					<span class="line indent helper-text" data-i18n="__MSG_optionsLinkDesc__">Adds a “Learn more about” link for the Send service instance
 						to footer of messages.</span>
 				</li>
 			</ul>
@@ -97,7 +97,7 @@
 
 		<div>
 			<hr /><br />
-			<button type="button" id="resetButton">Reset all settings to defaults</button>
+			<button type="button" id="resetButton" data-i18n="__MSG_resetButton__">Reset all settings to defaults</button>
 		</div>
 	</form>
 </body>
