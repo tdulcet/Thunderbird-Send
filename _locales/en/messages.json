@@ -1,0 +1,411 @@
+{
+  "extensionDescription": {
+    "message": "Securely encrypt and upload large attachments to any Send service instance (formerly Firefox Send)."
+  },
+  "extensionName": {
+    "message": "FileLink provider for Send"
+  },
+  "composeActionTitle": {
+    "message": "Thunderbird Send, Add attachment to get started"
+  },
+  "infoButton": {
+    "message": "ℹ️ Information"
+  },
+  "optionsButton": {
+    "message": "⚙️ Options"
+  },
+  "donateButton": {
+    "message": "❤️ Donate"
+  },
+  "resetButton": {
+    "message": "Reset all settings to defaults"
+  },
+  "manageTitle": {
+    "message": "Account Settings"
+  },
+  "manageNote": {
+    "message": "This is your account settings for the selected Thunderbird Send account. For the global options/preferences page, go to the Thunderbird 🧩 Add-ons manager or click the button above."
+  },
+  "manageGetList": {
+    "message": "Click this link for a list of $link$ and their respective maximum file size.",
+    "placeholders": {
+      "link": {
+        "content": "$1"
+      }
+    }
+  },
+  "manageListLinkText": {
+    "message": "public Send service instances"
+  },
+  "manageService": {
+    "message": "Send service instance URL:"
+  },
+  "manageVerifyButton": {
+    "message": "Verify"
+  },
+  "manageDownloadLimit": {
+    "message": "Default download limit:"
+  },
+  "manageDownloadLimitHelp": {
+    "message": "The files will expire after this number of downloads. Make sure it is less than the maximum downloads supported by this Send service instance."
+  },
+  "manageTimeLimit": {
+    "message": "Default time limit:"
+  },
+  "manageTimeLimitHelp": {
+    "message": "The files will expire after this time. Make sure it is less than the maximum time supported by this Send service instance."
+  },
+  "manageDays": {
+    "message": "days"
+  },
+  "manageHours": {
+    "message": "hours"
+  },
+  "manageMinutes": {
+    "message": "minutes"
+  },
+  "manageMaxSize": {
+    "message": "Maximum file size:"
+  },
+  "manageMaxSizeHelp": {
+    "message": "Maximum file size supported by this Send service instance."
+  },
+  "manageGiB": {
+    "message": "GiB"
+  },
+  "manageSuccess": {
+    "message": "Send server verified!"
+  },
+  "manageError": {
+    "message": "Unable to verify Send server"
+  },
+  "popupFile": {
+    "message": "Filename:"
+  },
+  "popupTotalSize": {
+    "message": "Total Size:"
+  },
+  "popupSize": {
+    "message": "Size:"
+  },
+  "popupDownloadLimit": {
+    "message": "Download limit:"
+  },
+  "popupDownloadLimitDesc": {
+    "message": "The file will expire after this number of downloads. Make sure it is less than the maximum downloads supported by this Send service instance."
+  },
+  "popupTimeLimit": {
+    "message": "Time limit:"
+  },
+  "popupDays": {
+    "message": "days"
+  },
+  "popupHours": {
+    "message": "hours"
+  },
+  "popupMinutes": {
+    "message": "minutes"
+  },
+  "popupTimeLimitDesc": {
+    "message": "The file will expire after this time. Make sure it is less than the maximum time supported by this Send service instance."
+  },
+  "popupPwdProtect": {
+    "message": "Protect with password (click to add)"
+  },
+  "popupPwdWarning": {
+    "message": "Use different methods to send the password and file to the recipients. Including the password in the same e-mail as the link to the file does not provide any additional security."
+  },
+  "popupPassword": {
+    "message": "Optional password:"
+  },
+  "popupPwdPlaceholder": {
+    "message": "Password"
+  },
+  "popupPwdShow": {
+    "message": "Show password"
+  },
+  "popupPwdHelp": {
+    "message": "Optionally protect the file with a password."
+  },
+  "popupPwdPronunciation": {
+    "message": "Password pronunciation:"
+  },
+  "popupPwdSuggest": {
+    "message": "Suggest strong password (click to show)"
+  },
+  "popupPwdGenOpt1": {
+    "message": "Password with symbols (15 characters)"
+  },
+  "popupPwdGenOpt1Title": {
+    "message": "Password with upper/lowercase letters, numbers and symbols"
+  },
+  "popupPwdGenOpt2": {
+    "message": "Password (15 characters)"
+  },
+  "popupPwdGenOpt2Title": {
+    "message": "Password with only upper/lowercase letters and numbers"
+  },
+  "popupPwdGenOpt3": {
+    "message": "Passphrase, long words (6)"
+  },
+  "popupPwdGenOpt3Title": {
+    "message": "Passphrase with long words up to 9 characters"
+  },
+  "popupPwdGenOpt4": {
+    "message": "Passphrase, short words (8)"
+  },
+  "popupPwdGenOpt4Title": {
+    "message": "Passphrase with short words up to 5 characters"
+  },
+  "popupPwdGenOpt5": {
+    "message": "Emoji password with sequences (7)"
+  },
+  "popupPwdGenOpt5Title": {
+    "message": "Emoji password with basic emoji and the family, role, gendered, hair and other sequences"
+  },
+  "popupPwdGenOpt6": {
+    "message": "Emoji password (8)"
+  },
+  "popupPwdGenOpt6Title": {
+    "message": "Emoji password with only the basic emoji"
+  },
+  "popupPwdGenButton": {
+    "message": "🔒 Securely Generate"
+  },
+  "popupUploadButton": {
+    "message": "📤 Encrypt and Upload"
+  },
+  "popupCancelButton": {
+    "message": "❌ Cancel"
+  },
+  "popupB": {
+    "message": "B"
+  },
+  "optionsTitle": {
+    "message": "Options"
+  },
+  "optionsNote": {
+    "message": "This is your global options/preferences for Thunderbird Send. For the account management pages, go to the Thunderbird ⚙️ Options/Preferences."
+  },
+  "optionsNotifLabel": {
+    "message": "Display Desktop notifications"
+  },
+  "optionsPopupLabel": {
+    "message": "Use compose action popups"
+  },
+  "optionsPopupDesc": {
+    "message": "Use compose action popups in the compose window instead of standalone popup windows. Experimental and requires Thunderbird 115 or greater to automatically open the compose action popups."
+  },
+  "optionsLinkLabel": {
+    "message": "Create link for Send service instance"
+  },
+  "optionsLinkDesc": {
+    "message": "Adds a “Learn more about” link for the Send service instance to footer of messages."
+  },
+  "resettingOptionsWorked": {
+    "message": "Resetting worked"
+  },
+  "messageUndoButton": {
+    "message": "Undo reset"
+  },
+  "notifInstallTitle": {
+    "message": "$name$ installed",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifInstallMessage": {
+    "message": "Thank you for installing the “$name$” add-on!\nVersion: $version$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUpdateTitle": {
+    "message": "$name$ updated",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUpdateMessage": {
+    "message": "The “$name$” add-on has been updated to version $version$. Click to see the release notes.\n\n❤️ Huge thanks to the generous donors that have allowed me to continue to work on this extension!",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnsupportedVersionTitle": {
+    "message": "❌ Unsupported Send server version"
+  },
+  "notifUnsupportedVersionMessage": {
+    "message": "Error: The “$service$” Send service instance has an unsupported server version: $version$. This extension requires at least version 3.",
+    "placeholders": {
+      "service": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnableVersionTitle": {
+    "message": "❌ Unable to determine Send server version"
+  },
+  "notifUnableVersionMessage": {
+    "message": "Error: Unable to determine the “$service$” Send service instance server version. Please check your internet connection and settings.",
+    "placeholders": {
+      "service": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifOpenPopupTitle": {
+    "message": "ℹ️ Open compose action popup to continue"
+  },
+  "notifOpenPopupMessage": {
+    "message": "The add-on was unable to open the popup directly, so please click the “Thunderbird Send” button in the compose window toolbar to continue."
+  },
+  "notifUploadTitle": {
+    "message": "📤 Encrypting and uploading attachment"
+  },
+  "notifUploadCancelTitle": {
+    "message": "❌ Upload of attachment aborted"
+  },
+  "notifUploadCancelMessage": {
+    "message": "Upload of the “$filename$” file was aborted.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadUnableTitle": {
+    "message": "❌ Unable upload attachment"
+  },
+  "notifUploadUnableMessage": {
+    "message": "Error: Unable to upload the “$filename$” file: $error$. The download or time limit is likely above the maximum supported by this Send service instance.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "error": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnablePasswordTitle": {
+    "message": "❌ Unable add password to attachment"
+  },
+  "notifUnablePasswordMessage": {
+    "message": "Error: Unable to add password to the “$filename$” file.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadDoneTitle": {
+    "message": "🔗 Attachment encrypted and uploaded"
+  },
+  "notifUploadDoneMessage": {
+    "message": "The “$filename$” file was successfully encrypted and uploaded in $time$! Expires after:",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUploadErrorMessage": {
+    "message": "Error: Unable to upload the “$filename$” file: $error$. Please check your internet connection.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "error": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifCancelAlreadyTitle": {
+    "message": "❌ Upload already canceled"
+  },
+  "notifCancelAlreadyMessage": {
+    "message": "Error: Upload of the “$filename$” file was already canceled.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadCancelingTitle": {
+    "message": "ℹ️ Canceling upload"
+  },
+  "notifUploadCancelingMessage": {
+    "message": "Canceling upload of the “$filename$” file.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifNotFoundTitle": {
+    "message": "❌ Unable to find file"
+  },
+  "notifNotFoundCancelMessage": {
+    "message": "Error: Unable to find file to cancel upload. It may have already been deleted."
+  },
+  "notifNotFoundDeleteMessage": {
+    "message": "Error: Unable to find uploaded file to delete. It may have already been deleted."
+  },
+  "notifDeletingTitle": {
+    "message": "ℹ️ Deleting file"
+  },
+  "notifDeletingMessage": {
+    "message": "Deleting the “$filename$” uploaded file.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDeleteSuccessTitle": {
+    "message": "🗑️ File deleted"
+  },
+  "notifDeleteSuccessMessage": {
+    "message": "The “$filename$” uploaded file was successfully deleted.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDeleteUnableTitle": {
+    "message": "❌ Unable delete file"
+  },
+  "notifDeleteUnableMessage": {
+    "message": "Error: Unable to delete the “$filename$” uploaded file: $text$. It may have expired or already been deleted.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "text": {
+        "content": "$2"
+      }
+    }
+  }
+}

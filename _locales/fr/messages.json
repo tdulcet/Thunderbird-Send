@@ -1,0 +1,411 @@
+{
+  "extensionDescription": {
+    "message": "Chiffrement et téléversement sécurisés de pièces jointes volumineuses sur une instance Send (anciennement Firefox Send)."
+  },
+  "extensionName": {
+    "message": "Fournisseur FileLink pour Send"
+  },
+  "composeActionTitle": {
+    "message": "Thunderbird Send - Ajouter une pièce jointe pour commencer"
+  },
+  "infoButton": {
+    "message": "ℹ️ Informations"
+  },
+  "optionsButton": {
+    "message": "⚙️ Options"
+  },
+  "donateButton": {
+    "message": "❤️ Faire un don"
+  },
+  "resetButton": {
+    "message": "Réinitialiser tous les paramètres"
+  },
+  "manageTitle": {
+    "message": "Paramètres du compte"
+  },
+  "manageNote": {
+    "message": "Configurez ici le compte Thunderbird Send sélectionné. Pour accéder aux options/préférences globales, cliquez sur le bouton ci-dessus ou allez dans le 🧩 Gestionnaire de modules complémentaires de Thunderbird."
+  },
+  "manageGetList": {
+    "message": "Cliquez sur le lien pour consulter une liste d’$link$ et leurs limites supportées.",
+    "placeholders": {
+      "link": {
+        "content": "$1"
+      }
+    }
+  },
+  "manageListLinkText": {
+    "message": "instances Send publiques"
+  },
+  "manageService": {
+    "message": "URL de l’instance Send :"
+  },
+  "manageVerifyButton": {
+    "message": "Vérifier"
+  },
+  "manageDownloadLimit": {
+    "message": "Nombre limite de téléchargements par défaut :"
+  },
+  "manageDownloadLimitHelp": {
+    "message": "Les liens expireront après ce nombre de téléchargements. Vérifiez qu’il est inférieur à la limite imposée par l’instance Send choisie."
+  },
+  "manageTimeLimit": {
+    "message": "Validité des liens par défaut :"
+  },
+  "manageTimeLimitHelp": {
+    "message": "Les liens expireront après ce délai. Vérifiez qu’il est inférieur à la limite imposée par l’instance Send choisie."
+  },
+  "manageDays": {
+    "message": "jours"
+  },
+  "manageHours": {
+    "message": "heures"
+  },
+  "manageMinutes": {
+    "message": "minutes"
+  },
+  "manageMaxSize": {
+    "message": "Taille de fichier maximale autorisée :"
+  },
+  "manageMaxSizeHelp": {
+    "message": "Taille maximale de fichier acceptée par l’instance Send choisie."
+  },
+  "manageGiB": {
+    "message": "Gio"
+  },
+  "manageSuccess": {
+    "message": "Serveur Send vérifié"
+  },
+  "manageError": {
+    "message": "Impossible de vérifier le serveur Send"
+  },
+  "popupFile": {
+    "message": "Fichier :"
+  },
+  "popupTotalSize": {
+    "message": "Taille totale :"
+  },
+  "popupSize": {
+    "message": "Taille :"
+  },
+  "popupDownloadLimit": {
+    "message": "Limite de téléchargement :"
+  },
+  "popupDownloadLimitDesc": {
+    "message": "Le lien expirera après ce nombre de téléchargements. S’assurer que ce nombre est inférieur au nombre maximum de téléchargements autorisés par l’instance Send choisie."
+  },
+  "popupTimeLimit": {
+    "message": "Délai de validité :"
+  },
+  "popupDays": {
+    "message": "jours"
+  },
+  "popupHours": {
+    "message": "heures"
+  },
+  "popupMinutes": {
+    "message": "minutes"
+  },
+  "popupTimeLimitDesc": {
+    "message": "Le lien expirera quand ce temps sera dépassé. S’assurer que ce délai est inférieur à la limite imposée par l’instance Send choisie."
+  },
+  "popupPwdProtect": {
+    "message": "Protection par mot de passe (cliquer pour ajouter)"
+  },
+  "popupPwdWarning": {
+    "message": "Utiliser des méthodes différentes pour envoyer le mot de passe et le fichier aux destinataires. Ajouter le mot de passe à l’e-mail contenant le lien vers le fichier n’apporte pas de sécurité supplémentaire."
+  },
+  "popupPassword": {
+    "message": "Mot de passe (facultatif) :"
+  },
+  "popupPwdPlaceholder": {
+    "message": "mot de passe"
+  },
+  "popupPwdShow": {
+    "message": "Afficher"
+  },
+  "popupPwdHelp": {
+    "message": "Il est possible de protéger le fichier par un mot de passe."
+  },
+  "popupPwdPronunciation": {
+    "message": "Prononciation :"
+  },
+  "popupPwdSuggest": {
+    "message": "Suggestion d’un mot de passe fort (cliquer pour afficher)"
+  },
+  "popupPwdGenOpt1": {
+    "message": "Mot de passe avec symboles (15 caractères)"
+  },
+  "popupPwdGenOpt1Title": {
+    "message": "Mot de passe avec des lettres majuscules et minuscules, des chiffres et des caractères spéciaux"
+  },
+  "popupPwdGenOpt2": {
+    "message": "Mot de passe (15 caractères)"
+  },
+  "popupPwdGenOpt2Title": {
+    "message": "Mot de passe avec uniquement des lettres majuscules et minuscules, et des chiffres"
+  },
+  "popupPwdGenOpt3": {
+    "message": "Phrase secrète, mots longs (6)"
+  },
+  "popupPwdGenOpt3Title": {
+    "message": "Phrase secrète avec des mots longs de 9 caractères au maximum"
+  },
+  "popupPwdGenOpt4": {
+    "message": "Phrase secrète, mots courts (8)"
+  },
+  "popupPwdGenOpt4Title": {
+    "message": "Phrase secrète avec des mots courts de 5 caractères au maximum"
+  },
+  "popupPwdGenOpt5": {
+    "message": "Mot de passe emoji avec séquences (7)"
+  },
+  "popupPwdGenOpt5Title": {
+    "message": "Mot de passe emoji composé des emojis de base et des séquences famille, rôle, genre, cheveux et autres"
+  },
+  "popupPwdGenOpt6": {
+    "message": "Mot de passe emoji (8)"
+  },
+  "popupPwdGenOpt6Title": {
+    "message": "Mot de passe emoji composé uniquement des emojis de base"
+  },
+  "popupPwdGenButton": {
+    "message": "🔒 Générer en toute sécurité"
+  },
+  "popupUploadButton": {
+    "message": "📤 Chiffrer et téléverser"
+  },
+  "popupCancelButton": {
+    "message": "❌ Annuler"
+  },
+  "popupB": {
+    "message": "o"
+  },
+  "optionsTitle": {
+    "message": "Options"
+  },
+  "optionsNote": {
+    "message": "Il s’agit de vos options/préférences globales pour Thunderbird Send. Pour configurer un compte, allez dans les ⚙️ Paramètres de Thunderbird."
+  },
+  "optionsNotifLabel": {
+    "message": "Afficher les notifications"
+  },
+  "optionsPopupLabel": {
+    "message": "Utiliser un panneau contextuel"
+  },
+  "optionsPopupDesc": {
+    "message": "La fenêtre contextuelle séparée sera remplacée par un panneau contextuel dans la fenêtre de composition. Cette fonction est expérimentale."
+  },
+  "optionsLinkLabel": {
+    "message": "Créer un lien vers l’instance Send"
+  },
+  "optionsLinkDesc": {
+    "message": "Le lien « En savoir plus sur Send » sera ajouté au bas du message."
+  },
+  "resettingOptionsWorked": {
+    "message": "Réinitialisation effectuée"
+  },
+  "messageUndoButton": {
+    "message": "Annuler la réinitialisation"
+  },
+  "notifInstallTitle": {
+    "message": "$name$ installé",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifInstallMessage": {
+    "message": "Merci d’avoir installé l’extension « $name$ » !\nVersion : $version$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUpdateTitle": {
+    "message": "$name$ mis à jour",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUpdateMessage": {
+    "message": "« $name$ » vient d’être mis à jour en version $version$. Cliquez pour voir les notes de version.\n\n❤️ Un grand merci aux généreux donateurs qui m’ont permis de poursuivre !",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnsupportedVersionTitle": {
+    "message": "❌ Version du serveur Send non supportée"
+  },
+  "notifUnsupportedVersionMessage": {
+    "message": "Erreur : version de serveur de l’instance Send « $service$ » non supportée : $version$. Cette extension requiert au moins la version 3.",
+    "placeholders": {
+      "service": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnableVersionTitle": {
+    "message": "❌ Version de serveur Send impossible à déterminer"
+  },
+  "notifUnableVersionMessage": {
+    "message": "Erreur : impossible de déterminer la version de serveur de l’instance Send « $service$ ». Veuillez vérifier votre connexion et vos paramètres internet",
+    "placeholders": {
+      "service": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifOpenPopupTitle": {
+    "message": "ℹ️ Ouvrir le panneau contextuel dans la fenêtre de composition pour continuer"
+  },
+  "notifOpenPopupMessage": {
+    "message": "L’extension n’a pas pu ouvrir le panneau directement. Cliquez sur le bouton « Thunderbird Send » dans la barre d’outils de la fenêtre de composition pour continuer."
+  },
+  "notifUploadTitle": {
+    "message": "📤 Chiffrement et téléversement de la pièce jointe"
+  },
+  "notifUploadCancelTitle": {
+    "message": "❌ Abandon du téléversement de la pièce jointe"
+  },
+  "notifUploadCancelMessage": {
+    "message": "Le téléversement du fichier « $filename$ » a été interrompu.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadUnableTitle": {
+    "message": "❌ Téléversement de la pièce jointe impossible"
+  },
+  "notifUploadUnableMessage": {
+    "message": "Erreur : impossible de téléverser le fichier « $filename$ » :  $error$. La limite de téléchargement ou le délai de validité fixé dépasse probablement le maximum supporté par cette instance Send.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "error": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnablePasswordTitle": {
+    "message": "❌ Ajout du mot de passe à la pièce jointe impossible"
+  },
+  "notifUnablePasswordMessage": {
+    "message": "Erreur : Impossible d’ajouter le mot de passe au fichier « $filename$ ».",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadDoneTitle": {
+    "message": "🔗 Pièce jointe chiffrée et téléversée"
+  },
+  "notifUploadDoneMessage": {
+    "message": "Le fichier « $filename$ » a été chiffré et téléversé avec succès en $time$. Le lien expirera après :",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUploadErrorMessage": {
+    "message": "Erreur : impossible de téléverser le fichier « $filename$ » :  $error. Veuillez vérifier votre connexion internet.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "error": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifCancelAlreadyTitle": {
+    "message": "❌ Téléversement déjà annulé"
+  },
+  "notifCancelAlreadyMessage": {
+    "message": "Erreur : le téléversement du fichier « $filename$ » a déjà été annulé.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadCancelingTitle": {
+    "message": "ℹ️ Annulation du téléversement"
+  },
+  "notifUploadCancelingMessage": {
+    "message": "Annulation du téléversement du fichier « $filename$ ».",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifNotFoundTitle": {
+    "message": "❌ Fichier introuvable"
+  },
+  "notifNotFoundCancelMessage": {
+    "message": "Erreur : impossible de trouver le fichier dont le téléversement doit être annulé. Il se peut qu’il ait déjà été supprimé."
+  },
+  "notifNotFoundDeleteMessage": {
+    "message": "Erreur : impossible de trouver le fichier téléversé à supprimer. Il se peut qu’il ait déjà été supprimé."
+  },
+  "notifDeletingTitle": {
+    "message": "ℹ️ Suppression du fichier"
+  },
+  "notifDeletingMessage": {
+    "message": "Suppression du fichier téléversé « $filename$ ».",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDeleteSuccessTitle": {
+    "message": "🗑️ Fichier supprimé"
+  },
+  "notifDeleteSuccessMessage": {
+    "message": "Le fichier téléversé « $filename$ » a été supprimé avec succès.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDeleteUnableTitle": {
+    "message": "❌ Suppression du fichier impossible"
+  },
+  "notifDeleteUnableMessage": {
+    "message": "Erreur : impossible de supprimer le fichier téléversé « $filename$ » : $text$. Il se peut qu’il ait expiré ou qu’il ait déjà été supprimé.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "text": {
+        "content": "$2"
+      }
+    }
+  }
+}
