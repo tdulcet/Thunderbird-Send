@@ -280,7 +280,7 @@ function updatefiles(files) {
 		const clone = template.content.cloneNode(true);
 
 		clone.getElementById("name").textContent = file.name;
-		clone.getElementById("size").textContent = `${outputunit(file.size, false)}B${file.size >= 1000 ? ` (${outputunit(file.size, true)}B)` : ""}`;
+		clone.getElementById("size").textContent = `${browser.i18n.getMessage("popupSize")} ${outputunit(file.size, false)}${browser.i18n.getMessage("popupB")}${file.size >= 1000 ? ` (${outputunit(file.size, true)}${browser.i18n.getMessage("popupB")})` : ""}`;
 
 		row.append(clone);
 
@@ -289,7 +289,7 @@ function updatefiles(files) {
 
 	document.getElementById("table").replaceChildren(table);
 
-	document.getElementById("total").textContent = `${outputunit(total, false)}B${total >= 1000 ? ` (${outputunit(total, true)}B)` : ""}`;
+	document.getElementById("total").textContent = `${outputunit(total, false)}${browser.i18n.getMessage("popupB")}${total >= 1000 ? ` (${outputunit(total, true)}${browser.i18n.getMessage("popupB")})` : ""}`;
 }
 
 browser.runtime.sendMessage({ type: POPUP }).then((message) => {
