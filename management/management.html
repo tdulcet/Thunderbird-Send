@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="/common/common.css">
 	<link rel="stylesheet" href="management.css">
 
-	<!-- <script defer src="../common/common.js" type="module"></script> -->
+	<script defer src="../common/common.js" type="module"></script>
 	<script defer src="./management.js" type="module"></script>
 </head>
 
@@ -52,37 +52,36 @@
 	<form>
 		<section>
 			<h3><img src="/icons/icon.svg" class="icon"> Thunderbird Send</h3>
-			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button">ℹ️
+			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button" data-i18n="__MSG_infoButton__">ℹ️
 						Information</button></a>
-				<button type="button" id="settings">⚙️ Options</button>
-				<a href="https://www.tealdulcet.com/" target="_blank"><button type="button">❤️ Donate</button></a>
+				<button type="button" id="settings" data-i18n="__MSG_optionsButton__">⚙️ Options</button>
+				<a href="https://www.tealdulcet.com/" target="_blank"><button type="button" data-i18n="__MSG_donateButton__">❤️ Donate</button></a>
 			</p>
 		</section>
 
 		<section>
-			<h1>Account Settings</h1>
-			<span class="helper-text">
+			<h1 data-i18n="__MSG_manageTitle__">Account Settings</h1>
+			<span class="helper-text" data-i18n="__MSG_manageNote__">
 				This is your account settings for the selected Thunderbird Send account. For the global
 				options/preferences page, go to the Thunderbird 🧩 Add-ons manager or click the button above.
 			</span><br>
 			<hr>
-			<span class="helper-text">
-				Click this link for a list of <a href="https://github.com/timvisee/send-instances/#instances"
-					target="_blank">public Send service instances</a> and their respective maximum file size.
+			<span class="helper-text" data-i18n="__MSG_manageGetList__" data-opt-i18n-keep-children>
+				Click this link for a list of <a data-i18n="__MSG_manageListLinkText__" href="https://github.com/timvisee/send-instances/#instances" target="_blank">public Send service instances</a> and their respective maximum file size.
 			</span>
 
 			<ul>
 				<li>
 					<div class="line">
-						<label for="service">Send service instance URL</label>
+						<label for="service" data-i18n="__MSG_manageService__">Send service instance URL</label>
 						<input class="setting save-on-change" type="url" id="service" data-optiongroup="account" name="service" required>
-						<button type="button" id="verify">Verify</button>
+						<button type="button" id="verify" data-i18n="__MSG_manageVerifyButton__">Verify</button>
 					</div>
 				</li>
 
 				<li>
 					<div class="line">
-						<label for="downloads">Default download limit</label>
+						<label for="downloads" data-i18n="__MSG_manageDownloadLimit__">Default download limit</label>
 						<input class="setting save-on-change" type="number" list="adownloads" id="downloads" data-optiongroup="account" name="downloads" min="1" required>
 						<datalist id="adownloads">
 							<option value="1">
@@ -95,35 +94,35 @@
 							<option value="100">
 						</datalist>
 					</div>
-					<span class="line indent helper-text">The files will expire after this number of downloads. Make
+					<span class="line indent helper-text" data-i18n="__MSG_manageDownloadLimitHelp__">The files will expire after this number of downloads. Make
 						sure it is less than the maximum downloads supported by this Send service instance.</span>
 				</li>
 
 				<li>
-					<label for="days">Default time limit</label>
+					<label for="days" data-i18n="__MSG_manageTimeLimit__">Default time limit</label>
 					<div class="line indent">
 						<input class="setting save-on-change" type="number" id="days" data-optiongroup="account" name="time" min="0" required>
-						<label for="days">days</label>
+						<label for="days" data-i18n="__MSG_manageDays__">days</label>
 					</div>
 					<div class="line indent">
 						<input class="setting save-on-change" type="number" id="hours" data-optiongroup="account" name="time" min="0" required>
-						<label for="hours">hours</label>
+						<label for="hours" data-i18n="__MSG_manageHours__">hours</label>
 					</div>
 					<div class="line indent">
 						<input class="setting save-on-change" type="number" id="minutes" data-optiongroup="account" name="time" min="0" required>
-						<label for="minutes">minutes</label>
+						<label for="minutes" data-i18n="__MSG_manageMinutes__">minutes</label>
 					</div>
-					<span class="line indent helper-text">The files will expire after this time. Make sure it is less
+					<span class="line indent helper-text" data-i18n="__MSG_manageTimeLimitHelp__">The files will expire after this time. Make sure it is less
 						than the maximum time supported by this Send service instance.</span>
 				</li>
 
 				<li>
 					<div class="line">
-						<label for="size">Maximum file size</label>
+						<label for="size" data-i18n="__MSG_manageMaxSize__">Maximum file size</label>
 						<input class="setting save-on-change" type="number" id="size" data-optiongroup="account" name="size" required>
-						<label for="size">GiB</label>
+						<label for="size" data-i18n="__MSG_manageGiB__">GiB</label>
 					</div>
-					<span class="line indent helper-text">Maximum file size supported by this Send service
+					<span class="line indent helper-text" data-i18n="__MSG_manageMaxSizeHelp__">Maximum file size supported by this Send service
 						instance.</span>
 				</li>
 			</ul>
@@ -131,7 +130,7 @@
 
 		<div>
 			<hr /><br />
-			<button type="button" id="resetButton">Reset all settings to defaults</button>
+			<button type="button" id="resetButton" data-i18n="__MSG_resetButton__">Reset all settings to defaults</button>
 		</div>
 	</form>
 </body>
