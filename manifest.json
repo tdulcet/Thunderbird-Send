@@ -1,9 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "FileLink provider for Send",
+  "default_locale": "en",
+  "name": "__MSG_extensionName__",
   "version": "2.0",
   "author": "Teal Dulcet",
-  "description": "Securely encrypt and upload large attachments to any Send service instance (formerly Firefox Send).",
+  "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/tdulcet/Thunderbird-Send",
   "icons": {
     "48": "icons/icon.svg",
@@ -19,8 +20,8 @@
   "compose_action": {
     "browser_style": true,
     "default_icon": "icons/icon.svg",
-    "default_title": "Thunderbird Send, Add attachment to get started",
-    "default_label": "Thunderbird Send",
+    "default_title": "__MSG_composeActionButtonTitle__",
+    "default_label": "__MSG_composeActionButtonLabel__",
     "default_popup": "popup/popup.html"
   },
 

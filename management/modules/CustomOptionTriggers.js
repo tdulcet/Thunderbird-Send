@@ -95,9 +95,9 @@ function verify(event) {
 			// console.log(message);
 			if (message.type === VERIFY) {
 				if (message.value) {
-					CommonMessages.showSuccess("Send server verified!", true);
+					CommonMessages.showSuccess(browser.i18n.getMessage("manageSuccess"), true);
 				} else {
-					CommonMessages.showError("Unable to verify Send server", true);
+					CommonMessages.showError(browser.i18n.getMessage("manageError"), true);
 				}
 			}
 		}).finally(() => {
