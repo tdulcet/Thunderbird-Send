@@ -10,3 +10,6 @@
 [submodule "common/modules/CommonCss"]
 	path = common/modules/CommonCss
 	url = https://github.com/TinyWebEx/CommonCss
+[submodule "common/modules/Localizer"]
+	path = common/modules/Localizer
+	url = https://github.com/TinyWebEx/Localizer

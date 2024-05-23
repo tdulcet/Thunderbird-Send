@@ -20,8 +20,8 @@
   "compose_action": {
     "browser_style": true,
     "default_icon": "icons/icon.svg",
-    "default_title": "__MSG_composeActionTitle__",
-    "default_label": "Thunderbird Send",
+    "default_title": "__MSG_composeActionButtonTitle__",
+    "default_label": "__MSG_composeActionButtonLabel__",
     "default_popup": "popup/popup.html"
   },
 

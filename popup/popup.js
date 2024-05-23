@@ -273,6 +273,7 @@ cancel.addEventListener("click", (event) => {
 */
 function updatefiles(files) {
 	const table = document.createElement("table");
+	const b = browser.i18n.getMessage("popupB");
 
 	for (const file of files) {
 		const row = table.insertRow(0);
@@ -280,7 +281,7 @@ function updatefiles(files) {
 		const clone = template.content.cloneNode(true);
 
 		clone.getElementById("name").textContent = file.name;
-		clone.getElementById("size").textContent = `${browser.i18n.getMessage("popupSize")} ${outputunit(file.size, false)}${browser.i18n.getMessage("popupB")}${file.size >= 1000 ? ` (${outputunit(file.size, true)}${browser.i18n.getMessage("popupB")})` : ""}`;
+		clone.getElementById("size").textContent = `${browser.i18n.getMessage("popupSize")} ${outputunit(file.size, false)}${b}${file.size >= 1000 ? ` (${outputunit(file.size, true)}${b})` : ""}`;
 
 		row.append(clone);
 
@@ -289,7 +290,7 @@ function updatefiles(files) {
 
 	document.getElementById("table").replaceChildren(table);
 
-	document.getElementById("total").textContent = `${outputunit(total, false)}${browser.i18n.getMessage("popupB")}${total >= 1000 ? ` (${outputunit(total, true)}${browser.i18n.getMessage("popupB")})` : ""}`;
+	document.getElementById("total").textContent = `${outputunit(total, false)}${b}${total >= 1000 ? ` (${outputunit(total, true)}${b})` : ""}`;
 }
 
 browser.runtime.sendMessage({ type: POPUP }).then((message) => {
