@@ -19,15 +19,15 @@
 
   // errors or other messages (mostly for settings)
   "errorShowingMessage": {
-    "message": "Could not show this message.",
+    "message": "Impossible d’afficher ce message.",
     "description": "When there is an error when showing the error/info/…."
   },
   "couldNotLoadOptions": {
-    "message": "Could not load settings.",
+    "message": "Impossible de charger les paramètres.",
     "description": "When one or all settings could not be loaded."
   },
   "couldNotSaveOption": {
-    "message": "Could not save this setting.",
+    "message": "Impossible d’enregistrer ce paramètre.",
     "description": "When a setting could not be saved."
   },
   "messageUndoButton": {
@@ -35,39 +35,39 @@
     "description": "The text of a button that undoes the last action."
   },
   "couldNotUndoAction": {
-    "message": "Could not undo action.",
+    "message": "Impossible d’annuler l’action.",
     "description": "Shown when an action cannot be undone."
   },
   "resettingOptionsWorked": {
-    "message": "All settings are now back to defaults again!",
+    "message": "Tous les paramètres sont maintenant rétablis à leurs valeurs par défaut !",
     "description": "The message shown, when the options of the settings were reset."
   },
   "resettingOptionsFailed": {
-    "message": "Could not reset options!",
+    "message": "Impossible de réinitialiser les options !",
     "description": "The message shown, when the options of the settings could not have been reset."
   },
 
   // options
   "someSettingsAreManaged": {
-    "message": "Some settings are managed by your system administrator and cannot be changed.",
+    "message": "Certains paramètres sont gérés par votre administrateur système et ne peuvent pas être modifiés.",
     "description": "The message, which appears, when settings are pre-defined (as managed options) by administrators."
   },
   "optionIsDisabledBecauseManaged": {
-    "message": "This option is disabled, because it has been configured by your system administrator.",
+    "message": "Cette option est désactivée car elle a été configurée par votre administrateur système.",
     "description": "The title (tooltip) shown, when hovering over a disabled, managed option."
   },
   "optionLearnMore": {
-    "message": "Learn more",
+    "message": "En savoir plus",
     "description": "When a link to an explainer needs to be added, this is the link text."
   },
   "optionsResetButton": {
-    "message": "Reset all settings to defaults",
+    "message": "Réinitialiser tous les paramètres",
     "description": "The button to delete all current settings and load the defaults, shown in the add-on settings."
   },
   
   // options footer
   "translatorCredit": {
-    "message": "This add-on has been translated into English by $TRANSLATORS$.",
+    "message": "Cette extension a été traduite en français par $TRANSLATORS$.",
     "description": "The credit text for the translator. See https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translator-credit-inside-of-add-on for how to translate this.",
     "placeholders": {
       "translators": {
@@ -77,37 +77,37 @@
     }
   },
   "translatorLink": {
-    "message": "https://github.com/tdulcet",
+    "message": "https://github.com/denb10",
     "description": "The link to the translator's GitHub profile."
   },
   "translatorUsername": {
-    "message": "Teal Dulcet",
+    "message": "DenB",
     "description": "The username that the translator wants to be referred to."
   },
 
   // ARIA labels/descriptions
   "dismissIconDescription": {
-    "message": "Close this message",
+    "message": "Fermer ce message",
     "description": "the aria label for the close button of the message box"
   },
   "ariaMessageLoading": {
-    "message": "loading message",
+    "message": "chargement du message",
     "description": "the aria label to label the message box as an info message box"
   },
   "ariaMessageInfo": {
-    "message": "info message",
+    "message": "message d’information",
     "description": "the aria label to label the message box as an info message box"
   },
   "ariaMessageSuccess": {
-    "message": "success message",
+    "message": "message de réussite",
     "description": "the aria label to label the message box as an success message box"
   },
   "ariaMessageError": {
-    "message": "error message",
+    "message": "message d’erreur",
     "description": "the aria label to label the message box as an error message box"
   },
   "ariaMessageWarning": {
-    "message": "warning message",
+    "message": "message d’avertissement",
     "description": "the aria label to label the message box as an warning message box"
   },
   "infoButton": {
