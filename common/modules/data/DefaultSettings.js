@@ -14,7 +14,7 @@
 const defaultSettings = {
 	settings: {
 		send: true,
-		composeAction: false,
+		composeAction: true,
 		link: false
 	},
 	account: {

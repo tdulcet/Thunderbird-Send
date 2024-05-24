@@ -52,10 +52,12 @@
 	<form>
 		<section>
 			<h3><img src="/icons/icon.svg" class="icon"> Thunderbird Send</h3>
-			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button" data-i18n="__MSG_infoButton__">ℹ️
+			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button type="button"
+						data-i18n="__MSG_infoButton__">ℹ️
 						Information</button></a>
 				<button type="button" id="settings" data-i18n="__MSG_optionsButton__">⚙️ Options</button>
-				<a href="https://www.tealdulcet.com/" target="_blank"><button type="button" data-i18n="__MSG_donateButton__">❤️ Donate</button></a>
+				<a href="https://www.tealdulcet.com/" target="_blank"><button type="button"
+						data-i18n="__MSG_donateButton__">❤️ Donate</button></a>
 			</p>
 		</section>
 
@@ -67,7 +69,9 @@
 			</span><br>
 			<hr>
 			<span class="helper-text" data-i18n="__MSG_manageGetList__" data-opt-i18n-keep-children>
-				Click this link for a list of <a data-i18n="__MSG_manageListLinkText__" href="https://github.com/timvisee/send-instances/#instances" target="_blank">public Send service instances</a> and their respective maximum file size.
+				Click this link for a list of <a data-i18n="__MSG_manageListLinkText__"
+					href="https://github.com/timvisee/send-instances/#instances" target="_blank">public Send service
+					instances</a> and their respective maximum file size.
 			</span>
 
 			<ul>
@@ -94,8 +98,9 @@
 							<option value="100">
 						</datalist>
 					</div>
-					<span class="line indent helper-text" data-i18n="__MSG_manageDownloadLimitHelp__">The files will expire after this number of downloads. Make
-						sure it is less than the maximum downloads supported by this Send service instance.</span>
+					<span class="line indent helper-text" data-i18n="__MSG_manageDownloadLimitHelp__">The files will
+						expire after this number of downloads. Make sure it is less than the maximum downloads supported
+						by this Send service instance.</span>
 				</li>
 
 				<li>
@@ -112,8 +117,9 @@
 						<input class="setting save-on-change" type="number" id="minutes" data-optiongroup="account" name="time" min="0" required>
 						<label for="minutes" data-i18n="__MSG_manageMinutes__">minutes</label>
 					</div>
-					<span class="line indent helper-text" data-i18n="__MSG_manageTimeLimitHelp__">The files will expire after this time. Make sure it is less
-						than the maximum time supported by this Send service instance.</span>
+					<span class="line indent helper-text" data-i18n="__MSG_manageTimeLimitHelp__">The files will expire
+						after this time. Make sure it is less than the maximum time supported by this Send service
+						instance.</span>
 				</li>
 
 				<li>
@@ -122,8 +128,8 @@
 						<input class="setting save-on-change" type="number" id="size" data-optiongroup="account" name="size" required>
 						<label for="size" data-i18n="__MSG_manageGiB__">GiB</label>
 					</div>
-					<span class="line indent helper-text" data-i18n="__MSG_manageMaxSizeHelp__">Maximum file size supported by this Send service
-						instance.</span>
+					<span class="line indent helper-text" data-i18n="__MSG_manageMaxSizeHelp__">Maximum file size
+						supported by this Send service instance.</span>
 				</li>
 			</ul>
 		</section>
@@ -132,6 +138,14 @@
 			<hr /><br />
 			<button type="button" id="resetButton" data-i18n="__MSG_resetButton__">Reset all settings to defaults</button>
 		</div>
+
+		<p class="helper-text">
+			<span data-i18n="__MSG_translatorCredit__" data-opt-i18n-keep-children>
+				This add-on has been translated into English by
+				<a data-i18n="__MSG_translatorUsername__" data-i18n-href="__MSG_translatorLink__"
+					href="https://github.com/tdulcet">Teal Dulcet</a>.
+			</span>
+		</p>
 	</form>
 </body>
 

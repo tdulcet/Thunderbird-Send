@@ -16,10 +16,12 @@
 	<form id="form">
 		<section>
 			<h3><img src="/icons/icon.svg" class="icon"> Thunderbird Send</h3>
-			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button data-i18n="__MSG_infoButton__" type="button">ℹ️
+			<p><a href="https://github.com/tdulcet/Thunderbird-Send" target="_blank"><button
+						data-i18n="__MSG_infoButton__" type="button">ℹ️
 						Information</button></a>
 				<button data-i18n="__MSG_optionsButton__" type="button" id="settings">⚙️ Options</button>
-				<a href="https://www.tealdulcet.com/" target="_blank"><button data-i18n="__MSG_donateButton__" type="button">❤️ Donate</button></a>
+				<a href="https://www.tealdulcet.com/" target="_blank"><button data-i18n="__MSG_donateButton__"
+						type="button">❤️ Donate</button></a>
 			</p>
 			<hr>
 			<div id="table"></div>
@@ -56,8 +58,9 @@
 							<option value="100">
 						</datalist>
 					</div>
-					<span class="line indent helper-text" data-i18n="__MSG_popupDownloadLimitDesc__">The file will expire after this number of downloads. Make sure
-						it is less than the maximum downloads supported by this Send service instance.</span>
+					<span class="line indent helper-text" data-i18n="__MSG_popupDownloadLimitDesc__">The file will
+						expire after this number of downloads. Make sure it is less than the maximum downloads supported
+						by this Send service instance.</span>
 				</li>
 
 				<li>
@@ -70,8 +73,9 @@
 						<input class="setting" type="number" id="minutes" name="time" min="0" size="10" required>
 						<label for="minutes" data-i18n="__MSG_popupMinutes__">minutes</label>
 					</div>
-					<span class="line indent helper-text" data-i18n="__MSG_popupTimeLimitDesc__">The file will expire after this time. Make sure it is less
-						than the maximum time supported by this Send service instance.</span>
+					<span class="line indent helper-text" data-i18n="__MSG_popupTimeLimitDesc__">The file will expire
+						after this time. Make sure it is less than the maximum time supported by this Send service
+						instance.</span>
 				</li>
 
 				<li>
@@ -79,9 +83,9 @@
 						<summary data-i18n="__MSG_popupPwdProtect__">Protect with password (click to add)</summary>
 						<div class="message-container">
 							<div aria-label="warning message" class="message-box warning">
-								<span class="message-text" data-i18n="__MSG_popupPwdWarning__">Use different methods to send the password and file to the
-									recipients. Including the password in the same e-mail as the link to the file does
-									not provide any additional security.</span>
+								<span class="message-text" data-i18n="__MSG_popupPwdWarning__">Use different methods to
+									send the password and file to the recipients. Including the password in the same
+									e-mail as the link to the file does not provide any additional security.</span>
 							</div>
 						</div>
 						<br>
@@ -91,14 +95,16 @@
 							<input class="setting" type="checkbox" id="toggle" name="toggle">
 							<label for="toggle" data-i18n="__MSG_popupPwdShow__">Show password</label>
 						</div>
-						<span class="line indent helper-text" data-i18n="__MSG_popupPwdHelp__">Optionally protect the file with a password.</span>
+						<span class="line indent helper-text" data-i18n="__MSG_popupPwdHelp__">Optionally protect the
+							file with a password.</span>
 						<div class="line hidden" id="pronunciation">
 							<label for="text" data-i18n="__MSG_popupPwdPronunciation__">Password pronunciation</label>
 							<input class="setting" type="text" id="text" name="text" size="80" readonly>
 						</div>
 						<div class="line indent">
 							<details>
-								<summary data-i18n="__MSG_popupPwdSuggest__">Suggest strong password (click to show)</summary>
+								<summary data-i18n="__MSG_popupPwdSuggest__">Suggest strong password (click to show)
+								</summary>
 								<br>
 								<div class="line">
 									<select name="random" id="random">
@@ -115,7 +121,8 @@
 										<option data-i18n="__MSG_popupPwdGenOpt6__" data-i18n-title="__MSG_popupPwdGenOpt6Title__" value="6" title="Emoji password with only the basic emoji">Emoji
 											password (8)</option>
 									</select>
-									<button type="button" id="generate" data-i18n="__MSG_popupPwdGenButton__">🔒 Securely Generate</button>
+									<button type="button" id="generate" data-i18n="__MSG_popupPwdGenButton__">🔒
+										Securely Generate</button>
 								</div>
 							</details>
 						</div>

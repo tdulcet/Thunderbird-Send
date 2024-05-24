@@ -10,7 +10,7 @@ Copyright © 2020 Teal Dulcet
 Thunderbird add-on/MailExtension to easily and securely encrypt and upload large attachments to any [Send service instance](https://github.com/timvisee/send-instances/#instances) (formerly [Firefox Send](https://github.com/mozilla/send)) and send the links via e-mail using the [CloudFile/FileLink API](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html). Firefox Send was [discontinued by Mozilla](https://support.mozilla.org/kb/what-happened-firefox-send) in 2020. It is now maintained by @timvisee and called just [Send](https://github.com/timvisee/send), but soon will be [resurrected by Thunderbird](https://youtu.be/zt_2xiNjQBo).
 
 * Enables simple, yet private file sharing with end-to-end encryption
-* Files are securely [encrypted](https://github.com/timvisee/send/blob/master/docs/encryption.md) and uploaded locally in Thunderbird using the [Web Crypto](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) and [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) APIs
+* Files are securely [encrypted](https://github.com/timvisee/send/blob/master/docs/encryption.md) and uploaded locally in Thunderbird using the [Web Crypto](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API) and [WebSocket](https://developer.mozilla.org/docs/Web/API/WebSockets_API) APIs
 * Files are encrypted and uploaded in chunks, so it requires very little memory (RAM) for even large files
 * Links are automatically added to the e-mail by Thunderbird when uploads finish, which includes the encryption secret needed to decrypt the file
 * When recipient clicks a link, the file will securely download and decrypt locally in their browser using that encryption secret
@@ -27,6 +27,7 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * Does NOT require a Firefox Account (FxA) or any other accounts, all uploads are anonymous
 * Supports the light/dark mode of your system automatically
 * Follows the [Thunderbird Photon Design](https://style.thunderbird.net/)
+* Translated into two languages
 
 More information on the encryption used can be found in the official Send service documentation [here](https://github.com/timvisee/send/blob/master/docs/encryption.md).
 
@@ -37,6 +38,12 @@ More information on the encryption used can be found in the official Send servic
 This add-on is not affiliated with Mozilla, Firefox or any Send service instance.
 
 ## Contributing
+
+### Translations
+
+Translate the add-on using the online [WebExtension Translator](https://lusito.github.io/web-ext-translator/?gh=https://github.com/tdulcet/Thunderbird-Send/tree/main) and then open a pull request or issue with the resulting translations. Please see [this guide](https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translations) or the [official documentation](https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Internationalization) for more information.
+
+### Code
 
 Pull requests welcome! Ideas for contributions:
 
@@ -53,4 +60,3 @@ Pull requests welcome! Ideas for contributions:
 * Improve the performance
 * Integrate this functionality into Thunderbird (see [Bug 1516252](https://bugzilla.mozilla.org/show_bug.cgi?id=1516252))
 * Create a Firefox/Chrome add-on/WebExtension to both upload and download files
-* Localize the add-on

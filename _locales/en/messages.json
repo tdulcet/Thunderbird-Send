@@ -296,7 +296,7 @@
     "message": "Use compose action popups"
   },
   "optionsPopupDesc": {
-    "message": "Use compose action popups in the compose window instead of standalone popup windows. Experimental and requires Thunderbird 115 or greater to automatically open the compose action popups."
+    "message": "Use compose action popups in the compose window instead of standalone popup windows. Requires Thunderbird 115 or greater to automatically open the compose action popups."
   },
   "optionsLinkLabel": {
     "message": "Create link for Send service instance"

@@ -296,7 +296,7 @@
     "message": "Utiliser un panneau contextuel"
   },
   "optionsPopupDesc": {
-    "message": "La fenêtre contextuelle séparée sera remplacée par un panneau contextuel dans la fenêtre de composition. Cette fonction est expérimentale."
+    "message": "La fenêtre contextuelle séparée sera remplacée par un panneau contextuel dans la fenêtre de composition."
   },
   "optionsLinkLabel": {
     "message": "Créer un lien vers l’instance Send"

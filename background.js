@@ -593,7 +593,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 
 			promiseMap.set(tabId, promise);
 
-			// await delay(1000);
+			await delay(1000);
 
 			await browser.composeAction.openPopup().catch((error) => {
 				console.error(error);
@@ -878,7 +878,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 	console.timeEnd(id);
 
 	if (json.ok) {
-		notification(browser.i18n.getMessage("notifUploadDoneTitle"), `${browser.i18n.getMessage("notifUploadDoneMessage", getSecondsAsDigitalClock(Math.floor((end - start) / 1000)))}\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
+		notification(browser.i18n.getMessage("notifUploadDoneTitle"), `${browser.i18n.getMessage("notifUploadDoneMessage", [file.name, getSecondsAsDigitalClock(Math.floor((end - start) / 1000))])}\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
 	} else {
 		notification(browser.i18n.getMessage("notifUploadUnableTitle"), browser.i18n.getMessage("notifUploadErrorMessage", [file.name, json.error]));
 	}
