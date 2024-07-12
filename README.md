@@ -33,9 +33,19 @@ More information on the encryption used can be found in the official Send servic
 
 ❤️ Please visit [tealdulcet.com](https://www.tealdulcet.com/) to support this extension and my other software development.
 
-⬇️ Download from [Addons.thunderbird.net](https://addons.thunderbird.net/thunderbird/addon/filelink-provider-for-send/) (ATN).
-
 This add-on is not affiliated with Mozilla, Firefox or any Send service instance.
+
+## Download
+
+* [Addons.thunderbird.net](https://addons.thunderbird.net/thunderbird/addon/filelink-provider-for-send/) (ATN)
+
+## Install from source
+
+1. Clone the repository:
+```bash
+git clone --recurse-submodules https://github.com/tdulcet/Thunderbird-Send.git
+```
+2. Follow [these instructions](https://developer.thunderbird.net/add-ons/hello-world-add-on#installing) to install it in Thunderbird
 
 ## Contributing
 

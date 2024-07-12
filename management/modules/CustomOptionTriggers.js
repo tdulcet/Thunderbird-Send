@@ -52,7 +52,7 @@ async function set(param) {
 	// Get the existing + default options
 	let account = await AddonSettings.get(param.option);
 	// Remove the default options
-	account = Object.entries(account).reduce((a, [k, v]) => v === Object(v) ? (a[k] = v, a) : a, {});
+	account = Object.entries(account).reduce((a, [k, v]) => v === new Object(v) ? (a[k] = v, a) : a, {});
 	// Set the new options
 	account[accountId] = param.optionValue;
 

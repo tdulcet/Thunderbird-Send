@@ -637,7 +637,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 			const awindow = await browser.windows.create({
 				url: browser.runtime.getURL("popup/popup.html"),
 				type: "popup",
-				// Should not be needed: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create#parameters
+				// Should not be needed: https://bugzilla.mozilla.org/show_bug.cgi?id=1902844
 				allowScriptsToClose: true
 			});
 			console.log(awindow);

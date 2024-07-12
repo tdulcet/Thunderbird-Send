@@ -126,7 +126,7 @@
     "message": "Account Settings"
   },
   "manageNote": {
-    "message": "This is your account settings for the selected Thunderbird Send account. For the global options/preferences page, go to the Thunderbird 🧩 Add-ons manager or click the button above."
+    "message": "This is your account settings for the selected Thunderbird Send account. For the global options/preferences page, click the button above or go to the Thunderbird Menu (≡) > 🧩 Add-ons and Themes."
   },
   "manageGetList": {
     "message": "Click this link for a list of $link$ and their respective maximum file size.",
@@ -287,7 +287,7 @@
     "message": "Options"
   },
   "optionsNote": {
-    "message": "This is your global options/preferences for Thunderbird Send. For the account management pages, go to the Thunderbird ⚙️ Options/Preferences."
+    "message": "This is your global options/preferences for Thunderbird Send. For the account management pages, go to the Thunderbird Menu (≡) > ⚙️ Settings > ✏️ Composition > Attachments."
   },
   "optionsNotifLabel": {
     "message": "Display Desktop notifications"
