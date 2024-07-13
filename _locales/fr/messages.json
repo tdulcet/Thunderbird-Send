@@ -126,7 +126,7 @@
     "message": "Paramètres du compte"
   },
   "manageNote": {
-    "message": "Configurez ici le compte Thunderbird Send sélectionné. Pour accéder aux options/préférences globales, cliquez sur le bouton ci-dessus ou allez dans le 🧩 Gestionnaire de modules complémentaires de Thunderbird."
+    "message": "Configurez ici le compte Thunderbird Send sélectionné. Pour accéder aux options/préférences globales, cliquez sur le bouton ci-dessus ou allez dans le le menu de Thunderbird (≡) > 🧩 Modules complémentaitres et thèmes."
   },
   "manageGetList": {
     "message": "Cliquez sur le lien pour consulter une liste d’$link$ et leurs limites supportées.",
@@ -287,7 +287,7 @@
     "message": "Options"
   },
   "optionsNote": {
-    "message": "Il s’agit de vos options/préférences globales pour Thunderbird Send. Pour configurer un compte, allez dans les ⚙️ Paramètres de Thunderbird."
+    "message": "Il s’agit de vos options/préférences globales pour Thunderbird Send. Pour configurer un compte, allez dans le menu de Thunderbird (≡) > ⚙️ Paramètres > ✏️ Rédaction > Pièces jointes."
   },
   "optionsNotifLabel": {
     "message": "Afficher les notifications"
