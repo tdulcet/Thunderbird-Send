@@ -1,0 +1,573 @@
+{
+  // manifest.json
+  "extensionName": {
+    "message": "Flielink Erweiterung für Send",
+    "description": "Name of the extension.",
+    "hash": "8a99fec4c8b52c118133d0fcacda83e5"
+  },
+  "extensionDescription": {
+    "message": "Große Anhänge sicher verschlüsselt an eine beliebige Send-Instanz (ehemals Firefox Send) hochladen.",
+    "description": "Description of the extension.",
+    "hash": "03d0ff9650a611702e21c941bea4d972"
+  },
+  "composeActionButtonTitle": {
+    "message": "Thunderbird Send, Anlage hinzufügen, um zu beginnen.",
+    "description": "The title for the button, which opens the popup.",
+    "hash": "e212511f0cd4ead2b68121509a2c11ce"
+  },
+  "composeActionButtonLabel": {
+    "message": "Thunderbird Send",
+    "description": "The label for the button, which opens the popup.",
+    "hash": "44406eacb6713e0ffe5601867b571d17"
+  },
+  // errors or other messages (mostly for settings)
+  "errorShowingMessage": {
+    "message": "Die Meldung kann nicht angezeigt werden.",
+    "description": "When there is an error when showing the error/info/….",
+    "hash": "a9440e4f824a372841d4de2b7e2643ee"
+  },
+  "couldNotLoadOptions": {
+    "message": "Die Einstellungen können nicht geladen werden.",
+    "description": "When one or all settings could not be loaded.",
+    "hash": "9497a5d2c9473aeb2ed9601f46c456be"
+  },
+  "couldNotSaveOption": {
+    "message": "Die Einstellungen konnten nicht gespeichert werden.",
+    "description": "When a setting could not be saved.",
+    "hash": "6bcb9e36d2c33172b948515a9c50aa8e"
+  },
+  "messageUndoButton": {
+    "message": "Rückgängig",
+    "description": "The text of a button that undoes the last action.",
+    "hash": "a85e775d7404b86c8060a20efd31241c"
+  },
+  "couldNotUndoAction": {
+    "message": "Die Aktion konnte nicht rückgängig gemacht werden.",
+    "description": "Shown when an action cannot be undone.",
+    "hash": "d2883c6ca0164afc4f360f3e02e3166a"
+  },
+  "resettingOptionsWorked": {
+    "message": "Alle Einstellungen wurden auf Standard gesetzt.",
+    "description": "The message shown, when the options of the settings were reset.",
+    "hash": "257b99ed2a074fccbfc658d770b50107"
+  },
+  "resettingOptionsFailed": {
+    "message": "Die Einstellungen konnten nicht zurückgesetzt werden.",
+    "description": "The message shown, when the options of the settings could not have been reset.",
+    "hash": "76e950d2db72a824482411ca6564fb1f"
+  },
+  // options
+  "someSettingsAreManaged": {
+    "message": "Einige Einstellungen wurden vom Systemadministrator festgelegt und können nicht geändert werden.",
+    "description": "The message, which appears, when settings are pre-defined (as managed options) by administrators.",
+    "hash": "148604ebbeb7df28974d8233f1418d1f"
+  },
+  "optionIsDisabledBecauseManaged": {
+    "message": "Diese Einstellung kann nicht geändert werden, da sie vom Systemadministrator festgelegt wurde.",
+    "description": "The title (tooltip) shown, when hovering over a disabled, managed option.",
+    "hash": "50fb70682c64e1a1fb4d8884b33cca64"
+  },
+  "optionLearnMore": {
+    "message": "Weitere Informationen",
+    "description": "When a link to an explainer needs to be added, this is the link text.",
+    "hash": "9085b09f4748be12ab0c241d2e643b31"
+  },
+  "optionsResetButton": {
+    "message": "Alle Einstellungen zurücksetzten",
+    "description": "The button to delete all current settings and load the defaults, shown in the add-on settings.",
+    "hash": "4bb60c6c7e7b9e2ff987c244e76ee044"
+  },
+  // options footer
+  "translatorCredit": {
+    "message": "Diese Erweiterung wurde durch $TRANSLATORS$ iin Deutsch übersetzt.",
+    "description": "The credit text for the translator. See https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translator-credit-inside-of-add-on for how to translate this.",
+    "placeholders": {
+      "translators": { "content": "$1", "example": "<a href=\"https://github.com/rugk/\">@rugk</a>" }
+    },
+    "hash": "a6f5deecd624d5f8cd58350c72dd8fdf"
+  },
+  "translatorLink": {
+    "message": "https://netzgrenze.org/",
+    "description": "The link to the translator's GitHub profile.",
+    "hash": "4d3e264a9b174cc708698a20c68e50fc"
+  },
+  "translatorUsername": {
+    "message": "altheeagle",
+    "description": "The username that the translator wants to be referred to.",
+    "hash": "0001939e1fe5f05e240fd2a81b751f99"
+  },
+  // ARIA labels/descriptions
+  "dismissIconDescription": {
+    "message": "Diese Meldung schließen.",
+    "description": "the aria label for the close button of the message box",
+    "hash": "632720ab193dcacba4286cb364124856"
+  },
+  "ariaMessageLoading": {
+    "message": "lade Meldung",
+    "description": "the aria label to label the message box as an info message box",
+    "hash": "570016a957498a1fa1b3e818eb282adb"
+  },
+  "ariaMessageInfo": {
+    "message": "Informationsmeldung",
+    "description": "the aria label to label the message box as an info message box",
+    "hash": "5f54e42067e19895a2641b17a5233418"
+  },
+  "ariaMessageSuccess": {
+    "message": "Erfolgsmeldung",
+    "description": "the aria label to label the message box as an success message box",
+    "hash": "334387b4ae53483d17f11519a70dd3af"
+  },
+  "ariaMessageError": {
+    "message": "Fehlermeldung",
+    "description": "the aria label to label the message box as an error message box",
+    "hash": "fcda6eedc61727fe8aae7392a0a541a5"
+  },
+  "ariaMessageWarning": {
+    "message": "Warnmeldung",
+    "description": "the aria label to label the message box as an warning message box",
+    "hash": "8a5dd7528bead1ccd27cb7430d797bd2"
+  },
+  "infoButton": {
+    "message": "ℹ️ Information",
+    "hash": "171abeeb1189da7b938b19f3786431da"
+  },
+  "optionsButton": {
+    "message": "⚙️ Einstellungen",
+    "hash": "81f0637f8571cec14f88abf6eda188d9"
+  },
+  "donateButton": {
+    "message": "❤️ Spenden",
+    "hash": "2b73ca0ac809838239c3ac0d891403c2"
+  },
+  "resetButton": {
+    "message": "Alle Einstellungen zurücksetzten",
+    "hash": "4bb60c6c7e7b9e2ff987c244e76ee044"
+  },
+  "manageTitle": {
+    "message": "Kontoeinstellungen",
+    "hash": "3eed52a909b5fce3fc87b1840b3adf6a"
+  },
+  "manageNote": {
+    "message": "Hier findest du die Einstellungen für das ausgewählte Thunderbird Send Konto. Für allgemeine Einstellungen klicke auf \"⚙️ Einstellungen\" oder gehe im Thunderbird Menü (≡) >🧩 Add-ons und Themes.",
+    "hash": "dc3d59bea8745f633680b97f36753007"
+  },
+  "manageGetList": {
+    "message": "Hier eine Liste von $link$ und deren maximalen Uploadgrößen.",
+    "placeholders": {
+      "link": { "content": "$1" }
+    },
+    "hash": "41aaf0cc0d0542a291533a8ae6635ec4"
+  },
+  "manageListLinkText": {
+    "message": "Öffentlichen Send Instanzen",
+    "hash": "d064305b6169921b7686168cabf89b89"
+  },
+  "manageService": {
+    "message": "URL der Send Instanz:",
+    "hash": "66d04de4ce35a8811ea3e228d00abc4b"
+  },
+  "manageVerifyButton": {
+    "message": "Überprüfen",
+    "hash": "3ec990258b0577f355ad1c4f634b0852"
+  },
+  "manageDownloadLimit": {
+    "message": "Standard Anzahl Downloads",
+    "hash": "3f1be22509a6f80471e6f40f4d8c0287"
+  },
+  "manageDownloadLimitHelp": {
+    "message": "So oft kann die Datei heruntergeladen werden. Bitte beachte, dass die eingetragene Anzahl unter der Anzahl der maximalen Downloads der gewählen Send Instanz liegt.",
+    "hash": "e696432d746bbb29086d887b7997f740"
+  },
+  "manageTimeLimit": {
+    "message": "Standard Ablaufzeit:",
+    "hash": "d3d49d4ff11268789042454ce629262b"
+  },
+  "manageTimeLimitHelp": {
+    "message": "Die Dateien stehen für die angegebene Zeit zur Verfügung. Bitte beachte, dass die Dauer unter der maximale Verfügbarkeit der gewählen Send Instanz liegt.",
+    "hash": "d9b425c16a17ab33d9e50ff45fdfb639"
+  },
+  "manageDays": {
+    "message": "Tage",
+    "hash": "58a3b3c7a7282d2c5bb3227a3c77de7f"
+  },
+  "manageHours": {
+    "message": "Stunden",
+    "hash": "2ea7b79ca5e303e298c5a0c497df1a77"
+  },
+  "manageMinutes": {
+    "message": "Minuten",
+    "hash": "f4ea5db97ec0862be67da7286b7b3b38"
+  },
+  "manageMaxSize": {
+    "message": "Maximale Dateigröße",
+    "hash": "919b227007eadf4b22c3b4916551d781"
+  },
+  "manageMaxSizeHelp": {
+    "message": "Die maximale Dateigröße der gewählen Send Instanz.",
+    "hash": "fd8acc33c44a4fa3385611ae684b6d4e"
+  },
+  "manageGiB": {
+    "message": "GiB",
+    "hash": "60f4d26c41f2ec82dc56b8029734de3f"
+  },
+  "manageSuccess": {
+    "message": "Send Instanz erfolgreich geprüft!",
+    "hash": "a9ae6ebc027a2841df6ebde2aa9844c8"
+  },
+  "manageError": {
+    "message": "Die Send Instanz konnte nicht überprüft werden",
+    "hash": "a4580221c2ad7eb5402c9c36973e500a"
+  },
+  "popupFile": {
+    "message": "Dateiname:",
+    "hash": "bfd79f083b9579774c395da0904d84b7"
+  },
+  "popupTotalSize": {
+    "message": "Gesamtgröße:",
+    "hash": "b348703e816406cdbcdbbfa9a7ddfa6b"
+  },
+  "popupSize": {
+    "message": "Größe:",
+    "hash": "7ff31afb628c96239f8312a80de35c55"
+  },
+  "popupDownloadLimit": {
+    "message": "Anzahl Downloads:",
+    "hash": "e3f502d1f36c542d2cc9682143374a15"
+  },
+  "popupDownloadLimitDesc": {
+    "message": "Die Datei steht für diese Anazhl von Downloads zur Verfügung. Bitte beachte, dass die eingetragene Anzahl unter der Anzahl der maximalen Downloads der gewählen Send Instanz liegt.",
+    "hash": "069b1d9c2ad9cdf526ad05ac3347c975"
+  },
+  "popupTimeLimit": {
+    "message": "Ablaufzeit:",
+    "hash": "1b9204f79fb030377c9a9ca8921d6417"
+  },
+  "popupDays": {
+    "message": "Tage",
+    "hash": "58a3b3c7a7282d2c5bb3227a3c77de7f"
+  },
+  "popupHours": {
+    "message": "Stunden",
+    "hash": "2ea7b79ca5e303e298c5a0c497df1a77"
+  },
+  "popupMinutes": {
+    "message": "Minuten",
+    "hash": "f4ea5db97ec0862be67da7286b7b3b38"
+  },
+  "popupTimeLimitDesc": {
+    "message": "Die Dateien stehen für die angegebene Zeit zur Verfügung. Bitte beachte, dass die Dauer unter der maximale Verfügbarkeit der gewählen Send Instanz liegt.",
+    "hash": "865668efc84b83a7f5295241dbc764db"
+  },
+  "popupPwdProtect": {
+    "message": "Mit Passwort schützen (hier Klicken)",
+    "hash": "ff18e5ed7259bb18786cf63b03d3ee27"
+  },
+  "popupPwdWarning": {
+    "message": "Das Passwort sollte dem Empfänger auf einem anderen Weg mitgeteilt werden. Wenn das Passwort auch in der E-Mail mit dem Anhang übermittelt wird, erhöht dies nicht die Sicherheit.",
+    "hash": "f8f18c0cbbcc9cad5d7e46fa5c48c6c5"
+  },
+  "popupPassword": {
+    "message": "Optionales Passwort:",
+    "hash": "b2e7336fc750ef65b3d149be181d6299"
+  },
+  "popupPwdPlaceholder": {
+    "message": "Passwort",
+    "hash": "98366484e203f7da68c037522bc7134e"
+  },
+  "popupPwdShow": {
+    "message": "Passwort Anzeigen",
+    "hash": "edbb6de06e1cd2905cbffda7ea9b4406"
+  },
+  "popupPwdHelp": {
+    "message": "Die Datei kann optional mit einem Passwort versehen werden.",
+    "hash": "aa06d94d701032b4a52fb5befcdbd713"
+  },
+  "popupPwdPronunciation": {
+    "message": "Passwort Ausprachehilfe:",
+    "hash": "f659481b15f195c4eee444f10c3b0481"
+  },
+  "popupPwdSuggest": {
+    "message": "Sicherers Passwort vorschlagen (hier Klicken)",
+    "hash": "988e91c110204b22fef2bdb06b373ebe"
+  },
+  "popupPwdGenOpt1": {
+    "message": "Passwort mit Sonderzeichen (15 Zeichen)",
+    "hash": "6c842c9ebc83ccb7a20a77f6e08487ae"
+  },
+  "popupPwdGenOpt1Title": {
+    "message": "Passwort mit Groß- und Kleinschreibung, Zahlen und Sonderzeichen.",
+    "hash": "1361f68430fae1e758562d55617381d1"
+  },
+  "popupPwdGenOpt2": {
+    "message": "Passwort (15 Zeichen)",
+    "hash": "32af040b155684311e69c34828c4f7b5"
+  },
+  "popupPwdGenOpt2Title": {
+    "message": "Passwort mit Groß- und Kleinschreibung und Zahlen.",
+    "hash": "cfee915972a69d4e469c29be2bb724c0"
+  },
+  "popupPwdGenOpt3": {
+    "message": "Passphrase, lange Wörter (6 Wörter)",
+    "hash": "ddd3db8827cc7adcc4655b26ebcab41a"
+  },
+  "popupPwdGenOpt3Title": {
+    "message": "Passphrase mit langen englischen Wörtern mit maximal 9 Zeichen pro Wort",
+    "hash": "899d05414cd9687618cbe1cc3da03cb9"
+  },
+  "popupPwdGenOpt4": {
+    "message": "Passphrase, kurze Wörter (8 Wörter)",
+    "hash": "e53121902d2e139c27d02143ea2627b7"
+  },
+  "popupPwdGenOpt4Title": {
+    "message": "Passphrase mit kurzen englischen Wörtern mit maximal 5 Zeichen pro Wort.",
+    "hash": "117e76553653f53cccc675c7a40ba910"
+  },
+  "popupPwdGenOpt5": {
+    "message": "Emojipassword (Thematisch, 7 Zeichen)",
+    "hash": "480e6e7d8e541a196a1a78a5b7abc5b7"
+  },
+  "popupPwdGenOpt5Title": {
+    "message": "Emojipasswort mit einem Basisemoji und thematisch passenden Emojis",
+    "hash": "2d1903da251644055cc21db9c4676f61"
+  },
+  "popupPwdGenOpt6": {
+    "message": "Eomjipasswort (8 Zeichen)",
+    "hash": "279692f4a8832e5d073b34337e271aeb"
+  },
+  "popupPwdGenOpt6Title": {
+    "message": "Emojipasswort mit zufälligen Emojis",
+    "hash": "78673867881a1e0663133b3454fb5df3"
+  },
+  "popupPwdGenButton": {
+    "message": "🔒 Passwort erzeugen",
+    "hash": "40c73863f8ae1f8b03e0c868591b6fd2"
+  },
+  "popupUploadButton": {
+    "message": "📤 Verschlüsseln und Hochladen",
+    "hash": "2d43dbbc1badf8d84d55460326795e7d"
+  },
+  "popupCancelButton": {
+    "message": "❌ Abbrechen",
+    "hash": "f52c4113711df2acfbb7b40e5f6dbe6e"
+  },
+  "popupB": {
+    "message": "B",
+    "hash": "bcdd4ddfd851cce6e4fb6dcc3773ade4"
+  },
+  "optionsTitle": {
+    "message": "Einstellungen",
+    "hash": "531dad0078a72193602b18495f0ad4e9"
+  },
+  "optionsNote": {
+    "message": "Allgemeine Einstellungen für Thunderbird Send. Um ein Konto zu konfigurieren gehe in das Thunderbird Menü (≡) > ⚙️ Einstellungen > ✏️ Verfassen > Anhänge.",
+    "hash": "c7c25098ef3e3b3cfb63075aafb3b6c0"
+  },
+  "optionsNotifLabel": {
+    "message": "Benachrichtigungen Anzeigen.",
+    "hash": "8456520206478c303e4784149b6aebd4"
+  },
+  "optionsPopupLabel": {
+    "message": "Verwende eingebettetes Fenster",
+    "hash": "9741c4e10aac9917e891c53888a8f5fd"
+  },
+  "optionsPopupDesc": {
+    "message": "Die eingebettete Version des Thunderbird Send Fensters verwenden, anstatt ein separates Fenster zu öffnen, wenn die Schaltfläche im Fenster \"Mail verfassen\" verwendet wird. Erfordert Thunderbird 115 oder höher.",
+    "hash": "c804c2d1c2c80aef8c5323fb92187eba"
+  },
+  "optionsLinkLabel": {
+    "message": "Link zur Send Instanz hinzufügen",
+    "hash": "cd69090c97d8ab00237a27771c66a2da"
+  },
+  "optionsLinkDesc": {
+    "message": "Fügt einen “Learn more about” Link für die Send Instanz in die Fußzeile der Nachricht ein.",
+    "hash": "6b188549b8f02fd517085693a3cc7790"
+  },
+  "notifInstallTitle": {
+    "message": "$name$ installiert.",
+    "placeholders": {
+      "name": { "content": "$1" }
+    },
+    "hash": "7968f8c4726481eddd48de2a9065f558"
+  },
+  "notifInstallMessage": {
+    "message": "Vielen Dank für das Installieren der Erweiterung “$name$”! Version: $version$",
+    "placeholders": {
+      "name": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "960c695d7484cf34ca0b5c6ecca26936"
+  },
+  "notifUpdateTitle": {
+    "message": "$name$ upgedatet",
+    "placeholders": {
+      "name": { "content": "$1" }
+    },
+    "hash": "d5dd219605c83b165e09257038110e82"
+  },
+  "notifUpdateMessage": {
+    "message": "Die Erweiterung “$name$” wurde auf den Stand $version$ gebracht. Klicken um die Versionshinweise zu lesen.\n\n❤️ Ein herzliches Dankeschön an die großzügigen Spender, die es mir ermöglichen, die Arbeit an dieser Erweiterung fortzusetzen.",
+    "placeholders": {
+      "name": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "a549ba04bb830cf149f17c6cb738e03a"
+  },
+  "notifUnsupportedVersionTitle": {
+    "message": "❌ Diese Version der Send Instanz wird nicht unterstützt",
+    "hash": "bd3928cd84235a71de15c2b7b36215cb"
+  },
+  "notifUnsupportedVersionMessage": {
+    "message": "Fehler: Die Version ($version$) der Send Instanz “$service$” wird nicht Unterstützt. Diese Erweiterung verlangt die Mindestversion 3.",
+    "placeholders": {
+      "service": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "3e7f558c49bf43079940d3426c4ed5db"
+  },
+  "notifUnableVersionTitle": {
+    "message": "❌ Die Version der Send Instanz konnte nicht ermittelt werden.",
+    "hash": "3bddd18f7ed4bef4e6c67bcabb9a37f8"
+  },
+  "notifUnableVersionMessage": {
+    "message": "Fehler: Die Version der Send Instanz “$service$” konnte nicht ermittelt werden. Bitte Prüfe deine Internetverbindung und die Einstellungen.",
+    "placeholders": {
+      "service": { "content": "$1" }
+    },
+    "hash": "c54b14bf3d7209e8ae889d9ffc08eb4b"
+  },
+  "notifOpenPopupTitle": {
+    "message": "ℹ️ Eingebettetes Fenster öffnen",
+    "hash": "1817f1f9bc641fb7970bc96e1d365cbe"
+  },
+  "notifOpenPopupMessage": {
+    "message": "Das eingebettete Fenster für Thunderbird Send konnte nicht geöffnet werden. Bitte klicke die Schaltfläche \"Thunderbird Send\" im Fenster \"Verfassen\" an.",
+    "hash": "22c729622f5c1f910a5c13ec1a009bf9"
+  },
+  "notifUploadTitle": {
+    "message": "📤 Anhang wird verschlüsselt und hochgeladen",
+    "hash": "79ae78b363e411e3ce5866bd4fff734b"
+  },
+  "notifUploadCancelTitle": {
+    "message": "❌ Hochladen des Anhangs abgebrochen",
+    "hash": "3627661cc73364a20e20b717cc9c0a1d"
+  },
+  "notifUploadCancelMessage": {
+    "message": "Das hochladen der Datei “$filename$” wurde abgebrochen.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "390e29a3cfbc886049afec7ca23f51eb"
+  },
+  "notifUploadUnableTitle": {
+    "message": "❌ Der Anhang konnte nicht hochgeladen werden",
+    "hash": "d54d1b00c07e08d62e340633383e6633"
+  },
+  "notifUploadUnableMessage": {
+    "message": "Fehler: Die Datei “$filename$” konnte wegen des Fehlers “$error$“ nicht hochgeladen werden. Das Download- oder Zeitlimit liegt über den von der Send Instanz unterstützen Werten.",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "error": { "content": "$2" }
+    },
+    "hash": "a82e2cb8880222e68fa17541f0740740"
+  },
+  "notifUnablePasswordTitle": {
+    "message": "❌ Es konnte kein Passwort gesetzt werden",
+    "hash": "ed8e5324d9d0fab8449767a0786f2352"
+  },
+  "notifUnablePasswordMessage": {
+    "message": "Fehler: Für die Datei “$filename$” konnte kein Passwort gesetzt werden.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "f82f8a26c50043595eee4d6599a6b6d1"
+  },
+  "notifUploadDoneTitle": {
+    "message": "🔗 Anhang verschlüsselt und hochgeladen",
+    "hash": "b86dbbf0a7a70f98d9f62ede0b6e1a31"
+  },
+  "notifUploadDoneMessage": {
+    "message": "Due Datei “$filename$” wurde erfolgreich verschlüsselt und hochgeladen. Dauer $time$.",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "time": { "content": "$2" }
+    },
+    "hash": "1d18cfc5e4d8ca26ca22f1a88b351a46"
+  },
+  "notifUploadErrorMessage": {
+    "message": "Fehler: Die Datei “$filename$” konnte nicht hochgeladen werden. Fehlermeldung: $error$.\nBitte überprüfe deine Internetverbindung.",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "error": { "content": "$2" }
+    },
+    "hash": "5a6656c7f489b32f51896569b2badc4a"
+  },
+  "notifCancelAlreadyTitle": {
+    "message": "❌ Hochladen bereits abgebrochen",
+    "hash": "f1bb458acdaac8e7f97853580c5fa3f1"
+  },
+  "notifCancelAlreadyMessage": {
+    "message": "Fehler: Das hochladen der Datei “$filename$” wurde bereits abgebrochen.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "bf3178861f443794f59cbac4d8598cf7"
+  },
+  "notifUploadCancelingTitle": {
+    "message": "ℹ️ Hochladen abbrechen",
+    "hash": "1804bc8e3f7f991d702269d0918b243a"
+  },
+  "notifUploadCancelingMessage": {
+    "message": "Das Hochladen der Datei “$filename$” wird abgebrochen.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "b9973740701556249942d61029f6d1a2"
+  },
+  "notifNotFoundTitle": {
+    "message": "❌ Datei konnte nicht gefunden werden",
+    "hash": "348c767599faea62248248131850fe45"
+  },
+  "notifNotFoundCancelMessage": {
+    "message": "Fehler: Die Datei konnte nicht gefunden werden.",
+    "hash": "b83d970a7edf504e70cf2703fae27852"
+  },
+  "notifNotFoundDeleteMessage": {
+    "message": "Fehler: Die Datei konnte nicht gefunden werden.",
+    "hash": "e1bfe6922c9064ffcc912d2fd916073b"
+  },
+  "notifDeletingTitle": {
+    "message": "ℹ️ Datei löschen",
+    "hash": "78be45dab5a98c8e25689cc10919ffe8"
+  },
+  "notifDeletingMessage": {
+    "message": "Die hochgeladene Datei “$filename$” wird gelöscht.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "80f233a41e4d4ca1ff269280477508b7"
+  },
+  "notifDeleteSuccessTitle": {
+    "message": "🗑️ Datei gelöscht",
+    "hash": "8294775af921cf8ec24d84e0234d9683"
+  },
+  "notifDeleteSuccessMessage": {
+    "message": "Die hochgeladene Datei “$filename$” wurde gelöscht.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "81dda5d3b5a9c7dbebcb2f6856eaa7c2"
+  },
+  "notifDeleteUnableTitle": {
+    "message": "❌ Datei kann nicht gelöscht werden",
+    "hash": "ab8139fc0f3edca0238e21d2f35e0557"
+  },
+  "notifDeleteUnableMessage": {
+    "message": "Fehler: Die hochgeladene Datei “$filename$” kann nicht gelöscht werden: $text$. Vielleicht wurde die Datei schon gelöscht oder bereits abgelaufen.",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "text": { "content": "$2" }
+    },
+    "hash": "9f8c70423ec767a037cf8a1b4d8b06a4"
+  },
+  "__WET_LOCALE__": { "message": "de" }
+}
