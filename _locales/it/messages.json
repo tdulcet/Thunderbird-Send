@@ -1,0 +1,572 @@
+{
+  // manifest.json
+  "extensionName": {
+    "message": "Fornitore Filelink per Send",
+    "description": "Name of the extension.",
+    "hash": "8a99fec4c8b52c118133d0fcacda83e5"
+  },
+  "extensionDescription": {
+    "message": "Cifra e carica in sicurezza allegati di grandi dimensioni su qualsiasi istanza Send (ex Firefox Send)",
+    "description": "Description of the extension.",
+    "hash": "03d0ff9650a611702e21c941bea4d972"
+  },
+  "composeActionButtonTitle": {
+    "message": "Thunderbird Send, Aggiungi un allegato per iniziare",
+    "description": "The title for the button, which opens the popup.",
+    "hash": "e212511f0cd4ead2b68121509a2c11ce"
+  },
+  "composeActionButtonLabel": {
+    "message": "Thunderbird Send",
+    "description": "The label for the button, which opens the popup.",
+    "hash": "44406eacb6713e0ffe5601867b571d17"
+  },
+  // errors or other messages (mostly for settings)
+  "errorShowingMessage": {
+    "message": "Impossibile visualizzare il messaggio.",
+    "description": "When there is an error when showing the error/info/….",
+    "hash": "a9440e4f824a372841d4de2b7e2643ee"
+  },
+  "couldNotLoadOptions": {
+    "message": "Impossibile caricare le impostazioni.",
+    "description": "When one or all settings could not be loaded.",
+    "hash": "9497a5d2c9473aeb2ed9601f46c456be"
+  },
+  "couldNotSaveOption": {
+    "message": "Impossibile salvare questa impostazione.",
+    "description": "When a setting could not be saved.",
+    "hash": "6bcb9e36d2c33172b948515a9c50aa8e"
+  },
+  "messageUndoButton": {
+    "message": "Annulla",
+    "description": "The text of a button that undoes the last action.",
+    "hash": "a85e775d7404b86c8060a20efd31241c"
+  },
+  "couldNotUndoAction": {
+    "message": "Impossibile annullare l'azione.",
+    "description": "Shown when an action cannot be undone.",
+    "hash": "d2883c6ca0164afc4f360f3e02e3166a"
+  },
+  "resettingOptionsWorked": {
+    "message": "Le impostazioni verranno ripristinate al loro valore predefinito.",
+    "description": "The message shown, when the options of the settings were reset.",
+    "hash": "257b99ed2a074fccbfc658d770b50107"
+  },
+  "resettingOptionsFailed": {
+    "message": "Impossibile ripristinare le impostazioni!",
+    "description": "The message shown, when the options of the settings could not have been reset.",
+    "hash": "76e950d2db72a824482411ca6564fb1f"
+  },
+  // options
+  "someSettingsAreManaged": {
+    "message": "Alcune impostazioni sono gestite dall'amministratore di sistema e non possono essere modificate.",
+    "description": "The message, which appears, when settings are pre-defined (as managed options) by administrators.",
+    "hash": "148604ebbeb7df28974d8233f1418d1f"
+  },
+  "optionIsDisabledBecauseManaged": {
+    "message": "Questa impostazione è disattivata in quanto è configurata dall'amministratore di sistema.",
+    "description": "The title (tooltip) shown, when hovering over a disabled, managed option.",
+    "hash": "50fb70682c64e1a1fb4d8884b33cca64"
+  },
+  "optionLearnMore": {
+    "message": "Maggiori informazioni",
+    "description": "When a link to an explainer needs to be added, this is the link text.",
+    "hash": "9085b09f4748be12ab0c241d2e643b31"
+  },
+  "optionsResetButton": {
+    "message": "Ripristina impostazioni",
+    "description": "The button to delete all current settings and load the defaults, shown in the add-on settings.",
+    "hash": "4bb60c6c7e7b9e2ff987c244e76ee044"
+  },
+  // options footer
+  "translatorCredit": {
+    "message": "Questo add-on è stato tradotto in italiano da $TRANSLATORS$.",
+    "description": "The credit text for the translator. See https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translator-credit-inside-of-add-on for how to translate this.",
+    "placeholders": {
+      "translators": { "content": "$1", "example": "<a href=\"https://github.com/rugk/\">@rugk</a>" }
+    },
+    "hash": "a6f5deecd624d5f8cd58350c72dd8fdf"
+  },
+  "translatorLink": {
+    "message": "https://www.cuche.cc",
+    "description": "The link to the translator's GitHub profile.",
+    "hash": "4d3e264a9b174cc708698a20c68e50fc"
+  },
+  "translatorUsername": {
+    "message": "Cuche",
+    "description": "The username that the translator wants to be referred to.",
+    "hash": "0001939e1fe5f05e240fd2a81b751f99"
+  },
+  // ARIA labels/descriptions
+  "dismissIconDescription": {
+    "message": "Chiudi questo messaggio",
+    "description": "the aria label for the close button of the message box",
+    "hash": "632720ab193dcacba4286cb364124856"
+  },
+  "ariaMessageLoading": {
+    "message": "messaggio di caricamento",
+    "description": "the aria label to label the message box as an info message box",
+    "hash": "570016a957498a1fa1b3e818eb282adb"
+  },
+  "ariaMessageInfo": {
+    "message": "messaggio di informazione",
+    "hash": "5f54e42067e19895a2641b17a5233418"
+  },
+  "ariaMessageSuccess": {
+    "message": "messaggio di successo",
+    "description": "the aria label to label the message box as an success message box",
+    "hash": "334387b4ae53483d17f11519a70dd3af"
+  },
+  "ariaMessageError": {
+    "message": "messaggio di errore",
+    "description": "the aria label to label the message box as an error message box",
+    "hash": "fcda6eedc61727fe8aae7392a0a541a5"
+  },
+  "ariaMessageWarning": {
+    "message": "messaggio di avviso",
+    "description": "the aria label to label the message box as an warning message box",
+    "hash": "8a5dd7528bead1ccd27cb7430d797bd2"
+  },
+  "infoButton": {
+    "message": "ℹ️ Informazioni",
+    "hash": "171abeeb1189da7b938b19f3786431da"
+  },
+  "optionsButton": {
+    "message": "⚙️ Opzioni",
+    "hash": "81f0637f8571cec14f88abf6eda188d9"
+  },
+  "donateButton": {
+    "message": "❤️ Dona",
+    "hash": "2b73ca0ac809838239c3ac0d891403c2"
+  },
+  "resetButton": {
+    "message": "Ripristina impostazioni",
+    "hash": "4bb60c6c7e7b9e2ff987c244e76ee044"
+  },
+  "manageTitle": {
+    "message": "Impostazioni Account",
+    "hash": "3eed52a909b5fce3fc87b1840b3adf6a"
+  },
+  "manageNote": {
+    "message": "Queste sono le impostazioni per l'account Thunderbird Send selezionato. Per le impostazioni globali, clicca sul pulsante \"Opzioni\" oppure vai sul menu di Thunderbird (≡) e seleziona 🧩 Componenti aggiuntivi e temi",
+    "hash": "dc3d59bea8745f633680b97f36753007"
+  },
+  "manageGetList": {
+    "message": "Clicca sul link seguente per una lista di $link$ con i corrispondenti limiti di invio",
+    "placeholders": {
+      "link": { "content": "$1" }
+    },
+    "hash": "41aaf0cc0d0542a291533a8ae6635ec4"
+  },
+  "manageListLinkText": {
+    "message": "istanze Send pubbliche",
+    "hash": "d064305b6169921b7686168cabf89b89"
+  },
+  "manageService": {
+    "message": "URL dell'istanza Send: ",
+    "hash": "66d04de4ce35a8811ea3e228d00abc4b"
+  },
+  "manageVerifyButton": {
+    "message": "Verifica",
+    "hash": "3ec990258b0577f355ad1c4f634b0852"
+  },
+  "manageDownloadLimit": {
+    "message": "Limite di download predefinito:",
+    "hash": "3f1be22509a6f80471e6f40f4d8c0287"
+  },
+  "manageDownloadLimitHelp": {
+    "message": "I file scadranno dopo il numero di download specificato. Accertati che sia inferiore rispetto al valore massimo supportato da questa istanza Send.",
+    "hash": "e696432d746bbb29086d887b7997f740"
+  },
+  "manageTimeLimit": {
+    "message": "Limite di tempo predefinito:",
+    "hash": "d3d49d4ff11268789042454ce629262b"
+  },
+  "manageTimeLimitHelp": {
+    "message": "I file scadranno dopo questo tempo. Accertati che sia inferiore rispetto al valore massimo supportato da questa istanza Send.",
+    "hash": "d9b425c16a17ab33d9e50ff45fdfb639"
+  },
+  "manageDays": {
+    "message": "giorni",
+    "hash": "58a3b3c7a7282d2c5bb3227a3c77de7f"
+  },
+  "manageHours": {
+    "message": "ore",
+    "hash": "2ea7b79ca5e303e298c5a0c497df1a77"
+  },
+  "manageMinutes": {
+    "message": "minuti",
+    "hash": "f4ea5db97ec0862be67da7286b7b3b38"
+  },
+  "manageMaxSize": {
+    "message": "Dimensione massima dei file:",
+    "hash": "919b227007eadf4b22c3b4916551d781"
+  },
+  "manageMaxSizeHelp": {
+    "message": "Dimensione massima dei file supportata da questa istanza Send.",
+    "hash": "fd8acc33c44a4fa3385611ae684b6d4e"
+  },
+  "manageGiB": {
+    "message": "GiB",
+    "hash": "60f4d26c41f2ec82dc56b8029734de3f"
+  },
+  "manageSuccess": {
+    "message": "Istanza Send verificata!",
+    "hash": "a9ae6ebc027a2841df6ebde2aa9844c8"
+  },
+  "manageError": {
+    "message": "Impossibile verificare l'istanza Send",
+    "hash": "a4580221c2ad7eb5402c9c36973e500a"
+  },
+  "popupFile": {
+    "message": "Nome file:",
+    "hash": "bfd79f083b9579774c395da0904d84b7"
+  },
+  "popupTotalSize": {
+    "message": "Dimensione totale:",
+    "hash": "b348703e816406cdbcdbbfa9a7ddfa6b"
+  },
+  "popupSize": {
+    "message": "Dimensione:",
+    "hash": "7ff31afb628c96239f8312a80de35c55"
+  },
+  "popupDownloadLimit": {
+    "message": "Limite di download:",
+    "hash": "e3f502d1f36c542d2cc9682143374a15"
+  },
+  "popupDownloadLimitDesc": {
+    "message": "Il file scadrà dopo il numero di download specificato. Accertati che sia inferiore rispetto al valore massimo supportato da questa istanza Send.",
+    "hash": "069b1d9c2ad9cdf526ad05ac3347c975"
+  },
+  "popupTimeLimit": {
+    "message": "Limite di tempo:",
+    "hash": "1b9204f79fb030377c9a9ca8921d6417"
+  },
+  "popupDays": {
+    "message": "giorni",
+    "hash": "58a3b3c7a7282d2c5bb3227a3c77de7f"
+  },
+  "popupHours": {
+    "message": "ore",
+    "hash": "2ea7b79ca5e303e298c5a0c497df1a77"
+  },
+  "popupMinutes": {
+    "message": "minuti",
+    "hash": "f4ea5db97ec0862be67da7286b7b3b38"
+  },
+  "popupTimeLimitDesc": {
+    "message": "Il file scadrà dopo questo tempo. Accertati che sia inferiore rispetto al valore massimo supportato da questa istanza Send.",
+    "hash": "865668efc84b83a7f5295241dbc764db"
+  },
+  "popupPwdProtect": {
+    "message": "Proteggi con una password (clicca per aggiungerla)",
+    "hash": "ff18e5ed7259bb18786cf63b03d3ee27"
+  },
+  "popupPwdWarning": {
+    "message": "Utilizza un altro modo per inviare la password al tuo corrispondente. Allegare la password nella stessa email contenente il link non fornisce ulteriore sicurezza.",
+    "hash": "f8f18c0cbbcc9cad5d7e46fa5c48c6c5"
+  },
+  "popupPassword": {
+    "message": "Password facoltativa:",
+    "hash": "b2e7336fc750ef65b3d149be181d6299"
+  },
+  "popupPwdPlaceholder": {
+    "message": "Password",
+    "hash": "98366484e203f7da68c037522bc7134e"
+  },
+  "popupPwdShow": {
+    "message": "Mostra password",
+    "hash": "edbb6de06e1cd2905cbffda7ea9b4406"
+  },
+  "popupPwdHelp": {
+    "message": "Proteggi facoltativamente il file con una password.",
+    "hash": "aa06d94d701032b4a52fb5befcdbd713"
+  },
+  "popupPwdPronunciation": {
+    "message": "Pronuncia della password:",
+    "hash": "f659481b15f195c4eee444f10c3b0481"
+  },
+  "popupPwdSuggest": {
+    "message": "Suggerisci password robusta (clicca per mostrare)",
+    "hash": "988e91c110204b22fef2bdb06b373ebe"
+  },
+  "popupPwdGenOpt1": {
+    "message": "Password con simboli (15 caratteri)",
+    "hash": "6c842c9ebc83ccb7a20a77f6e08487ae"
+  },
+  "popupPwdGenOpt1Title": {
+    "message": "Password con lettere maiuscole/minuscole, cifre e simboli",
+    "hash": "1361f68430fae1e758562d55617381d1"
+  },
+  "popupPwdGenOpt2": {
+    "message": "Password (15 caratteri)",
+    "hash": "32af040b155684311e69c34828c4f7b5"
+  },
+  "popupPwdGenOpt2Title": {
+    "message": "Password con lettere maiuscole/minuscole e cifre",
+    "hash": "cfee915972a69d4e469c29be2bb724c0"
+  },
+  "popupPwdGenOpt3": {
+    "message": "Passphrase con parole lunghe (6)",
+    "hash": "ddd3db8827cc7adcc4655b26ebcab41a"
+  },
+  "popupPwdGenOpt3Title": {
+    "message": "Passphrase con parole lunghe fino a a 9 caratteri",
+    "hash": "899d05414cd9687618cbe1cc3da03cb9"
+  },
+  "popupPwdGenOpt4": {
+    "message": "Passphrase con parole corte (8)",
+    "hash": "e53121902d2e139c27d02143ea2627b7"
+  },
+  "popupPwdGenOpt4Title": {
+    "message": "Passphrase con parole corte fino a 5 caratteri",
+    "hash": "117e76553653f53cccc675c7a40ba910"
+  },
+  "popupPwdGenOpt5": {
+    "message": "Password emoji con sequenze (7)",
+    "hash": "480e6e7d8e541a196a1a78a5b7abc5b7"
+  },
+  "popupPwdGenOpt5Title": {
+    "message": "Password con emoji composte (include famiglie, generi, capelli ed altre sequenze)",
+    "hash": "2d1903da251644055cc21db9c4676f61"
+  },
+  "popupPwdGenOpt6": {
+    "message": "Password emoji (8)",
+    "hash": "279692f4a8832e5d073b34337e271aeb"
+  },
+  "popupPwdGenOpt6Title": {
+    "message": "Password con emoji di base",
+    "hash": "78673867881a1e0663133b3454fb5df3"
+  },
+  "popupPwdGenButton": {
+    "message": "🔒 Genera in sicurezza",
+    "hash": "40c73863f8ae1f8b03e0c868591b6fd2"
+  },
+  "popupUploadButton": {
+    "message": "📤 Cifra e carica",
+    "hash": "2d43dbbc1badf8d84d55460326795e7d"
+  },
+  "popupCancelButton": {
+    "message": "❌ Annulla",
+    "hash": "f52c4113711df2acfbb7b40e5f6dbe6e"
+  },
+  "popupB": {
+    "message": "B",
+    "hash": "bcdd4ddfd851cce6e4fb6dcc3773ade4"
+  },
+  "optionsTitle": {
+    "message": "Opzioni",
+    "hash": "531dad0078a72193602b18495f0ad4e9"
+  },
+  "optionsNote": {
+    "message": "Queste sono le impostazioni globali per Thunderbird Send. Per gestirne gli account, vai sul menu di Thunderbird (≡) > ⚙️ Impostazioni  > ✏️ Composizione > Allegati.",
+    "hash": "c7c25098ef3e3b3cfb63075aafb3b6c0"
+  },
+  "optionsNotifLabel": {
+    "message": "Mostra notifiche desktop",
+    "hash": "8456520206478c303e4784149b6aebd4"
+  },
+  "optionsPopupLabel": {
+    "message": "Utilizza popup d'azione",
+    "hash": "9741c4e10aac9917e891c53888a8f5fd"
+  },
+  "optionsPopupDesc": {
+    "message": "Utilizza il popup d'azione nella finestra di composizione del messaggio invece di una finestra a sé stante. Richiede Thunderbird 115 o superiore.",
+    "hash": "c804c2d1c2c80aef8c5323fb92187eba"
+  },
+  "optionsLinkLabel": {
+    "message": "Crea link per l'istanza Send",
+    "hash": "cd69090c97d8ab00237a27771c66a2da"
+  },
+  "optionsLinkDesc": {
+    "message": "Aggiunge un link \"Maggiori informazioni\" sull'istanza Send in calce al messaggio",
+    "hash": "6b188549b8f02fd517085693a3cc7790"
+  },
+  "notifInstallTitle": {
+    "message": "$name$ installato",
+    "placeholders": {
+      "name": { "content": "$1" }
+    },
+    "hash": "7968f8c4726481eddd48de2a9065f558"
+  },
+  "notifInstallMessage": {
+    "message": "Grazie per aver installato l'estensione “$name$”!\nVersione: $version$",
+    "placeholders": {
+      "name": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "960c695d7484cf34ca0b5c6ecca26936"
+  },
+  "notifUpdateTitle": {
+    "message": "$name$ aggiornato",
+    "placeholders": {
+      "name": { "content": "$1" }
+    },
+    "hash": "d5dd219605c83b165e09257038110e82"
+  },
+  "notifUpdateMessage": {
+    "message": "L'estensione “$name$” è stata aggiornata alla versione $version$. Clicca qui per vedere le note di rilascio.\n\n❤️ Un enorme ringraziamento a tutti i generosi donatori che mi hanno permesso di lavorare a quest'estensione",
+    "placeholders": {
+      "name": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "a549ba04bb830cf149f17c6cb738e03a"
+  },
+  "notifUnsupportedVersionTitle": {
+    "message": "❌ Versione dell'istanza Send non supportata",
+    "hash": "bd3928cd84235a71de15c2b7b36215cb"
+  },
+  "notifUnsupportedVersionMessage": {
+    "message": "Errore: L'istanza Send “$service$” utilizza una versione non supportata: $version$. Questa estensione richiede un Server con versione 3 o successive",
+    "placeholders": {
+      "service": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "3e7f558c49bf43079940d3426c4ed5db"
+  },
+  "notifUnableVersionTitle": {
+    "message": "❌ Impossibile determinare la versione dell'istanza Send",
+    "hash": "3bddd18f7ed4bef4e6c67bcabb9a37f8"
+  },
+  "notifUnableVersionMessage": {
+    "message": "Errore: Impossibile determinare la versione dell'istanza Send “$service$”. Controlla la connessione ad Internet e le impostazioni.",
+    "placeholders": {
+      "service": { "content": "$1" }
+    },
+    "hash": "c54b14bf3d7209e8ae889d9ffc08eb4b"
+  },
+  "notifOpenPopupTitle": {
+    "message": "ℹ️ Apri il popup per continuare",
+    "hash": "1817f1f9bc641fb7970bc96e1d365cbe"
+  },
+  "notifOpenPopupMessage": {
+    "message": "L'estensione non è stata in grado di aprire il popup direttamente; clicca sul pulsante \"Thunderbird Send\" nel pulsante della barra degli strumenti della finestra di composizione per continuare.",
+    "hash": "22c729622f5c1f910a5c13ec1a009bf9"
+  },
+  "notifUploadTitle": {
+    "message": "📤 Cifratura e caricamento dell'allegato",
+    "hash": "79ae78b363e411e3ce5866bd4fff734b"
+  },
+  "notifUploadCancelTitle": {
+    "message": "❌ Caricamento dell'allegato interrotto",
+    "hash": "3627661cc73364a20e20b717cc9c0a1d"
+  },
+  "notifUploadCancelMessage": {
+    "message": "Caricamento del file “$filename$” interrotto",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "390e29a3cfbc886049afec7ca23f51eb"
+  },
+  "notifUploadUnableTitle": {
+    "message": "❌ Impossibile caricare l'allegato",
+    "hash": "d54d1b00c07e08d62e340633383e6633"
+  },
+  "notifUploadUnableMessage": {
+    "message": "Errore: Impossibile caricare il file “$filename$”: $error$. Probabilmente i limiti di tempo o download sono superiori a quelli supportati dall'istanza Send.",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "error": { "content": "$2" }
+    },
+    "hash": "a82e2cb8880222e68fa17541f0740740"
+  },
+  "notifUnablePasswordTitle": {
+    "message": "❌ Impossibile aggiungere la password all'allegato",
+    "hash": "ed8e5324d9d0fab8449767a0786f2352"
+  },
+  "notifUnablePasswordMessage": {
+    "message": "Errore: impossibile aggiungere la password al file “$filename$”.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "f82f8a26c50043595eee4d6599a6b6d1"
+  },
+  "notifUploadDoneTitle": {
+    "message": "🔗 Allegato cifrato e caricato.",
+    "hash": "b86dbbf0a7a70f98d9f62ede0b6e1a31"
+  },
+  "notifUploadDoneMessage": {
+    "message": "Il file “$filename$” è stato correttamente cifrato e caricato in $time$! Scadrà dopo:",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "time": { "content": "$2" }
+    },
+    "hash": "1d18cfc5e4d8ca26ca22f1a88b351a46"
+  },
+  "notifUploadErrorMessage": {
+    "message": "Errore: impossibile caricare il file “$filename$”: $error$. Controlla la connessione ad Internet.",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "error": { "content": "$2" }
+    },
+    "hash": "5a6656c7f489b32f51896569b2badc4a"
+  },
+  "notifCancelAlreadyTitle": {
+    "message": "❌ Caricamento già annullato.",
+    "hash": "f1bb458acdaac8e7f97853580c5fa3f1"
+  },
+  "notifCancelAlreadyMessage": {
+    "message": "Errore: Il caricamento del file “$filename$” è stato già annullato.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "bf3178861f443794f59cbac4d8598cf7"
+  },
+  "notifUploadCancelingTitle": {
+    "message": "ℹ️ Annullamento caricamento",
+    "hash": "1804bc8e3f7f991d702269d0918b243a"
+  },
+  "notifUploadCancelingMessage": {
+    "message": "Annullo il caricamento del file “$filename$”.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "b9973740701556249942d61029f6d1a2"
+  },
+  "notifNotFoundTitle": {
+    "message": "❌ Impossibile trovare il file",
+    "hash": "348c767599faea62248248131850fe45"
+  },
+  "notifNotFoundCancelMessage": {
+    "message": "Errore: Impossibile trovare il file per annullarne il caricamento. Potrebbe essere già stato eliminato.",
+    "hash": "b83d970a7edf504e70cf2703fae27852"
+  },
+  "notifNotFoundDeleteMessage": {
+    "message": "Errore: Impossibile trovare il caricato per l'eliminazione. Potrebbe essere già stato eliminato.",
+    "hash": "e1bfe6922c9064ffcc912d2fd916073b"
+  },
+  "notifDeletingTitle": {
+    "message": "ℹ️ Eliminazione file",
+    "hash": "78be45dab5a98c8e25689cc10919ffe8"
+  },
+  "notifDeletingMessage": {
+    "message": "Eliminazione del file caricato “$filename$”.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "80f233a41e4d4ca1ff269280477508b7"
+  },
+  "notifDeleteSuccessTitle": {
+    "message": "🗑️ File eliminato",
+    "hash": "8294775af921cf8ec24d84e0234d9683"
+  },
+  "notifDeleteSuccessMessage": {
+    "message": "Il file caricato “$filename$” è stato eliminato con successo.",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "81dda5d3b5a9c7dbebcb2f6856eaa7c2"
+  },
+  "notifDeleteUnableTitle": {
+    "message": "❌ Impossibile eliminare il file",
+    "hash": "ab8139fc0f3edca0238e21d2f35e0557"
+  },
+  "notifDeleteUnableMessage": {
+    "message": "Error: Impossibile eliminare il file caricato “$filename$”: $text$. Forse è già scaduto od eliminato.",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "text": { "content": "$2" }
+    },
+    "hash": "9f8c70423ec767a037cf8a1b4d8b06a4"
+  },
+  "__WET_LOCALE__": { "message": "it" }
+}
