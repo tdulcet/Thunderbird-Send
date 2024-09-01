@@ -561,7 +561,7 @@
     "hash": "ab8139fc0f3edca0238e21d2f35e0557"
   },
   "notifDeleteUnableMessage": {
-    "message": "Error: Impossibile eliminare il file caricato “$filename$”: $text$. Forse è già scaduto od eliminato.",
+    "message": "Errore: Impossibile eliminare il file caricato “$filename$”: $text$. Forse è già scaduto od eliminato.",
     "placeholders": {
       "filename": { "content": "$1" },
       "text": { "content": "$2" }
