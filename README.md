@@ -16,10 +16,10 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * When recipient clicks a link, the file will securely download and decrypt locally in their browser using that encryption secret
 * Links automatically expire after the download and time limit
 * Desktop notifications when the uploads start and finish
-* Users can specify the Send service instance(s) to use, defaults to the one provided by @timvisee: https://send.vis.ee
-* Users can specify the download and time limits for each file and defaults for each Send service instance
-* Users can optionally protect each file with a password
-* Can securely generate a strong password or passphrase
+* Specify the Send service instance(s) to use, defaults to the one provided by @timvisee: https://send.vis.ee
+* Specify the download and time limits for each file and defaults for each Send service instance
+* Optionally protect each file with a password
+* Supports securely generating a strong password or passphrase
 * Supports the maximum file size supported by each Send service instance, currently 20 GiB
 * Supports canceling the uploads
 * Supports deleting the files from server after uploads finish
@@ -27,7 +27,7 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * Does NOT require a Firefox Account (FxA) or any other accounts, all uploads are anonymous
 * Supports the light/dark mode of your system automatically
 * Follows the [Thunderbird Photon Design](https://style.thunderbird.net/)
-* Translated into two languages
+* Translated into four languages
 
 More information on the encryption used can be found in the official Send service documentation [here](https://github.com/timvisee/send/blob/master/docs/encryption.md).
 
@@ -51,7 +51,7 @@ git clone --recurse-submodules https://github.com/tdulcet/Thunderbird-Send.git
 
 ### Translations
 
-Translate the add-on using the online [WebExtension Translator](https://lusito.github.io/web-ext-translator/?gh=https://github.com/tdulcet/Thunderbird-Send/tree/main) and then open a pull request or issue with the resulting translations. Please see [this guide](https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translations) or the [official documentation](https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Internationalization) for more information.
+Translate this add-on using the online [WebExtension Translator](https://lusito.github.io/web-ext-translator/?gh=https://github.com/tdulcet/Thunderbird-Send/tree/main) and then open a pull request or issue with the resulting translations. Please see [this guide](https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translations) or the [official documentation](https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Internationalization) for more information.
 
 ### Code
 
