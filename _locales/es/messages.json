@@ -1,0 +1,507 @@
+{
+  // manifest.json
+  "extensionName": {
+    "message": "Proveedor FileLink para Send",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Encripta y carga adjuntos grandes de forma segura a cualquier servicio Send (anteriormente Firefox Send).",
+    "description": "Description of the extension."
+  },
+  "composeActionButtonTitle": {
+    "message": "Thunderbird Send, Agrega un adjunto para empezar",
+    "description": "The title for the button, which opens the popup."
+  },
+  "composeActionButtonLabel": {
+    "message": "Thunderbird Send",
+    "description": "The label for the button, which opens the popup."
+  },
+
+  // errors or other messages (mostly for settings)
+  "errorShowingMessage": {
+    "message": "No se pudo mostrar este mensaje.",
+    "description": "When there is an error when showing the error/info/…."
+  },
+  "couldNotLoadOptions": {
+    "message": "No se pudo cargar los ajustes.",
+    "description": "When one or all settings could not be loaded."
+  },
+  "couldNotSaveOption": {
+    "message": "No se pudo guardar este ajuste.",
+    "description": "When a setting could not be saved."
+  },
+  "messageUndoButton": {
+    "message": "Deshacer",
+    "description": "The text of a button that undoes the last action."
+  },
+  "couldNotUndoAction": {
+    "message": "No se pudo deshacer la acción.",
+    "description": "Shown when an action cannot be undone."
+  },
+  "resettingOptionsWorked": {
+    "message": "¡Se reestablecieron los ajustes a los valores por defecto!",
+    "description": "The message shown, when the options of the settings were reset."
+  },
+  "resettingOptionsFailed": {
+    "message": "¡No se pudo reestablecer los ajustes!",
+    "description": "The message shown, when the options of the settings could not have been reset."
+  },
+
+  // options
+  "someSettingsAreManaged": {
+    "message": "Algunos ajustes están siendo administrados por tu administrador de sistemas y no se pueden cambiar.",
+    "description": "The message, which appears, when settings are pre-defined (as managed options) by administrators."
+  },
+  "optionIsDisabledBecauseManaged": {
+    "message": "Esta opción está deshabilitada, porque ha sido configurada por tu administrador de sistemas.",
+    "description": "The title (tooltip) shown, when hovering over a disabled, managed option."
+  },
+  "optionLearnMore": {
+    "message": "Aprender más",
+    "description": "When a link to an explainer needs to be added, this is the link text."
+  },
+  "optionsResetButton": {
+    "message": "Reestablecer todos los ajustes",
+    "description": "The button to delete all current settings and load the defaults, shown in the add-on settings."
+  },
+
+  // options footer
+  "translatorCredit": {
+    "message": "Este complemento ha sido traducido por $TRANSLATORS$.",
+    "description": "The credit text for the translator. See https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translator-credit-inside-of-add-on for how to translate this.",
+    "placeholders": {
+      "translators": {
+        "content": "$1",
+        "example": "<a href=\"https://github.com/rugk/\">@rugk</a>"
+      }
+    }
+  },
+  "translatorLink": {
+    "message": "https://sr.ht/~sekinfo/",
+    "description": "The link to the translator's GitHub profile."
+  },
+  "translatorUsername": {
+    "message": "sekinfo",
+    "description": "The username that the translator wants to be referred to."
+  },
+
+  // ARIA labels/descriptions
+  "dismissIconDescription": {
+    "message": "Cerrar este mensaje",
+    "description": "the aria label for the close button of the message box"
+  },
+  "ariaMessageLoading": {
+    "message": "mensaje de carga",
+    "description": "the aria label to label the message box as an info message box"
+  },
+  "ariaMessageInfo": {
+    "message": "mensaje informativo",
+    "description": "the aria label to label the message box as an info message box"
+  },
+  "ariaMessageSuccess": {
+    "message": "mensaje de éxito",
+    "description": "the aria label to label the message box as an success message box"
+  },
+  "ariaMessageError": {
+    "message": "mensaje de error",
+    "description": "the aria label to label the message box as an error message box"
+  },
+  "ariaMessageWarning": {
+    "message": "mensaje de advertencia",
+    "description": "the aria label to label the message box as an warning message box"
+  },
+  "infoButton": {
+    "message": "ℹ️ Información"
+  },
+  "optionsButton": {
+    "message": "⚙️ Opciones"
+  },
+  "donateButton": {
+    "message": "❤️ Donar"
+  },
+  "resetButton": {
+    "message": "Reestablecer todos los ajustes"
+  },
+  "manageTitle": {
+    "message": "Configuración de cuenta"
+  },
+  "manageNote": {
+    "message": "Esta es la configuración para la cuenta seleccionada de Thunderbird Send. Para las opciones globales/preferencias, haz clic en el botón de arriba o vaya al menú de Thunderbird (≡) > 🧩 Complementos y temas."
+  },
+  "manageGetList": {
+    "message": "Haz clic en este link para una lista de $link$ y sus respectivos límites del tamaño de archivo.",
+    "placeholders": {
+      "link": {
+        "content": "$1"
+      }
+    }
+  },
+  "manageListLinkText": {
+    "message": "servicios Send públicos"
+  },
+  "manageService": {
+    "message": "URL del servicio Send:"
+  },
+  "manageVerifyButton": {
+    "message": "Verificar"
+  },
+  "manageDownloadLimit": {
+    "message": "Límite de descargas por defecto:"
+  },
+  "manageDownloadLimitHelp": {
+    "message": "Los enlaces vencerán después de este número de descargas. Asegúrate de que este valor es menor que el número máximo de descargas que permite este servicio Send."
+  },
+  "manageTimeLimit": {
+    "message": "Tiempo límite por defecto:"
+  },
+  "manageTimeLimitHelp": {
+    "message": "Los enlaces vencerán después de este tiempo. Asegúrate de que este valor es menor que el tiempo máximo que permite este servicio Send."
+  },
+  "manageDays": {
+    "message": "días"
+  },
+  "manageHours": {
+    "message": "horas"
+  },
+  "manageMinutes": {
+    "message": "minutos"
+  },
+  "manageMaxSize": {
+    "message": "Tamaño máximo de archivo:"
+  },
+  "manageMaxSizeHelp": {
+    "message": "Tamaño máximo de archivo permitido por este servicio Send."
+  },
+  "manageGiB": {
+    "message": "GiB"
+  },
+  "manageSuccess": {
+    "message": "¡Servidor Send verificado!"
+  },
+  "manageError": {
+    "message": "No se pudo verificar el servidor Send"
+  },
+  "popupFile": {
+    "message": "Nombre de archivo:"
+  },
+  "popupTotalSize": {
+    "message": "Tamaño total:"
+  },
+  "popupSize": {
+    "message": "Tamaño:"
+  },
+  "popupDownloadLimit": {
+    "message": "Límite de descargas:"
+  },
+  "popupDownloadLimitDesc": {
+    "message": "El enlace vencerá después de este número de descargas. Asegúrate de que este valor es menor que el número máximo de descargas que permite este servicio Send."
+  },
+  "popupTimeLimit": {
+    "message": "Límite de tiempo:"
+  },
+  "popupDays": {
+    "message": "días"
+  },
+  "popupHours": {
+    "message": "horas"
+  },
+  "popupMinutes": {
+    "message": "minutos"
+  },
+  "popupTimeLimitDesc": {
+    "message": "El enlace vencerá después de este tiempo. Asegúrate de que este valor es menor que el tiempo máximo que permite este servicio Send."
+  },
+  "popupPwdProtect": {
+    "message": "Proteger con una contraseña (haz clic aquí)"
+  },
+  "popupPwdWarning": {
+    "message": "Usa métodos diferentes para enviar la contraseña y el enlace a los destinatarios. Incluir la contraseña en el mismo correo que el enlace no ofrece ninguna seguridad adicional."
+  },
+  "popupPassword": {
+    "message": "Contraseña (opcional):"
+  },
+  "popupPwdPlaceholder": {
+    "message": "Contraseña"
+  },
+  "popupPwdShow": {
+    "message": "Mostrar contraseña"
+  },
+  "popupPwdHelp": {
+    "message": "Opcionalmente protege el archivo con una contraseña generada localmente."
+  },
+  "popupPwdPronunciation": {
+    "message": "Pronunciación:"
+  },
+  "popupPwdSuggest": {
+    "message": "Sugerir una contraseña fuerte (haz clic para mostrar)"
+  },
+  "popupPwdGenOpt1": {
+    "message": "Contraseña con símbolos (15 caracteres)"
+  },
+  "popupPwdGenOpt1Title": {
+    "message": "Contraseña con letras mayúsculas/minúsculas, números y símbolos"
+  },
+  "popupPwdGenOpt2": {
+    "message": "Contraseña (15 caracteres)"
+  },
+  "popupPwdGenOpt2Title": {
+    "message": "Contraseña con solamente letras mayúsculas/minúsculas y números"
+  },
+  "popupPwdGenOpt3": {
+    "message": "Frase de seguridad, palabras largas (6)"
+  },
+  "popupPwdGenOpt3Title": {
+    "message": "Frase de seguridad con palabras largas de hasta 9 caracteres"
+  },
+  "popupPwdGenOpt4": {
+    "message": "Frase de seguridad, palabras cortas (8)"
+  },
+  "popupPwdGenOpt4Title": {
+    "message": "Frase de seguridad con palabras cortas de hasta 5 caracteres"
+  },
+  "popupPwdGenOpt5": {
+    "message": "Contraseña de emojis (7)"
+  },
+  "popupPwdGenOpt5Title": {
+    "message": "Contraseña de emojis con los emojis básicos y de familia, rol, género, cabello y otros"
+  },
+  "popupPwdGenOpt6": {
+    "message": "Contraseña de emojis (8)"
+  },
+  "popupPwdGenOpt6Title": {
+    "message": "Contraseña de emojis con solamente los emojis básicos"
+  },
+  "popupPwdGenButton": {
+    "message": "🔒 Generar contraseña"
+  },
+  "popupUploadButton": {
+    "message": "📤 Cargar y generar enlace"
+  },
+  "popupCancelButton": {
+    "message": "❌ Cancelar"
+  },
+  "popupB": {
+    "message": "B"
+  },
+  "optionsTitle": {
+    "message": "Opciones"
+  },
+  "optionsNote": {
+    "message": "Estas son las opciones globales/preferencias para Thunderbird Send. Para las páginas de configuración de cuentas, vaya al menú de Thunderbird (≡) > ⚙️ Ajustes > ✏️ Redacción > Adjuntos."
+  },
+  "optionsNotifLabel": {
+    "message": "Mostrar notificaciones de escritorio"
+  },
+  "optionsPopupLabel": {
+    "message": "Usar ventanas emergentes que salen de la barra de acciones"
+  },
+  "optionsPopupDesc": {
+    "message": "Usar ventanas emergentes que salen de la barra de acciones en la ventana de redacción en vez de ventanas emergentes independientes. Requiere Thunderbid 115 o mayor para automáticamente abrirlas."
+  },
+  "optionsLinkLabel": {
+    "message": "Crear un enlace para el servicio Send"
+  },
+  "optionsLinkDesc": {
+    "message": "Agregar un enlace de “Aprender más” para el servicio Send en el pie de página de los mensajes."
+  },
+  "notifInstallTitle": {
+    "message": "$name$ instalado",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifInstallMessage": {
+    "message": "¡Gracias por instalar el complemento de “$name$”!\nVersión: $version$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUpdateTitle": {
+    "message": "$name$ actualizado",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUpdateMessage": {
+    "message": "El complemento de “$name$” ha sido actualizado a la versión $version$. Haz clic para ver las notas de lanzamiento.\n\n❤️ ¡Muchas gracias a los donantes generosos que me han permitido seguir trabajando en este complemento!",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnsupportedVersionTitle": {
+    "message": "❌ Versión del servidor Send no soportada"
+  },
+  "notifUnsupportedVersionMessage": {
+    "message": "Error: El servicio Send “$service$” tiene una versión no soportada: $version$. Este complemento requiere por lo menos la versión 3.",
+    "placeholders": {
+      "service": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnableVersionTitle": {
+    "message": "❌ No se pudo determinar la versión del servidor Send"
+  },
+  "notifUnableVersionMessage": {
+    "message": "Error: No se pudo determinar la versión del servidor Send de “$service$”. Por favor revisa tu conexión de Internet y configuración.",
+    "placeholders": {
+      "service": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifOpenPopupTitle": {
+    "message": "ℹ️ Abre la ventana emergente para continuar"
+  },
+  "notifOpenPopupMessage": {
+    "message": "El complemento no pudo abrir la ventana emergente directamente. Para continuar, por favor haz clic en el botón de “Thunderbird Send” en la barra de acciones en la ventana de redacción."
+  },
+  "notifUploadTitle": {
+    "message": "📤 Encriptando y enviando adjunto"
+  },
+  "notifUploadCancelTitle": {
+    "message": "❌ La carga del adjunto fue abortada"
+  },
+  "notifUploadCancelMessage": {
+    "message": "La carga del archivo “$filename$” fue abortada.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadUnableTitle": {
+    "message": "❌ No se pudo cargar el adjunto"
+  },
+  "notifUploadUnableMessage": {
+    "message": "Error: No se pudo cargar el archivo “$filename$”: $error$. El límite de descarga o tiempo está probablemente por encima del máximo que permite este servicio Send.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "error": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnablePasswordTitle": {
+    "message": "❌ No se pudo agregar una contraseña al adjunto"
+  },
+  "notifUnablePasswordMessage": {
+    "message": "Error: No se pudo agregar una contraseña al archivo “$filename$”.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadDoneTitle": {
+    "message": "🔗 Se encriptó y se cargó el adjunto"
+  },
+  "notifUploadDoneMessage": {
+    "message": "El archivo “$filename$” fue exitosamente encriptado y cargado en $time$! Se vence después de:",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUploadErrorMessage": {
+    "message": "Error: No se pudo cargar el archivo “$filename$”: $error$. Por favor revisa tu conexión de Internet.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "error": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifCancelAlreadyTitle": {
+    "message": "❌ Ya fue cancelada la carga"
+  },
+  "notifCancelAlreadyMessage": {
+    "message": "Error: La carga del archivo “$filename$” ya fue cancelada.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadCancelingTitle": {
+    "message": "ℹ️ Cancelando la carga"
+  },
+  "notifUploadCancelingMessage": {
+    "message": "Cancelando la carga del archivo “$filename$”.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifNotFoundTitle": {
+    "message": "❌ No se pudo encontrar el archivo"
+  },
+  "notifNotFoundCancelMessage": {
+    "message": "Error: No se pudo encontrar el archivo para cancelar la carga. Posiblemente ya fue eliminado."
+  },
+  "notifNotFoundDeleteMessage": {
+    "message": "Error: No se pudo encontrar el archivo cargado para eliminarlo. Posiblemente ya fue eliminado."
+  },
+  "notifDeletingTitle": {
+    "message": "ℹ️ Eliminando archivo"
+  },
+  "notifDeletingMessage": {
+    "message": "Eliminando el archivo “$filename$”.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDeleteSuccessTitle": {
+    "message": "🗑️ Archivo eliminado"
+  },
+  "notifDeleteSuccessMessage": {
+    "message": "El archivo cargado “$filename$” fue eliminado existosamente.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDeleteUnableTitle": {
+    "message": "❌ No se pudo eliminar el archivo"
+  },
+  "notifDeleteUnableMessage": {
+    "message": "Error: No se pudo eliminar el archivo cargado “$filename$”: $text$. Posiblemente ya se venció o fue eliminado.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "text": {
+        "content": "$2"
+      }
+    }
+  }
+}
