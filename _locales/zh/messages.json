@@ -1,0 +1,569 @@
+{
+  // manifest.json
+  "extensionName": {
+    "message": "FileLink 提供程序",
+    "description": "Name of the extension.",
+    "hash": "8a99fec4c8b52c118133d0fcacda83e5"
+  },
+  "extensionDescription": {
+    "message": "安全地加密大型附件并将其上传到任何 Send 服务实例（以前称为 Firefox Send）。",
+    "description": "Description of the extension.",
+    "hash": "03d0ff9650a611702e21c941bea4d972"
+  },
+  "composeActionButtonTitle": {
+    "message": "Thunderbird Send， 添加附件以开始使用",
+    "description": "The title for the button, which opens the popup.",
+    "hash": "e212511f0cd4ead2b68121509a2c11ce"
+  },
+  "composeActionButtonLabel": {
+    "message": "Thunderbird Send",
+    "hash": "44406eacb6713e0ffe5601867b571d17"
+  },
+  // errors or other messages (mostly for settings)
+  "errorShowingMessage": {
+    "message": "无法显示此消息。",
+    "description": "When there is an error when showing the error/info/….",
+    "hash": "a9440e4f824a372841d4de2b7e2643ee"
+  },
+  "couldNotLoadOptions": {
+    "message": "无法加载设置。",
+    "description": "When one or all settings could not be loaded.",
+    "hash": "9497a5d2c9473aeb2ed9601f46c456be"
+  },
+  "couldNotSaveOption": {
+    "message": "无法保存此设置。",
+    "description": "When a setting could not be saved.",
+    "hash": "6bcb9e36d2c33172b948515a9c50aa8e"
+  },
+  "messageUndoButton": {
+    "message": "撤消",
+    "description": "The text of a button that undoes the last action.",
+    "hash": "a85e775d7404b86c8060a20efd31241c"
+  },
+  "couldNotUndoAction": {
+    "message": "无法撤消操作。",
+    "description": "Shown when an action cannot be undone.",
+    "hash": "d2883c6ca0164afc4f360f3e02e3166a"
+  },
+  "resettingOptionsWorked": {
+    "message": "所有设置已经恢复为默认值！",
+    "description": "The message shown, when the options of the settings were reset.",
+    "hash": "257b99ed2a074fccbfc658d770b50107"
+  },
+  "resettingOptionsFailed": {
+    "message": "无法重置选项！\n",
+    "description": "The message shown, when the options of the settings could not have been reset.",
+    "hash": "76e950d2db72a824482411ca6564fb1f"
+  },
+  // options
+  "someSettingsAreManaged": {
+    "message": "某些设置由系统管理员管理，无法更改。",
+    "description": "The message, which appears, when settings are pre-defined (as managed options) by administrators.",
+    "hash": "148604ebbeb7df28974d8233f1418d1f"
+  },
+  "optionIsDisabledBecauseManaged": {
+    "message": "此选项已禁用，因为它已由系统管理员配置。",
+    "description": "The title (tooltip) shown, when hovering over a disabled, managed option.",
+    "hash": "50fb70682c64e1a1fb4d8884b33cca64"
+  },
+  "optionLearnMore": {
+    "message": "了解更多信息",
+    "description": "When a link to an explainer needs to be added, this is the link text.",
+    "hash": "9085b09f4748be12ab0c241d2e643b31"
+  },
+  "optionsResetButton": {
+    "message": "重置所有设置为默认值",
+    "description": "The button to delete all current settings and load the defaults, shown in the add-on settings.",
+    "hash": "4bb60c6c7e7b9e2ff987c244e76ee044"
+  },
+  // options footer
+  "translatorCredit": {
+    "message": "此插件由 $pjnt9372$ 翻译为简体中文",
+    "description": "The credit text for the translator. See https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translator-credit-inside-of-add-on for how to translate this.",
+    "placeholders": {
+      "translators": { "content": "$1", "example": "<a href=\"https://github.com/rugk/\">@rugk</a>" }
+    },
+    "hash": "a6f5deecd624d5f8cd58350c72dd8fdf"
+  },
+  "translatorLink": {
+    "message": "https://github.com/pjnt9372",
+    "description": "The link to the translator's GitHub profile.",
+    "hash": "4d3e264a9b174cc708698a20c68e50fc"
+  },
+  "translatorUsername": {
+    "message": "pjnt9372",
+    "description": "The username that the translator wants to be referred to.",
+    "hash": "0001939e1fe5f05e240fd2a81b751f99"
+  },
+  // ARIA labels/descriptions
+  "dismissIconDescription": {
+    "message": "关闭此消息",
+    "description": "the aria label for the close button of the message box",
+    "hash": "632720ab193dcacba4286cb364124856"
+  },
+  "ariaMessageLoading": {
+    "message": "正在加载消息",
+    "description": "the aria label to label the message box as an info message box",
+    "hash": "570016a957498a1fa1b3e818eb282adb"
+  },
+  "ariaMessageInfo": {
+    "message": "消息",
+    "description": "the aria label to label the message box as an info message box",
+    "hash": "5f54e42067e19895a2641b17a5233418"
+  },
+  "ariaMessageSuccess": {
+    "message": "成功",
+    "description": "the aria label to label the message box as an success message box",
+    "hash": "334387b4ae53483d17f11519a70dd3af"
+  },
+  "ariaMessageError": {
+    "message": "错误",
+    "description": "the aria label to label the message box as an error message box",
+    "hash": "fcda6eedc61727fe8aae7392a0a541a5"
+  },
+  "ariaMessageWarning": {
+    "message": "警告",
+    "description": "the aria label to label the message box as an warning message box",
+    "hash": "8a5dd7528bead1ccd27cb7430d797bd2"
+  },
+  "infoButton": {
+    "message": "ℹ️ 信息",
+    "hash": "171abeeb1189da7b938b19f3786431da"
+  },
+  "optionsButton": {
+    "message": "⚙️ 设置",
+    "hash": "81f0637f8571cec14f88abf6eda188d9"
+  },
+  "donateButton": {
+    "message": "❤️ 捐赠",
+    "hash": "2b73ca0ac809838239c3ac0d891403c2"
+  },
+  "resetButton": {
+    "message": "将所有设置重置为默认值",
+    "hash": "4bb60c6c7e7b9e2ff987c244e76ee044"
+  },
+  "manageTitle": {
+    "message": "账户设置",
+    "hash": "3eed52a909b5fce3fc87b1840b3adf6a"
+  },
+  "manageNote": {
+    "message": "这是您选择的 Thunderbird Send 账户的账户设置。对于全局选项/首选项页面，点击上面的按钮或转到 Thunderbird 菜单 （≡） >🧩附加组件和主题。",
+    "hash": "dc3d59bea8745f633680b97f36753007"
+  },
+  "manageGetList": {
+    "message": "单击此链接$link$可查看及其各自的最大文件大小的列表。",
+    "placeholders": {
+      "link": { "content": "$1" }
+    },
+    "hash": "41aaf0cc0d0542a291533a8ae6635ec4"
+  },
+  "manageListLinkText": {
+    "message": "公共发送服务实例",
+    "hash": "d064305b6169921b7686168cabf89b89"
+  },
+  "manageService": {
+    "message": "发送服务实例 URL：",
+    "hash": "66d04de4ce35a8811ea3e228d00abc4b"
+  },
+  "manageVerifyButton": {
+    "message": "验证",
+    "hash": "3ec990258b0577f355ad1c4f634b0852"
+  },
+  "manageDownloadLimit": {
+    "message": "默认下载限制：",
+    "hash": "3f1be22509a6f80471e6f40f4d8c0287"
+  },
+  "manageDownloadLimitHelp": {
+    "message": "文件将在下载此数量后过期。确保它小于此 Send 服务实例支持的最大下载量。",
+    "hash": "e696432d746bbb29086d887b7997f740"
+  },
+  "manageTimeLimit": {
+    "message": "默认时间限制：",
+    "hash": "d3d49d4ff11268789042454ce629262b"
+  },
+  "manageTimeLimitHelp": {
+    "message": "文件将在此时间后过期。确保它小于此 Send 服务实例支持的最长时间。",
+    "hash": "d9b425c16a17ab33d9e50ff45fdfb639"
+  },
+  "manageDays": {
+    "message": "天",
+    "hash": "58a3b3c7a7282d2c5bb3227a3c77de7f"
+  },
+  "manageHours": {
+    "message": "小时",
+    "hash": "2ea7b79ca5e303e298c5a0c497df1a77"
+  },
+  "manageMinutes": {
+    "message": "分钟",
+    "hash": "f4ea5db97ec0862be67da7286b7b3b38"
+  },
+  "manageMaxSize": {
+    "message": "最大文件大小：",
+    "hash": "919b227007eadf4b22c3b4916551d781"
+  },
+  "manageMaxSizeHelp": {
+    "message": "此 Send 服务实例支持的最大文件大小。",
+    "hash": "fd8acc33c44a4fa3385611ae684b6d4e"
+  },
+  "manageGiB": {
+    "message": "GiB",
+    "hash": "60f4d26c41f2ec82dc56b8029734de3f"
+  },
+  "manageSuccess": {
+    "message": "发送服务器已验证！",
+    "hash": "a9ae6ebc027a2841df6ebde2aa9844c8"
+  },
+  "manageError": {
+    "message": "无法验证发送服务器",
+    "hash": "a4580221c2ad7eb5402c9c36973e500a"
+  },
+  "popupFile": {
+    "message": "文件名：",
+    "hash": "bfd79f083b9579774c395da0904d84b7"
+  },
+  "popupTotalSize": {
+    "message": "总大小：",
+    "hash": "b348703e816406cdbcdbbfa9a7ddfa6b"
+  },
+  "popupSize": {
+    "message": "大小：",
+    "hash": "7ff31afb628c96239f8312a80de35c55"
+  },
+  "popupDownloadLimit": {
+    "message": "下载限制：",
+    "hash": "e3f502d1f36c542d2cc9682143374a15"
+  },
+  "popupDownloadLimitDesc": {
+    "message": "文件将在下载此次数后过期。确保它小于此 Send 服务实例支持的最大下载量。",
+    "hash": "069b1d9c2ad9cdf526ad05ac3347c975"
+  },
+  "popupTimeLimit": {
+    "message": "时间限制",
+    "hash": "1b9204f79fb030377c9a9ca8921d6417"
+  },
+  "popupDays": {
+    "message": "天",
+    "hash": "58a3b3c7a7282d2c5bb3227a3c77de7f"
+  },
+  "popupHours": {
+    "message": "小时",
+    "hash": "2ea7b79ca5e303e298c5a0c497df1a77"
+  },
+  "popupMinutes": {
+    "message": "分钟",
+    "hash": "f4ea5db97ec0862be67da7286b7b3b38"
+  },
+  "popupTimeLimitDesc": {
+    "message": "文件将在此时间后过期。确保它小于此 Send 服务实例支持的最长时间。",
+    "hash": "865668efc84b83a7f5295241dbc764db"
+  },
+  "popupPwdProtect": {
+    "message": "使用密码保护 （点击添加）",
+    "hash": "ff18e5ed7259bb18786cf63b03d3ee27"
+  },
+  "popupPwdWarning": {
+    "message": "使用不同的方法将密码和文件发送给收件人。将密码与文件链接包含在同一封电子邮件中不会提供任何额外的安全性。",
+    "hash": "f8f18c0cbbcc9cad5d7e46fa5c48c6c5"
+  },
+  "popupPassword": {
+    "message": "可选密码：",
+    "hash": "b2e7336fc750ef65b3d149be181d6299"
+  },
+  "popupPwdPlaceholder": {
+    "message": "密码",
+    "hash": "98366484e203f7da68c037522bc7134e"
+  },
+  "popupPwdShow": {
+    "message": "显示密码",
+    "hash": "edbb6de06e1cd2905cbffda7ea9b4406"
+  },
+  "popupPwdHelp": {
+    "message": "（可选）使用密码保护文件。",
+    "hash": "aa06d94d701032b4a52fb5befcdbd713"
+  },
+  "popupPwdPronunciation": {
+    "message": "密码发音（此项翻译不一定正确）：",
+    "hash": "f659481b15f195c4eee444f10c3b0481"
+  },
+  "popupPwdSuggest": {
+    "message": "建议强密码 （点击显示）",
+    "hash": "988e91c110204b22fef2bdb06b373ebe"
+  },
+  "popupPwdGenOpt1": {
+    "message": "带符号的密码（15 个字符）",
+    "hash": "6c842c9ebc83ccb7a20a77f6e08487ae"
+  },
+  "popupPwdGenOpt1Title": {
+    "message": "包含大写/小写字母、数字和符号的密码",
+    "hash": "1361f68430fae1e758562d55617381d1"
+  },
+  "popupPwdGenOpt2": {
+    "message": "密码 （15 个字符）",
+    "hash": "32af040b155684311e69c34828c4f7b5"
+  },
+  "popupPwdGenOpt2Title": {
+    "message": "仅包含大写/小写字母和数字的密码",
+    "hash": "cfee915972a69d4e469c29be2bb724c0"
+  },
+  "popupPwdGenOpt3": {
+    "message": "密码短语、长词 （6）（此项翻译不一定正确）",
+    "hash": "ddd3db8827cc7adcc4655b26ebcab41a"
+  },
+  "popupPwdGenOpt3Title": {
+    "message": "包含最多 9 个字符的的密码",
+    "hash": "899d05414cd9687618cbe1cc3da03cb9"
+  },
+  "popupPwdGenOpt4": {
+    "message": "密码、短词 （8）（此项翻译不一定正确）",
+    "hash": "e53121902d2e139c27d02143ea2627b7"
+  },
+  "popupPwdGenOpt4Title": {
+    "message": "包含最少 5 个字符的的密码",
+    "hash": "117e76553653f53cccc675c7a40ba910"
+  },
+  "popupPwdGenOpt5": {
+    "message": "带序列的Emoji密码 （7）",
+    "hash": "480e6e7d8e541a196a1a78a5b7abc5b7"
+  },
+  "popupPwdGenOpt5Title": {
+    "message": "Emoji 密码与基本 emoji 和家庭、角色、性别、头发等序列",
+    "hash": "2d1903da251644055cc21db9c4676f61"
+  },
+  "popupPwdGenOpt6": {
+    "message": "Emoji密码 （8）",
+    "hash": "279692f4a8832e5d073b34337e271aeb"
+  },
+  "popupPwdGenOpt6Title": {
+    "message": "仅包含基本 emoji 的 Emoji 密码",
+    "hash": "78673867881a1e0663133b3454fb5df3"
+  },
+  "popupPwdGenButton": {
+    "message": "🔒 安全生成",
+    "hash": "40c73863f8ae1f8b03e0c868591b6fd2"
+  },
+  "popupUploadButton": {
+    "message": "📤 加密和上传",
+    "hash": "2d43dbbc1badf8d84d55460326795e7d"
+  },
+  "popupCancelButton": {
+    "message": "❌ 取消",
+    "hash": "f52c4113711df2acfbb7b40e5f6dbe6e"
+  },
+  "popupB": {
+    "message": "B",
+    "hash": "bcdd4ddfd851cce6e4fb6dcc3773ade4"
+  },
+  "optionsTitle": {
+    "message": "选项",
+    "hash": "531dad0078a72193602b18495f0ad4e9"
+  },
+  "optionsNote": {
+    "message": "这是 Thunderbird Send 的全局选项/首选项。对于帐户管理页面，请转到 Thunderbird 菜单 （≡） > ⚙️ 设置 > ✏️ 组合 > 附件。",
+    "hash": "c7c25098ef3e3b3cfb63075aafb3b6c0"
+  },
+  "optionsNotifLabel": {
+    "message": "展示桌面通知",
+    "hash": "8456520206478c303e4784149b6aebd4"
+  },
+  "optionsPopupLabel": {
+    "message": "使用撰写弹出窗口",
+    "hash": "9741c4e10aac9917e891c53888a8f5fd"
+  },
+  "optionsPopupDesc": {
+    "message": "在撰写窗口中使用撰写弹出窗口，而不是独立的弹出窗口。需要 Thunderbird 115 或更高版本才能自动打开写作弹出窗口。",
+    "hash": "c804c2d1c2c80aef8c5323fb92187eba"
+  },
+  "optionsLinkLabel": {
+    "message": "为 Send service instance 创建链接",
+    "hash": "cd69090c97d8ab00237a27771c66a2da"
+  },
+  "optionsLinkDesc": {
+    "message": "为将服务实例发送到消息页脚添加“了解更多”链接。",
+    "hash": "6b188549b8f02fd517085693a3cc7790"
+  },
+  "notifInstallTitle": {
+    "message": "$name$ 安装",
+    "placeholders": {
+      "name": { "content": "$1" }
+    },
+    "hash": "7968f8c4726481eddd48de2a9065f558"
+  },
+  "notifInstallMessage": {
+    "message": "感谢您安装“$name$”附加组件！ 版本：$version$",
+    "placeholders": {
+      "name": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "960c695d7484cf34ca0b5c6ecca26936"
+  },
+  "notifUpdateTitle": {
+    "message": "$name$ 更新",
+    "placeholders": {
+      "name": { "content": "$1" }
+    },
+    "hash": "d5dd219605c83b165e09257038110e82"
+  },
+  "notifUpdateMessage": {
+    "message": " “$name$”附加组件已更新到版本 。单击以查看发行说明。\n\n❤️ 非常感谢慷慨的捐助者，让我能够继续为这个扩展工作！",
+    "placeholders": {
+      "name": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "a549ba04bb830cf149f17c6cb738e03a"
+  },
+  "notifUnsupportedVersionTitle": {
+    "message": "❌ 不支持的 Send 服务器版本",
+    "hash": "bd3928cd84235a71de15c2b7b36215cb"
+  },
+  "notifUnsupportedVersionMessage": {
+    "message": "错误：“$service$”发送服务实例的服务器版本不受支持： 。此扩展至少需要版本 3。",
+    "placeholders": {
+      "service": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "3e7f558c49bf43079940d3426c4ed5db"
+  },
+  "notifUnableVersionTitle": {
+    "message": "❌ 无法确定发送服务器版本",
+    "hash": "3bddd18f7ed4bef4e6c67bcabb9a37f8"
+  },
+  "notifUnableVersionMessage": {
+    "message": "错误：无法确定“$service$” 发送服务实例服务器版本。请检查您的互联网连接和设置。",
+    "placeholders": {
+      "service": { "content": "$1" }
+    },
+    "hash": "c54b14bf3d7209e8ae889d9ffc08eb4b"
+  },
+  "notifOpenPopupTitle": {
+    "message": "ℹ️ 打开撰写弹出窗口以继续",
+    "hash": "1817f1f9bc641fb7970bc96e1d365cbe"
+  },
+  "notifOpenPopupMessage": {
+    "message": "附加组件无法直接打开弹出窗口，因此请点击编写窗口工具栏中的 “Thunderbird Send” 按钮继续。",
+    "hash": "22c729622f5c1f910a5c13ec1a009bf9"
+  },
+  "notifUploadTitle": {
+    "message": "📤 加密和上传附件",
+    "hash": "79ae78b363e411e3ce5866bd4fff734b"
+  },
+  "notifUploadCancelTitle": {
+    "message": "❌ 附件上传已中止",
+    "hash": "3627661cc73364a20e20b717cc9c0a1d"
+  },
+  "notifUploadCancelMessage": {
+    "message": "“$filename$” 文件的上传已中止。",
+    "hash": "390e29a3cfbc886049afec7ca23f51eb"
+  },
+  "notifUploadUnableTitle": {
+    "message": "❌ 无法上传附件",
+    "hash": "d54d1b00c07e08d62e340633383e6633"
+  },
+  "notifUploadUnableMessage": {
+    "message": "错误：无法上传 “$filename$” 文件 。$error$ 下载或时间限制可能高于此 Send 服务实例支持的最大值。",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "error": { "content": "$2" }
+    },
+    "hash": "a82e2cb8880222e68fa17541f0740740"
+  },
+  "notifUnablePasswordTitle": {
+    "message": "❌ 无法向附件添加密码\n",
+    "hash": "ed8e5324d9d0fab8449767a0786f2352"
+  },
+  "notifUnablePasswordMessage": {
+    "message": "错误：无法向 “$filename$” 文件添加密码。",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "f82f8a26c50043595eee4d6599a6b6d1"
+  },
+  "notifUploadDoneTitle": {
+    "message": "🔗 附件加密并上传",
+    "hash": "b86dbbf0a7a70f98d9f62ede0b6e1a31"
+  },
+  "notifUploadDoneMessage": {
+    "message": " “$filename$”文件已成功加密并上传用时$time$ ！过期时间：",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "time": { "content": "$2" }
+    },
+    "hash": "1d18cfc5e4d8ca26ca22f1a88b351a46"
+  },
+  "notifUploadErrorMessage": {
+    "message": "错误：无法上传 “$filename$” 文件 。请检查您的互联网连接。",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "error": { "content": "$2" }
+    },
+    "hash": "5a6656c7f489b32f51896569b2badc4a"
+  },
+  "notifCancelAlreadyTitle": {
+    "message": "❌ 上传已取消",
+    "hash": "f1bb458acdaac8e7f97853580c5fa3f1"
+  },
+  "notifCancelAlreadyMessage": {
+    "message": "错误： 已取消“$filename$”文件的上传。",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "bf3178861f443794f59cbac4d8598cf7"
+  },
+  "notifUploadCancelingTitle": {
+    "message": "ℹ️ 取消上传",
+    "hash": "1804bc8e3f7f991d702269d0918b243a"
+  },
+  "notifUploadCancelingMessage": {
+    "message": "正在取消  “$filename$”  文件的上传。",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "b9973740701556249942d61029f6d1a2"
+  },
+  "notifNotFoundTitle": {
+    "message": "❌ 找不到文件",
+    "hash": "348c767599faea62248248131850fe45"
+  },
+  "notifNotFoundCancelMessage": {
+    "message": "错误：找不到要取消上传的文件。它可能已被删除。",
+    "hash": "b83d970a7edf504e70cf2703fae27852"
+  },
+  "notifNotFoundDeleteMessage": {
+    "message": "错误：找不到要删除的已上传文件。它可能已被删除。\n",
+    "hash": "e1bfe6922c9064ffcc912d2fd916073b"
+  },
+  "notifDeletingTitle": {
+    "message": "ℹ️正在删除文件",
+    "hash": "78be45dab5a98c8e25689cc10919ffe8"
+  },
+  "notifDeletingMessage": {
+    "message": "正在删除  “$filename$” 这是一个上传的文件。",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "80f233a41e4d4ca1ff269280477508b7"
+  },
+  "notifDeleteSuccessTitle": {
+    "message": "🗑️ 文件已删除",
+    "hash": "8294775af921cf8ec24d84e0234d9683"
+  },
+  "notifDeleteSuccessMessage": {
+    "message": "已成功删除 “$filename$”。",
+    "placeholders": {
+      "filename": { "content": "$1" }
+    },
+    "hash": "81dda5d3b5a9c7dbebcb2f6856eaa7c2"
+  },
+  "notifDeleteUnableTitle": {
+    "message": "❌ 无法删除文件",
+    "hash": "ab8139fc0f3edca0238e21d2f35e0557"
+  },
+  "notifDeleteUnableMessage": {
+    "message": "错误： 无法删除 “$filename$”  。它可能已过期或已被删除。",
+    "placeholders": {
+      "filename": { "content": "$1" },
+      "text": { "content": "$2" }
+    },
+    "hash": "9f8c70423ec767a037cf8a1b4d8b06a4"
+  },
+  "__WET_LOCALE__": { "message": "zh" }
+}
