@@ -78,7 +78,7 @@
   },
   // options footer
   "translatorCredit": {
-    "message": "此插件由 $pjnt9372$ 翻译为简体中文",
+    "message": "此插件简体中文翻译者： $pjnt9372$ ",
     "description": "The credit text for the translator. See https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translator-credit-inside-of-add-on for how to translate this.",
     "placeholders": {
       "translators": { "content": "$1", "example": "<a href=\"https://github.com/rugk/\">@rugk</a>" }
@@ -147,7 +147,7 @@
     "hash": "3eed52a909b5fce3fc87b1840b3adf6a"
   },
   "manageNote": {
-    "message": "这是您选择的 Thunderbird Send 账户的账户设置。对于全局选项/首选项页面，点击上面的按钮或转到 Thunderbird 菜单 （≡） >🧩附加组件和主题。",
+    "message": "这是您选择的 Thunderbird Send 账户的账户设置。对于全局选项/首选项页面，点击上面的按钮或转到 Thunderbird 菜单 （≡） >🧩扩展和主题。",
     "hash": "dc3d59bea8745f633680b97f36753007"
   },
   "manageGetList": {
@@ -262,7 +262,7 @@
     "hash": "ff18e5ed7259bb18786cf63b03d3ee27"
   },
   "popupPwdWarning": {
-    "message": "使用不同的方法将密码和文件发送给收件人。将密码与文件链接包含在同一封电子邮件中不会提供任何额外的安全性。",
+    "message": "请使用不同的方法将密码和文件分别发送给收件人。将密码与文件链接包含在同一封电子邮件中不会提供任何额外的安全性。",
     "hash": "f8f18c0cbbcc9cad5d7e46fa5c48c6c5"
   },
   "popupPassword": {
@@ -282,7 +282,7 @@
     "hash": "aa06d94d701032b4a52fb5befcdbd713"
   },
   "popupPwdPronunciation": {
-    "message": "密码发音（此项翻译不一定正确）：",
+    "message": "密码提示：",
     "hash": "f659481b15f195c4eee444f10c3b0481"
   },
   "popupPwdSuggest": {
@@ -306,7 +306,7 @@
     "hash": "cfee915972a69d4e469c29be2bb724c0"
   },
   "popupPwdGenOpt3": {
-    "message": "密码短语、长词 （6）（此项翻译不一定正确）",
+    "message": "由短语、长词构成的密码 （6个短语、长词）",
     "hash": "ddd3db8827cc7adcc4655b26ebcab41a"
   },
   "popupPwdGenOpt3Title": {
@@ -314,7 +314,7 @@
     "hash": "899d05414cd9687618cbe1cc3da03cb9"
   },
   "popupPwdGenOpt4": {
-    "message": "密码、短词 （8）（此项翻译不一定正确）",
+    "message": "由短语、长词构成的密码 （8个短语、长词）",
     "hash": "e53121902d2e139c27d02143ea2627b7"
   },
   "popupPwdGenOpt4Title": {
@@ -322,15 +322,15 @@
     "hash": "117e76553653f53cccc675c7a40ba910"
   },
   "popupPwdGenOpt5": {
-    "message": "带序列的Emoji密码 （7）",
+    "message": "带序列的Emoji密码 （7个Emoji）",
     "hash": "480e6e7d8e541a196a1a78a5b7abc5b7"
   },
   "popupPwdGenOpt5Title": {
-    "message": "Emoji 密码与基本 emoji 和家庭、角色、性别、头发等序列",
+    "message": "Emoji 密码由 家庭、角色、性别、头发等序列组成",
     "hash": "2d1903da251644055cc21db9c4676f61"
   },
   "popupPwdGenOpt6": {
-    "message": "Emoji密码 （8）",
+    "message": "Emoji密码 （8个Emoji）",
     "hash": "279692f4a8832e5d073b34337e271aeb"
   },
   "popupPwdGenOpt6Title": {
@@ -358,7 +358,7 @@
     "hash": "531dad0078a72193602b18495f0ad4e9"
   },
   "optionsNote": {
-    "message": "这是 Thunderbird Send 的全局选项/首选项。对于帐户管理页面，请转到 Thunderbird 菜单 （≡） > ⚙️ 设置 > ✏️ 组合 > 附件。",
+    "message": "这是 Thunderbird Send 的全局选项/首选项。对于帐户管理页面，请转到 Thunderbird 菜单 （≡） > ⚙️ 设置 > ✏️ 编写 > 附件。",
     "hash": "c7c25098ef3e3b3cfb63075aafb3b6c0"
   },
   "optionsNotifLabel": {
