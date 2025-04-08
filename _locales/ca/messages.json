@@ -1,0 +1,567 @@
+{
+  // manifest.json
+  "extensionName": {
+    "message": "Proveïdor FileLink per Send",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Xifra i carrega adjunts grans de manera segura a qualsevol servei Send (antic Firefox Send).",
+    "description": "Description of the extension."
+  },
+  "composeActionButtonTitle": {
+    "message": "Thunderbird Send, Afegeix un adjunt per començar",
+    "description": "The title for the button, which opens the popup."
+  },
+  "composeActionButtonLabel": {
+    "message": "Thunderbird Send",
+    "description": "The label for the button, which opens the popup."
+  },
+
+  // errors or other messages
+  "errorShowingMessage": {
+    "message": "No s'ha pogut mostrar aquest missatge.",
+    "description": "When there is an error when showing the error/info/…."
+  },
+  "couldNotLoadOptions": {
+    "message": "No s'han pogut carregar els ajusts.",
+    "description": "When one or all settings could not be loaded."
+  },
+  "couldNotSaveOption": {
+    "message": "No s'ha pogut desar aquest ajust.",
+    "description": "When a setting could not be saved."
+  },
+  "messageUndoButton": {
+    "message": "Desfés",
+    "description": "The text of a button that undoes the last action."
+  },
+  "couldNotUndoAction": {
+    "message": "No s'ha pogut desfer l'acció.",
+    "description": "Shown when an action cannot be undone."
+  },
+  "resettingOptionsWorked": {
+    "message": "S'han restablert els ajusts als valors per defecte!",
+    "description": "The message shown when resetting options."
+  },
+  "resettingOptionsFailed": {
+    "message": "No s'han pogut restablir els ajusts!",
+    "description": "The message shown when resetting failed."
+  },
+
+  // options
+  "someSettingsAreManaged": {
+    "message": "Alguns ajusts estan gestionats pel vostre administrador de sistema i no es poden modificar.",
+    "description": "Message about managed settings."
+  },
+  "optionIsDisabledBecauseManaged": {
+    "message": "Aquesta opció està desactivada perquè l'ha configurada el vostre administrador de sistema.",
+    "description": "Tooltip for managed options."
+  },
+  "optionLearnMore": {
+    "message": "Més informació",
+    "description": "Learn more link text."
+  },
+  "optionsResetButton": {
+    "message": "Restablir tots els ajusts",
+    "description": "Reset settings button."
+  },
+
+  // options footer
+  "translatorCredit": {
+    "message": "Aquest complement ha estat traduït per $TRANSLATORS$.",
+    "description": "Translator credit",
+    "placeholders": {
+      "translators": {
+        "content": "$1",
+        "example": "<a href=\"https://github.com/rugk/\">@rugk</a>"
+      }
+    }
+  },
+  "translatorLink": {
+    "message": "https://sr.ht/~sekinfo/",
+    "description": "Translator's link"
+  },
+  "translatorUsername": {
+    "message": "sekinfo",
+    "description": "Translator username"
+  },
+
+  // ARIA labels
+  "dismissIconDescription": {
+    "message": "Tanca aquest missatge",
+    "description": "Close message aria-label"
+  },
+  "ariaMessageLoading": {
+    "message": "missatge de càrrega",
+    "description": "Loading message aria-label"
+  },
+  "ariaMessageInfo": {
+    "message": "missatge informatiu",
+    "description": "Info message aria-label"
+  },
+  "ariaMessageSuccess": {
+    "message": "missatge d'èxit",
+    "description": "Success message aria-label"
+  },
+  "ariaMessageError": {
+    "message": "missatge d'error",
+    "description": "Error message aria-label"
+  },
+  "ariaMessageWarning": {
+    "message": "missatge d'avís",
+    "description": "Warning message aria-label"
+  },
+
+  // Buttons and UI elements
+  "infoButton": {
+    "message": "ℹ️ Informació"
+  },
+  "optionsButton": {
+    "message": "⚙️ Opcions"
+  },
+  "donateButton": {
+    "message": "❤️ Dona"
+  },
+  "resetButton": {
+    "message": "Restablir tots els ajusts"
+  },
+
+  // Account settings
+  "manageTitle": {
+    "message": "Configuració del compte"
+  },
+  "manageNote": {
+    "message": "Aquesta és la configuració per al compte seleccionat de Thunderbird Send. Per a les opcions globals/preferències, feu clic al botó superior o aneu al menú de Thunderbird (≡) > 🧩 Complements i temes."
+  },
+  "manageGetList": {
+    "message": "Feu clic en aquest enllaç per veure una llista de $link$ i els seus límits de mida de fitxer.",
+    "placeholders": {
+      "link": {
+        "content": "$1"
+      }
+    }
+  },
+  "manageListLinkText": {
+    "message": "serveis Send públics"
+  },
+  "manageService": {
+    "message": "URL del servei Send:"
+  },
+  "manageVerifyButton": {
+    "message": "Verifica"
+  },
+  "manageDownloadLimit": {
+    "message": "Límit de descàrregues per defecte:"
+  },
+  "manageDownloadLimitHelp": {
+    "message": "Els enllaços caducaran després d'aquest nombre de descàrregues. Assegureu-vos que aquest valor és inferior al màxim permès pel servei Send."
+  },
+  "manageTimeLimit": {
+    "message": "Temps límit per defecte:"
+  },
+  "manageTimeLimitHelp": {
+    "message": "Els enllaços caducaran després d'aquest temps. Assegureu-vos que aquest valor és inferior al temps màxim que permet aquest servei Send.",
+    "description": "Help text for time limit setting"
+  },
+  "manageDays": {
+    "message": "dies",
+    "description": "Days unit"
+  },
+  "manageHours": {
+    "message": "hores",
+    "description": "Hours unit"
+  },
+  "manageMinutes": {
+    "message": "minuts",
+    "description": "Minutes unit"
+  },
+  "manageMaxSize": {
+    "message": "Mida màxima de fitxer:",
+    "description": "Maximum file size label"
+  },
+  "manageMaxSizeHelp": {
+    "message": "Mida màxima de fitxer permesa per aquest servei Send.",
+    "description": "Help text for max file size"
+  },
+  "manageGiB": {
+    "message": "GiB",
+    "description": "Gigabyte unit"
+  },
+  "manageSuccess": {
+    "message": "S'ha verificat el servidor Send!",
+    "description": "Server verification success"
+  },
+  "manageError": {
+    "message": "No s'ha pogut verificar el servidor Send",
+    "description": "Server verification failure"
+  },
+
+  // Popup UI
+  "popupFile": {
+    "message": "Nom de fitxer:",
+    "description": "File name label"
+  },
+  "popupTotalSize": {
+    "message": "Mida total:",
+    "description": "Total size label"
+  },
+  "popupSize": {
+    "message": "Mida:",
+    "description": "Size label"
+  },
+  "popupDownloadLimit": {
+    "message": "Límit de descàrregues:",
+    "description": "Download limit label"
+  },
+  "popupDownloadLimitDesc": {
+    "message": "Els enllaços caducaran després d'aquest nombre de descàrregues. Assegureu-vos que aquest valor és inferior al màxim permès pel servei Send.",
+    "description": "Download limit description"
+  },
+  "popupTimeLimit": {
+    "message": "Límit de temps:",
+    "description": "Time limit label"
+  },
+  "popupDays": {
+    "message": "dies",
+    "description": "Days unit in popup"
+  },
+  "popupHours": {
+    "message": "hores",
+    "description": "Hours unit in popup"
+  },
+  "popupMinutes": {
+    "message": "minuts",
+    "description": "Minutes unit in popup"
+  },
+  "popupTimeLimitDesc": {
+    "message": "Els enllaços caducaran després d'aquest temps. Assegureu-vos que aquest valor és inferior al temps màxim que permet aquest servei Send.",
+    "description": "Time limit description"
+  },
+  "popupPwdProtect": {
+    "message": "Protegeix amb una contrasenya (feu clic aquí)",
+    "description": "Password protection toggle"
+  },
+  "popupPwdWarning": {
+    "message": "Utilitzeu mètodes diferents per enviar la contrasenya i l'enllaç als destinataris. Incloure la contrasenya en el mateix correu que l'enllaç no ofereix cap seguretat addicional.",
+    "description": "Password security warning"
+  },
+  "popupPassword": {
+    "message": "Contrasenya (opcional):",
+    "description": "Password input label"
+  },
+  "popupPwdPlaceholder": {
+    "message": "Contrasenya",
+    "description": "Password input placeholder"
+  },
+  "popupPwdShow": {
+    "message": "Mostra la contrasenya",
+    "description": "Show password toggle"
+  },
+  "popupPwdHelp": {
+    "message": "Protegeix opcionalment el fitxer amb una contrasenya generada localment.",
+    "description": "Password help text"
+  },
+  "popupPwdPronunciation": {
+    "message": "Pronunciació:",
+    "description": "Password pronunciation label"
+  },
+  "popupPwdSuggest": {
+    "message": "Suggereix una contrasenya forta (feu clic per mostrar)",
+    "description": "Password suggestion prompt"
+  },
+  "popupPwdGenOpt1": {
+    "message": "Contrasenya amb símbols (15 caràcters)",
+    "description": "Password option 1"
+  },
+  "popupPwdGenOpt1Title": {
+    "message": "Contrasenya amb lletres majúscules/minúscules, números i símbols",
+    "description": "Password option 1 description"
+  },
+  "popupPwdGenOpt2": {
+    "message": "Contrasenya (15 caràcters)",
+    "description": "Password option 2"
+  },
+  "popupPwdGenOpt2Title": {
+    "message": "Contrasenya només amb lletres majúscules/minúscules i números",
+    "description": "Password option 2 description"
+  },
+  "popupPwdGenOpt3": {
+    "message": "Frase de seguretat, paraules llargues (6)",
+    "description": "Password option 3"
+  },
+  "popupPwdGenOpt3Title": {
+    "message": "Frase de seguretat amb paraules llargues de fins a 9 caràcters",
+    "description": "Password option 3 description"
+  },
+  "popupPwdGenOpt4": {
+    "message": "Frase de seguretat, paraules curtes (8)",
+    "description": "Password option 4"
+  },
+  "popupPwdGenOpt4Title": {
+    "message": "Frase de seguretat amb paraules curtes de fins a 5 caràcters",
+    "description": "Password option 4 description"
+  },
+  "popupPwdGenOpt5": {
+    "message": "Contrasenya amb emojis (7)",
+    "description": "Password option 5"
+  },
+  "popupPwdGenOpt5Title": {
+    "message": "Contrasenya amb emojis bàsics i de família, rol, gènere, cabell i altres",
+    "description": "Password option 5 description"
+  },
+  "popupPwdGenOpt6": {
+    "message": "Contrasenya amb emojis (8)",
+    "description": "Password option 6"
+  },
+  "popupPwdGenOpt6Title": {
+    "message": "Contrasenya amb emojis bàsics exclusivament",
+    "description": "Password option 6 description"
+  },
+  "popupPwdGenButton": {
+    "message": "🔒 Genera contrasenya",
+    "description": "Generate password button"
+  },
+  "popupUploadButton": {
+    "message": "📤 Carrega i genera enllaç",
+    "description": "Upload button"
+  },
+  "popupCancelButton": {
+    "message": "❌ Cancel·la",
+    "description": "Cancel button"
+  },
+  "popupB": {
+    "message": "B",
+    "description": "Byte abbreviation"
+  },
+
+  // Options panel
+  "optionsTitle": {
+    "message": "Opcions",
+    "description": "Options title"
+  },
+  "optionsNote": {
+    "message": "Aquestes són les opcions globals/preferències per a Thunderbird Send. Per a la configuració dels comptes, aneu al menú de Thunderbird (≡) > ⚙️ Ajusts > ✏️ Redacció > Adjunts.",
+    "description": "Options note"
+  },
+  "optionsNotifLabel": {
+    "message": "Mostra notificacions d'escriptori",
+    "description": "Desktop notifications checkbox"
+  },
+  "optionsPopupLabel": {
+    "message": "Utilitza finestres emergents des de la barra d'accions",
+    "description": "Use action bar popups checkbox"
+  },
+  "optionsPopupDesc": {
+    "message": "Utilitza finestres emergents integrades a la barra d'accions de la finestra de redacció en lloc de finestres independents. Requereix Thunderbird 115 o posterior per obrir-les automàticament.",
+    "description": "Popup type description"
+  },
+  "optionsLinkLabel": {
+    "message": "Crea un enllaç per al servei Send",
+    "description": "Create service link checkbox"
+  },
+  "optionsLinkDesc": {
+    "message": "Afegeix un enllaç de «Més informació» per al servei Send al peu dels missatges.",
+    "description": "Service link description"
+  },
+
+  // Notifications
+  "notifInstallTitle": {
+    "message": "$name$ instal·lat",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifInstallMessage": {
+    "message": "Gràcies per instal·lar el complement «$name$»!\nVersió: $version$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUpdateTitle": {
+    "message": "$name$ actualitzat",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUpdateMessage": {
+    "message": "El complement «$name$» s'ha actualitzat a la versió $version$. Feu clic per veure les notes de llançament.\n\n❤️ Gràcies als donants generosos que em permeten continuar treballant en aquest complement!",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnsupportedVersionTitle": {
+    "message": "❌ Versió del servidor Send no compatible"
+  },
+  "notifUnsupportedVersionMessage": {
+    "message": "Error: El servei Send «$service$» té una versió no compatible: $version$. Aquest complement requereix com a mínim la versió 3.",
+    "placeholders": {
+      "service": {
+        "content": "$1"
+      },
+      "version": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnableVersionTitle": {
+    "message": "❌ No s'ha pogut determinar la versió del servidor Send"
+  },
+  "notifUnableVersionMessage": {
+    "message": "Error: No s'ha pogut determinar la versió del servidor Send de «$service$». Si us plau, comproveu la connexió a Internet i la configuració.",
+    "placeholders": {
+      "service": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifOpenPopupTitle": {
+    "message": "ℹ️ Obriu la finestra emergent per continuar"
+  },
+  "notifOpenPopupMessage": {
+    "message": "El complement no ha pogut obrir la finestra emergent directament. Per continuar, feu clic al botó «Thunderbird Send» a la barra d'accions de la finestra de redacció."
+  },
+  "notifUploadTitle": {
+    "message": "📤 Xifrant i enviant adjunt"
+  },
+  "notifUploadCancelTitle": {
+    "message": "❌ S'ha cancel·lat la càrrega de l'adjunt"
+  },
+  "notifUploadCancelMessage": {
+    "message": "S'ha cancel·lat la càrrega del fitxer «$filename$».",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadUnableTitle": {
+    "message": "❌ No s'ha pogut carregar l'adjunt"
+  },
+  "notifUploadUnableMessage": {
+    "message": "Error: No s'ha pogut carregar el fitxer «$filename$»: $error$. És probable que el límit de descàrregues o temps superi el màxim permès per aquest servei Send.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "error": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUnablePasswordTitle": {
+    "message": "❌ No s'ha pogut afegir una contrasenya a l'adjunt"
+  },
+  "notifUnablePasswordMessage": {
+    "message": "Error: No s'ha pogut afegir una contrasenya al fitxer «$filename$».",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadDoneTitle": {
+    "message": "🔗 S'ha xifrat i carregat l'adjunt"
+  },
+  "notifUploadDoneMessage": {
+    "message": "El fitxer «$filename$» s'ha xifrat i carregat correctament en $time$! Caduca després de:",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "time": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifUploadErrorMessage": {
+    "message": "Error: No s'ha pogut carregar el fitxer «$filename$»: $error$. Si us plau, comproveu la connexió a Internet.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "error": {
+        "content": "$2"
+      }
+    }
+  },
+  "notifCancelAlreadyTitle": {
+    "message": "❌ La càrrega ja estava cancel·lada"
+  },
+  "notifCancelAlreadyMessage": {
+    "message": "Error: La càrrega del fitxer «$filename$» ja estava cancel·lada.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifUploadCancelingTitle": {
+    "message": "ℹ️ Cancel·lant la càrrega"
+  },
+  "notifUploadCancelingMessage": {
+    "message": "S'està cancel·lant la càrrega del fitxer «$filename$».",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifNotFoundTitle": {
+    "message": "❌ No s'ha pogut trobar el fitxer"
+  },
+  "notifNotFoundCancelMessage": {
+    "message": "Error: No s'ha pogut trobar el fitxer per cancel·lar la càrrega. Possiblement ja s'ha eliminat."
+  },
+  "notifNotFoundDeleteMessage": {
+    "message": "Error: No s'ha pogut trobar el fitxer carregat per eliminar-lo. Possiblement ja s'ha eliminat."
+  },
+  "notifDeletingTitle": {
+    "message": "ℹ️ Eliminant fitxer"
+  },
+  "notifDeletingMessage": {
+    "message": "S'està eliminant el fitxer «$filename$».",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDeleteSuccessTitle": {
+    "message": "🗑️ Fitxer eliminat"
+  },
+  "notifDeleteSuccessMessage": {
+    "message": "S'ha eliminat correctament el fitxer carregat «$filename$».",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDeleteUnableTitle": {
+    "message": "❌ No s'ha pogut eliminar el fitxer"
+  },
+  "notifDeleteUnableMessage": {
+    "message": "Error: No s'ha pogut eliminar el fitxer carregat «$filename$»: $text$. Possiblement ja ha caducat o s'ha eliminat.",
+    "placeholders": {
+      "filename": {
+        "content": "$1"
+      },
+      "text": {
+        "content": "$2"
+      }
+    }
+  }
+}
