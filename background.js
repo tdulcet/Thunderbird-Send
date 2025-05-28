@@ -70,29 +70,29 @@ browser.notifications.onClosed.addListener((notificationId) => {
 });
 
 /**
- * Get seconds as digital clock.
+ * Output duration.
  *
- * @param {number} sec_num
+ * @param {number} sec
  * @returns {string}
  */
-function getSecondsAsDigitalClock(sec_num) {
-	// console.log(sec_num);
-	const d = Math.floor(sec_num / 86400);
-	const h = Math.floor(sec_num % 86400 / 3600);
-	const m = Math.floor(sec_num % 3600 / 60);
-	const s = sec_num % 60;
+function outputduration(sec) {
+	// console.log(sec);
+	const days = Math.floor(sec / 86400);
+	const hours = Math.floor(sec % 86400 / 3600);
+	const minutes = Math.floor(sec % 3600 / 60);
+	const seconds = sec % 60;
 	const text = [];
-	if (d > 0) {
-		text.push(numberFormat1.format(d));
+	if (days > 0) {
+		text.push(numberFormat1.format(days));
 	}
-	if (h > 0) {
-		text.push(numberFormat2.format(h));
+	if (hour > 0) {
+		text.push(numberFormat2.format(hours));
 	}
-	if (m > 0) {
-		text.push(numberFormat3.format(m));
+	if (minutes > 0) {
+		text.push(numberFormat3.format(minutes));
 	}
-	if (s > 0) {
-		text.push(numberFormat4.format(s));
+	if (seconds > 0) {
+		text.push(numberFormat4.format(seconds));
 	}
 	return formatter.format(text);
 }
@@ -878,19 +878,19 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 	console.timeEnd(id);
 
 	if (json.ok) {
-		notification(browser.i18n.getMessage("notifUploadDoneTitle"), `${browser.i18n.getMessage("notifUploadDoneMessage", [file.name, getSecondsAsDigitalClock(Math.floor((end - start) / 1000))])}\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${getSecondsAsDigitalClock(upload.time * 60)}\n\n${url}`);
+		notification(browser.i18n.getMessage("notifUploadDoneTitle"), `${browser.i18n.getMessage("notifUploadDoneMessage", [file.name, outputduration(Math.floor((end - start) / 1000))])}\n⬇️: ${numberFormat.format(upload.downloads)}\n⏲️: ${outputduration(upload.time * 60)}\n\n${url}`);
 	} else {
 		notification(browser.i18n.getMessage("notifUploadUnableTitle"), browser.i18n.getMessage("notifUploadErrorMessage", [file.name, json.error]));
 	}
 
-	const icon = `https://${aurl}/icon.718f87fb.svg`;
-	const response = await fetch(icon, { method: "HEAD" });
+	// const icon = `https://${aurl}/icon.718f87fb.svg`;
+	// const response = await fetch(icon, { method: "HEAD" });
 	// console.log(response);
 
 	return {
 		url,
 		templateInfo: {
-			service_icon: response.ok ? icon : null,
+			// service_icon: response.ok ? icon : null,
 			service_url: LINK ? send.service : null,
 			download_expiry_date: {
 				timestamp: expiresAt

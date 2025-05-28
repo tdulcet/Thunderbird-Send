@@ -16,7 +16,7 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * When recipient clicks a link, the file will securely download and decrypt locally in their browser using that encryption secret
 * Links automatically expire after the download and time limit
 * Desktop notifications when the uploads start and finish
-* Specify the Send service instance(s) to use, defaults to the one provided by @timvisee: https://send.vis.ee
+* Specify the Send service instance(s) to use, defaults to the official one provided by @timvisee and sponsored by Thunderbird: https://send.vis.ee
 * Specify the download and time limits for each file and defaults for each Send service instance
 * Optionally protect each file with a password
 * Supports securely generating a strong password or passphrase
@@ -27,13 +27,13 @@ Thunderbird add-on/MailExtension to easily and securely encrypt and upload large
 * Does NOT require a Firefox Account (FxA) or any other accounts, all uploads are anonymous
 * Supports the light/dark mode of your system automatically
 * Follows the [Thunderbird Photon Design](https://style.thunderbird.net/)
-* Translated into five languages
+* Translated into seven languages
 
 More information on the encryption used can be found in the official Send service documentation [here](https://github.com/timvisee/send/blob/master/docs/encryption.md).
 
 ❤️ Please visit [tealdulcet.com](https://www.tealdulcet.com/) to support this extension and my other software development.
 
-This add-on is not affiliated with Mozilla, Firefox or any Send service instance.
+This add-on is not affiliated with Mozilla, Firefox, Thunderbird or any Send service instance.
 
 ## Download
 
