@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "default_locale": "en",
   "name": "__MSG_extensionName__",
-  "version": "2.1.1",
+  "version": "2.1.3",
   "author": "Teal Dulcet",
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/tdulcet/Thunderbird-Send",
@@ -18,7 +18,6 @@
   ],
 
   "compose_action": {
-    "browser_style": true,
     "default_icon": "icons/icon.svg",
     "default_title": "__MSG_composeActionButtonTitle__",
     "default_label": "__MSG_composeActionButtonLabel__",
@@ -26,8 +25,7 @@
   },
 
   "options_ui": {
-    "page": "options/options.html",
-    "browser_style": true
+    "page": "options/options.html"
   },
 
   "background": {
@@ -38,7 +36,6 @@
   "cloud_file": {
     "name": "Thunderbird Send",
     "management_url": "management/management.html",
-    "browser_style": true,
     "reuse_uploads": false
   },
   

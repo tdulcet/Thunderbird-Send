@@ -85,7 +85,7 @@ function outputduration(sec) {
 	if (days > 0) {
 		text.push(numberFormat1.format(days));
 	}
-	if (hour > 0) {
+	if (hours > 0) {
 		text.push(numberFormat2.format(hours));
 	}
 	if (minutes > 0) {
