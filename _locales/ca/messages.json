@@ -1,15 +1,15 @@
 {
   // manifest.json
   "extensionName": {
-    "message": "Proveïdor FileLink per Send",
+    "message": "Proveïdor de FileLink per al Send",
     "description": "Name of the extension."
   },
   "extensionDescription": {
-    "message": "Xifra i carrega adjunts grans de manera segura a qualsevol servei Send (antic Firefox Send).",
+    "message": "Xifra i carrega adjuncions grans de manera segura a qualsevol servei Send (antic Firefox Send).",
     "description": "Description of the extension."
   },
   "composeActionButtonTitle": {
-    "message": "Thunderbird Send, Afegeix un adjunt per començar",
+    "message": "Thunderbird Send, Afegeix un adjunt per a començar",
     "description": "The title for the button, which opens the popup."
   },
   "composeActionButtonLabel": {
@@ -23,11 +23,11 @@
     "description": "When there is an error when showing the error/info/…."
   },
   "couldNotLoadOptions": {
-    "message": "No s'han pogut carregar els ajusts.",
+    "message": "No s'han pogut carregar els paràmetres.",
     "description": "When one or all settings could not be loaded."
   },
   "couldNotSaveOption": {
-    "message": "No s'ha pogut desar aquest ajust.",
+    "message": "No s'ha pogut desar aquest paràmetre.",
     "description": "When a setting could not be saved."
   },
   "messageUndoButton": {
@@ -39,21 +39,21 @@
     "description": "Shown when an action cannot be undone."
   },
   "resettingOptionsWorked": {
-    "message": "S'han restablert els ajusts als valors per defecte!",
+    "message": "S'han restablert els paràmetres als valors predefinits.",
     "description": "The message shown when resetting options."
   },
   "resettingOptionsFailed": {
-    "message": "No s'han pogut restablir els ajusts!",
+    "message": "No s'han pogut restablir els paràmetres.",
     "description": "The message shown when resetting failed."
   },
 
   // options
   "someSettingsAreManaged": {
-    "message": "Alguns ajusts estan gestionats pel vostre administrador de sistema i no es poden modificar.",
+    "message": "Alguns paràmetres estan gestionats pel vostre administrador del sistema i no es poden modificar.",
     "description": "Message about managed settings."
   },
   "optionIsDisabledBecauseManaged": {
-    "message": "Aquesta opció està desactivada perquè l'ha configurada el vostre administrador de sistema.",
+    "message": "Aquesta opció està desactivada perquè l'ha configurada el vostre administrador del sistema.",
     "description": "Tooltip for managed options."
   },
   "optionLearnMore": {
@@ -61,7 +61,7 @@
     "description": "Learn more link text."
   },
   "optionsResetButton": {
-    "message": "Restablir tots els ajusts",
+    "message": "Restableix tots els paràmetres",
     "description": "Reset settings button."
   },
 
@@ -119,10 +119,10 @@
     "message": "⚙️ Opcions"
   },
   "donateButton": {
-    "message": "❤️ Dona"
+    "message": "❤️ Donacions"
   },
   "resetButton": {
-    "message": "Restablir tots els ajusts"
+    "message": "Restableix tots els paràmetres"
   },
 
   // Account settings
@@ -130,10 +130,10 @@
     "message": "Configuració del compte"
   },
   "manageNote": {
-    "message": "Aquesta és la configuració per al compte seleccionat de Thunderbird Send. Per a les opcions globals/preferències, feu clic al botó superior o aneu al menú de Thunderbird (≡) > 🧩 Complements i temes."
+    "message": "Aquesta és la configuració per al compte seleccionat de Thunderbird Send. Si voleu anar a la pàgina de preferències globals, feu clic al botó superior o aneu al menú de Thunderbird (≡) > 🧩 Complements i temes."
   },
   "manageGetList": {
-    "message": "Feu clic en aquest enllaç per veure una llista de $link$ i els seus límits de mida de fitxer.",
+    "message": "Feu clic en aquest enllaç per a veure una llista de $link$ i els seus límits de mida de fitxer.",
     "placeholders": {
       "link": {
         "content": "$1"
@@ -187,7 +187,7 @@
     "description": "Gigabyte unit"
   },
   "manageSuccess": {
-    "message": "S'ha verificat el servidor Send!",
+    "message": "S'ha verificat el servidor Send",
     "description": "Server verification success"
   },
   "manageError": {
@@ -197,7 +197,7 @@
 
   // Popup UI
   "popupFile": {
-    "message": "Nom de fitxer:",
+    "message": "Nom del fitxer:",
     "description": "File name label"
   },
   "popupTotalSize": {
@@ -241,7 +241,7 @@
     "description": "Password protection toggle"
   },
   "popupPwdWarning": {
-    "message": "Utilitzeu mètodes diferents per enviar la contrasenya i l'enllaç als destinataris. Incloure la contrasenya en el mateix correu que l'enllaç no ofereix cap seguretat addicional.",
+    "message": "Utilitzeu mètodes diferents per a enviar la contrasenya i l'enllaç als destinataris. Incloure la contrasenya en el mateix correu que l'enllaç no ofereix cap seguretat addicional.",
     "description": "Password security warning"
   },
   "popupPassword": {
@@ -265,7 +265,7 @@
     "description": "Password pronunciation label"
   },
   "popupPwdSuggest": {
-    "message": "Suggereix una contrasenya forta (feu clic per mostrar)",
+    "message": "Suggereix una contrasenya forta (feu clic per a mostrar)",
     "description": "Password suggestion prompt"
   },
   "popupPwdGenOpt1": {
@@ -317,11 +317,11 @@
     "description": "Password option 6 description"
   },
   "popupPwdGenButton": {
-    "message": "🔒 Genera contrasenya",
+    "message": "🔒 Genera una contrasenya",
     "description": "Generate password button"
   },
   "popupUploadButton": {
-    "message": "📤 Carrega i genera enllaç",
+    "message": "📤 Carrega i genera un enllaç",
     "description": "Upload button"
   },
   "popupCancelButton": {
@@ -339,11 +339,11 @@
     "description": "Options title"
   },
   "optionsNote": {
-    "message": "Aquestes són les opcions globals/preferències per a Thunderbird Send. Per a la configuració dels comptes, aneu al menú de Thunderbird (≡) > ⚙️ Ajusts > ✏️ Redacció > Adjunts.",
+    "message": "Aquestes són les opcions globals per a Thunderbird Send. Per a la configuració dels comptes, aneu al menú de Thunderbird (≡) > ⚙️ Paràmetres > ✏️ Redacció > Adjuncions.",
     "description": "Options note"
   },
   "optionsNotifLabel": {
-    "message": "Mostra notificacions d'escriptori",
+    "message": "Mostra les notificacions d'escriptori",
     "description": "Desktop notifications checkbox"
   },
   "optionsPopupLabel": {
@@ -428,16 +428,16 @@
     }
   },
   "notifOpenPopupTitle": {
-    "message": "ℹ️ Obriu la finestra emergent per continuar"
+    "message": "ℹ️ Obriu la finestra emergent per a continuar"
   },
   "notifOpenPopupMessage": {
-    "message": "El complement no ha pogut obrir la finestra emergent directament. Per continuar, feu clic al botó «Thunderbird Send» a la barra d'accions de la finestra de redacció."
+    "message": "El complement no ha pogut obrir la finestra emergent directament. Per a continuar, feu clic al botó «Thunderbird Send» a la barra d'accions de la finestra de redacció."
   },
   "notifUploadTitle": {
-    "message": "📤 Xifrant i enviant adjunt"
+    "message": "📤 Xifrant i enviant l'adjunció"
   },
   "notifUploadCancelTitle": {
-    "message": "❌ S'ha cancel·lat la càrrega de l'adjunt"
+    "message": "❌ S'ha cancel·lat la càrrega de l'adjunció"
   },
   "notifUploadCancelMessage": {
     "message": "S'ha cancel·lat la càrrega del fitxer «$filename$».",
@@ -448,7 +448,7 @@
     }
   },
   "notifUploadUnableTitle": {
-    "message": "❌ No s'ha pogut carregar l'adjunt"
+    "message": "❌ No s'ha pogut carregar l'adjunció"
   },
   "notifUploadUnableMessage": {
     "message": "Error: No s'ha pogut carregar el fitxer «$filename$»: $error$. És probable que el límit de descàrregues o temps superi el màxim permès per aquest servei Send.",
@@ -462,7 +462,7 @@
     }
   },
   "notifUnablePasswordTitle": {
-    "message": "❌ No s'ha pogut afegir una contrasenya a l'adjunt"
+    "message": "❌ No s'ha pogut afegir una contrasenya a l'adjunció"
   },
   "notifUnablePasswordMessage": {
     "message": "Error: No s'ha pogut afegir una contrasenya al fitxer «$filename$».",
@@ -473,7 +473,7 @@
     }
   },
   "notifUploadDoneTitle": {
-    "message": "🔗 S'ha xifrat i carregat l'adjunt"
+    "message": "🔗 S'ha xifrat i carregat l'adjunció"
   },
   "notifUploadDoneMessage": {
     "message": "El fitxer «$filename$» s'ha xifrat i carregat correctament en $time$! Caduca després de:",
@@ -523,10 +523,10 @@
     "message": "❌ No s'ha pogut trobar el fitxer"
   },
   "notifNotFoundCancelMessage": {
-    "message": "Error: No s'ha pogut trobar el fitxer per cancel·lar la càrrega. Possiblement ja s'ha eliminat."
+    "message": "Error: No s'ha pogut trobar el fitxer per a cancel·lar la càrrega. Possiblement ja s'ha eliminat."
   },
   "notifNotFoundDeleteMessage": {
-    "message": "Error: No s'ha pogut trobar el fitxer carregat per eliminar-lo. Possiblement ja s'ha eliminat."
+    "message": "Error: No s'ha pogut trobar el fitxer carregat per a eliminar-lo. Possiblement ja s'ha eliminat."
   },
   "notifDeletingTitle": {
     "message": "ℹ️ Eliminant fitxer"
