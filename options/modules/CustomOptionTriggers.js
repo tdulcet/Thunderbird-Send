@@ -13,9 +13,9 @@ const BACKGROUND = "background";
  * Apply the new settings.
  *
  * @private
- * @param  {Object} optionValue
+ * @param  {object} optionValue
  * @param  {string} [option]
- * @param  {Object} [event]
+ * @param  {object} [event]
  * @returns {void}
  */
 function apply(optionValue) {

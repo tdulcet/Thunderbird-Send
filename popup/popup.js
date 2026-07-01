@@ -34,11 +34,11 @@ let eventHasBeenSend = false;
 let total = 0;
 
 /**
-* Random UInt8 number in range [0, range).
-*
-* @param {number} range
-* @returns {number}
-*/
+ * Random UInt8 number in range [0, range).
+ *
+ * @param {number} range
+ * @returns {number}
+ */
 function randomUInt8(range) {
 	if (range > MAX_UINT8) {
 		throw new Error("`range` cannot fit into uint8");
@@ -54,11 +54,11 @@ function randomUInt8(range) {
 }
 
 /**
-* Random Uint16 number in range [0, range).
-*
-* @param {number} range
-* @returns {number}
-*/
+ * Random Uint16 number in range [0, range).
+ *
+ * @param {number} range
+ * @returns {number}
+ */
 function randomUint16(range) {
 	if (range > MAX_UINT16) {
 		throw new Error("`range` cannot fit into uint16");
@@ -74,11 +74,11 @@ function randomUint16(range) {
 }
 
 /**
-* Shuffle the order of characters in a string.
-*
-* @param {string[]} arr
-* @returns {void}
-*/
+ * Shuffle the order of characters in a string.
+ *
+ * @param {string[]} arr
+ * @returns {void}
+ */
 function shuffle(arr) {
 	const randomValues = new Uint32Array(arr.length - 1);
 	crypto.getRandomValues(randomValues);
@@ -92,12 +92,12 @@ function shuffle(arr) {
 }
 
 /**
-* Generate random password.
-*
-* @param {number} length
-* @param {Array.<string[]>} length
-* @returns {[string, string]}
-*/
+ * Generate random password.
+ *
+ * @param {number} length
+ * @param {Array.<string[]>} requiredClasses
+ * @returns {[string, string]}
+ */
 function generatePassword(length, requiredClasses) {
 	const password = [];
 	const allRequiredCharacters = requiredClasses.flat();
@@ -116,12 +116,12 @@ function generatePassword(length, requiredClasses) {
 }
 
 /**
-* Generate random passphrase.
-*
-* @param {number} length
-* @param {readonly string[]} awords
-* @returns {string}
-*/
+ * Generate random passphrase.
+ *
+ * @param {number} length
+ * @param {readonly string[]} awords
+ * @returns {string}
+ */
 function generatePassphrase(length, awords) {
 	const passphrase = [];
 
@@ -133,12 +133,12 @@ function generatePassphrase(length, awords) {
 }
 
 /**
-* Generate random emoji password.
-*
-* @param {number} length
-* @param {readonly string[]} aemojis
-* @returns {[string, string]}
-*/
+ * Generate random emoji password.
+ *
+ * @param {number} length
+ * @param {readonly string[]} aemojis
+ * @returns {[string, string]}
+ */
 function generateEmojis(length, aemojis) {
 	const password = [];
 
@@ -266,11 +266,11 @@ cancel.addEventListener("click", (event) => {
 });
 
 /**
-* Update files.
-*
-* @param {{name: string, size: number}[]} files
-* @returns {void}
-*/
+ * Update files.
+ *
+ * @param {{name: string, size: number}[]} files
+ * @returns {void}
+ */
 function updatefiles(files) {
 	const table = document.createElement("table");
 	const b = browser.i18n.getMessage("popupB");
@@ -295,18 +295,20 @@ function updatefiles(files) {
 
 browser.runtime.sendMessage({ type: POPUP }).then((message) => {
 	// console.log(message);
-	if (message.type === POPUP) {
-		const { send } = message;
-		downloads.value = send.downloads;
-		days.value = Math.floor(send.time / 1440);
-		hours.value = Math.floor(send.time % 1440 / 60);
-		minutes.value = send.time % 60;
-
-		updatefiles(message.files);
-
-		upload.disabled = false;
-		cancel.disabled = false;
+	if (message.type !== POPUP) {
+		return;
 	}
+
+	const { send } = message;
+	downloads.value = send.downloads;
+	days.value = Math.floor(send.time / 1440);
+	hours.value = Math.floor(send.time % 1440 / 60);
+	minutes.value = send.time % 60;
+
+	updatefiles(message.files);
+
+	upload.disabled = false;
+	cancel.disabled = false;
 });
 
 browser.runtime.onMessage.addListener((message, _sender) => {

@@ -17,12 +17,7 @@ const uploads = new Map();
 
 const encoder = new TextEncoder();
 
-const numberFormat1 = new Intl.NumberFormat([], { style: "unit", unit: "day", unitDisplay: "long" });
-const numberFormat2 = new Intl.NumberFormat([], { style: "unit", unit: "hour", unitDisplay: "long" });
-const numberFormat3 = new Intl.NumberFormat([], { style: "unit", unit: "minute", unitDisplay: "long" });
-const numberFormat4 = new Intl.NumberFormat([], { style: "unit", unit: "second", unitDisplay: "long" });
-
-const formatter = new Intl.ListFormat();
+const durationFormat = new Intl.DurationFormat([], { style: "long" });
 
 const promiseMap = new Map();
 
@@ -59,7 +54,9 @@ function notification(title, message, date) {
 browser.notifications.onClicked.addListener((notificationId) => {
 	const url = notifications.get(notificationId);
 
-	if (url) {
+	if (url == null) {
+		browser.runtime.openOptionsPage();
+	} else if (url) {
 		browser.tabs.create({ url });
 		// browser.windows.openDefaultBrowser(url);
 	}
@@ -81,20 +78,7 @@ function outputduration(sec) {
 	const hours = Math.floor(sec % 86400 / 3600);
 	const minutes = Math.floor(sec % 3600 / 60);
 	const seconds = sec % 60;
-	const text = [];
-	if (days > 0) {
-		text.push(numberFormat1.format(days));
-	}
-	if (hours > 0) {
-		text.push(numberFormat2.format(hours));
-	}
-	if (minutes > 0) {
-		text.push(numberFormat3.format(minutes));
-	}
-	if (seconds > 0) {
-		text.push(numberFormat4.format(seconds));
-	}
-	return formatter.format(text);
+	return durationFormat.format({ days, hours, minutes, seconds });
 }
 
 /**
@@ -300,7 +284,7 @@ class ECETransformer {
 
 	/**
 	 * @param {Uint8Array} buffer
-	 * @returns {Object}
+	 * @returns {object}
 	 */
 	readHeader(buffer) {
 		if (buffer.length < 21) {
@@ -374,22 +358,19 @@ class ECETransformer {
 			controller.enqueue(
 				await this.encryptRecord(this.prevChunk, this.seq, isLast)
 			);
-			++this.seq;
+		} else if (this.seq === 0) {
+			// the first chunk during decryption contains only the header
+			const header = this.readHeader(this.prevChunk);
+			this.salt = header.salt;
+			this.rs = header.rs;
+			this.key = await this.generateKey();
+			this.nonceBase = await this.generateNonceBase();
 		} else {
-			if (this.seq === 0) {
-				// the first chunk during decryption contains only the header
-				const header = this.readHeader(this.prevChunk);
-				this.salt = header.salt;
-				this.rs = header.rs;
-				this.key = await this.generateKey();
-				this.nonceBase = await this.generateNonceBase();
-			} else {
-				controller.enqueue(
-					await this.decryptRecord(this.prevChunk, this.seq - 1, isLast)
-				);
-			}
-			++this.seq;
+			controller.enqueue(
+				await this.decryptRecord(this.prevChunk, this.seq - 1, isLast)
+			);
 		}
+		++this.seq;
 	}
 
 	/**
@@ -520,31 +501,31 @@ async function checkServerVersion(service) {
 		console.log(json);
 
 		const { version } = json;
-		if (version?.startsWith("v") && Number.parseInt(version.slice(1).split(".")[0], 10) >= 3) {
+		if (version?.startsWith("v") && Number.parseInt(version.slice(1).split(".", 1)[0], 10) >= 3) {
 			return true;
 		}
 		notification(browser.i18n.getMessage("notifUnsupportedVersionTitle"), browser.i18n.getMessage("notifUnsupportedVersionMessage", [service, version]));
 		return false;
 
 	}
+
 	const text = await response.text();
 	console.error(text);
 	notification(browser.i18n.getMessage("notifUnableVersionTitle"), browser.i18n.getMessage("notifUnableVersionMessage", service));
 	return false;
-
 }
 
 /**
  * Upload file.
  *
- * @param {Object} account
- * @param {Object} fileInfo
+ * @param {object} account
+ * @param {object} fileInfo
  * @param {number} fileInfo.id
  * @param {string} fileInfo.name
  * @param {File} fileInfo.data
- * @param {Object} [tab]
- * @param {Object} [relatedFileInfo]
- * @returns {Promise<Object>}
+ * @param {object} [tab]
+ * @param {object} [relatedFileInfo]
+ * @returns {Promise<object>}
  */
 async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 	console.log(account, fileInfo);
@@ -584,12 +565,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 				// tabId
 			});
 
-			const promise = { send, files: [] };
-
-			// const { promise, resolve, reject } = Promise.withResolvers();
-			promise.message = new Promise((resolve) => {
-				promise.resolve = resolve;
-			});
+			const promise = { send, files: [], ...Promise.withResolvers() };
 
 			promiseMap.set(tabId, promise);
 
@@ -612,7 +588,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 		// console.log(response);
 		browser.runtime.sendMessage(response);
 
-		message = await promise.message;
+		message = await promise.promise;
 
 		browser.composeAction.setBadgeText({
 			text: promiseMap.size ? numberFormat.format(promiseMap.size) : null
@@ -623,12 +599,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 		let tabId = tab?.id;
 
 		if (!tab || !promiseMap.has(tabId)) {
-			const promise = { send, files: [] };
-
-			// const { promise, resolve, reject } = Promise.withResolvers();
-			promise.message = new Promise((resolve) => {
-				promise.resolve = resolve;
-			});
+			const promise = { send, files: [], ...Promise.withResolvers() };
 
 			if (tab) {
 				promiseMap.set(tabId, promise);
@@ -662,7 +633,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 			browser.runtime.sendMessage(response);
 		}
 
-		message = await promise.message;
+		message = await promise.promise;
 	}
 
 	if (message.canceled) {
@@ -883,6 +854,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 		notification(browser.i18n.getMessage("notifUploadUnableTitle"), browser.i18n.getMessage("notifUploadErrorMessage", [file.name, json.error]));
 	}
 
+	// https://github.com/timvisee/send/issues/159
 	// const icon = `https://${aurl}/icon.718f87fb.svg`;
 	// const response = await fetch(icon, { method: "HEAD" });
 	// console.log(response);
@@ -906,9 +878,9 @@ browser.cloudFile.onFileUpload.addListener(uploaded);
 /**
  * Cancel file upload.
  *
- * @param {Object} account
+ * @param {object} account
  * @param {number} id
- * @param {Object} [tab]
+ * @param {object} [tab]
  * @returns {void}
  */
 function canceled(account, id/* , tab */) {
@@ -931,9 +903,9 @@ browser.cloudFile.onFileUploadAbort.addListener(canceled);
 /**
  * Deleted uploaded file.
  *
- * @param {Object} account
+ * @param {object} account
  * @param {number} id
- * @param {Object} [tab]
+ * @param {object} [tab]
  * @returns {Promise<void>}
  */
 async function deleted(account, id/* , tab */) {
@@ -991,7 +963,7 @@ browser.cloudFile.onAccountAdded.addListener((account) => {
 /**
  * Set settings.
  *
- * @param {Object} asettings
+ * @param {object} asettings
  * @returns {void}
  */
 function setSettings(asettings) {
@@ -1063,7 +1035,16 @@ browser.runtime.onInstalled.addListener((details) => {
 	const manifest = browser.runtime.getManifest();
 	switch (details.reason) {
 		case "install":
-			notification(`🎉 ${browser.i18n.getMessage("notifInstallTitle", manifest.name)}`, browser.i18n.getMessage("notifInstallMessage", [TITLE, manifest.version]));
+			if (SEND) {
+				browser.notifications.create({
+					type: "basic",
+					iconUrl: browser.runtime.getURL("icons/icon.svg"),
+					title: `🎉 ${browser.i18n.getMessage("notifInstallTitle", manifest.name)}`,
+					message: browser.i18n.getMessage("notifInstallMessage", [TITLE, manifest.version])
+				}).then((notificationId) => {
+					notifications.set(notificationId, null);
+				});
+			}
 			break;
 		case "update":
 			if (SEND) {

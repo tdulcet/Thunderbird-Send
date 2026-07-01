@@ -18,8 +18,7 @@ export const numberFormat = new Intl.NumberFormat();
  * @returns {string}
  */
 export function outputunit(number, scale) {
-	let str;
-
+	// return browser.messengerUtilities.formatFileSize(number);
 	const scale_base = scale ? 1000 : 1024;
 
 	let power = 0;
@@ -31,10 +30,12 @@ export function outputunit(number, scale) {
 	let anumber = Math.abs(number);
 	anumber += anumber < 10 ? 0.0005 : anumber < 100 ? 0.005 : anumber < 1000 ? 0.05 : 0.5;
 
+	let str;
+
 	if (number !== 0 && anumber < 1000 && power > 0) {
 		str = numberFormat.format(number);
 
-		const length = 5 + (number < 0 ? 1 : 0);
+		const length = 5 + (number < 0);
 		if (str.length > length) {
 			const prec = anumber < 10 ? 3 : anumber < 100 ? 2 : 1;
 			str = number.toLocaleString([], { maximumFractionDigits: prec });
@@ -43,10 +44,12 @@ export function outputunit(number, scale) {
 		str = number.toLocaleString([], { maximumFractionDigits: 0 });
 	}
 
-	str += `\u00A0${power < suffix_power_char.length ? suffix_power_char[power] : "(error)"}`;
+	if (power > 0) {
+		str += `\u{A0}${power < suffix_power_char.length ? suffix_power_char[power] : "(error)"}`;
 
-	if (!scale && power > 0) {
-		str += "i";
+		if (!scale) {
+			str += "i";
+		}
 	}
 
 	return str;

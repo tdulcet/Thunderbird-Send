@@ -6,7 +6,7 @@
  * https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt
  *
  * @public
- * @const
+ * @constant
  * @type {readonly string[]}
  */
 export const large = Object.freeze([
@@ -7794,7 +7794,7 @@ export const large = Object.freeze([
  * https://www.eff.org/files/2016/09/08/eff_short_wordlist_1.txt
  *
  * @public
- * @const
+ * @constant
  * @type {readonly string[]}
  */
 export const short = Object.freeze([

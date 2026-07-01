@@ -5,7 +5,7 @@
  * https://en.wikipedia.org/wiki/ASCII
  *
  * @public
- * @const
+ * @constant
  * @type {Object.<string, string>}
  */
 export const characters = Object.freeze({

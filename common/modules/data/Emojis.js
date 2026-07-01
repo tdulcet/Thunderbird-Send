@@ -6,7 +6,7 @@
  * https://unicode.org/Public/emoji/11.0/emoji-test.txt
  *
  * @public
- * @const
+ * @constant
  * @type {Object.<string, string>}
  */
 export const aemojis = Object.freeze({
@@ -2806,17 +2806,17 @@ export const aemojis = Object.freeze({
  * Total: 1,376
  *
  * @public
- * @const
+ * @constant
  * @type {readonly string[]}
  */
-export const emojis = Object.freeze(Object.keys(aemojis).filter((key) => /^\p{Emoji}\uFE0F?(?:\u200D\p{Emoji}\uFE0F?)*$/u.test(key)));
+export const emojis = Object.freeze(Object.keys(aemojis).filter((key) => /^\p{Emoji}\u{FE0F}?(?:\u{200D}\p{Emoji}\u{FE0F}?)*$/u.test(key)));
 
 /**
  * Unicode Emoji version 11.0 basic single character emojis
  * Total: 1,006
  *
  * @public
- * @const
+ * @constant
  * @type {readonly string[]}
  */
 export const basic = Object.freeze(Object.keys(aemojis).filter((key) => Array.from(key).length === 1));

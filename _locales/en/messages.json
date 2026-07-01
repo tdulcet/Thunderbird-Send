@@ -313,7 +313,7 @@
     }
   },
   "notifInstallMessage": {
-    "message": "Thank you for installing the “$name$” add-on!\nVersion: $version$",
+    "message": "Thank you for installing the “$name$” add-on!\nVersion: $version$\n\nClick to open the options/preferences page to configure this extension.",
     "placeholders": {
       "name": {
         "content": "$1"

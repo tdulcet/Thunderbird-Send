@@ -17,12 +17,12 @@ let accountId = null;
  * Adjusts account setting for loading.
  *
  * @private
- * @param {Object} param
- * @param {Object} param.optionValue the value of the option to be loaded
+ * @param {object} param
+ * @param {object} param.optionValue the value of the option to be loaded
  * @param {string} param.option the name of the option that has been changed
  * @param {HTMLElement} param.elOption where the data is supposed to be loaded
  *                     into
- * @param {Object} param.optionValues result of a storage.[�].get call, which
+ * @param {object} param.optionValues result of a storage.[�].get call, which
  *                  contains the values that should be applied to the file
  *                  Please prefer "optionValue" instead of this, as this may not
  *                  always contain a value here.
@@ -39,8 +39,8 @@ function get(param) {
  * Adjusts account setting for saving.
  *
  * @private
- * @param {Object} param
- * @param {Object} param.optionValue the value of the changed option
+ * @param {object} param
+ * @param {object} param.optionValue the value of the changed option
  * @param {string} param.option the name of the option that has been changed
  * @param {Array} param.saveTriggerValues all values returned by potentially
  *                                          previously run safe triggers
@@ -63,9 +63,9 @@ async function set(param) {
  * Apply the new account settings.
  *
  * @private
- * @param  {Object} optionValue
+ * @param  {object} optionValue
  * @param  {string} [option]
- * @param  {Object} [event]
+ * @param  {object} [event]
  * @returns {void}
  */
 function apply(optionValue) {
@@ -77,7 +77,7 @@ function apply(optionValue) {
 /**
  * Verify Send server version.
  *
- * @param  {Object} event
+ * @param  {object} event
  * @returns {void}
  */
 function verify(event) {
