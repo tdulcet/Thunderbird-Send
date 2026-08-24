@@ -778,7 +778,7 @@ async function uploaded(account, fileInfo, tab, relatedFileInfo) {
 		const buf = state.value;
 		ws.send(buf);
 		state = await reader.read();
-		while (ws.bufferedAmount > ECE_RECORD_SIZE * 2 && ws.readyState === WebSocket.OPEN && !upload.canceled) {
+		while (ws.bufferedAmount > ECE_RECORD_SIZE * 128 && ws.readyState === WebSocket.OPEN && !upload.canceled) {
 			await delay();
 		}
 	}
