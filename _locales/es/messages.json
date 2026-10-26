@@ -2,67 +2,82 @@
   // manifest.json
   "extensionName": {
     "message": "Proveedor FileLink para Send",
-    "description": "Name of the extension."
+    "description": "Name of the extension.",
+    "hash": "8a99fec4c8b52c118133d0fcacda83e5"
   },
   "extensionDescription": {
     "message": "Encripta y carga adjuntos grandes de forma segura a cualquier servicio Send (anteriormente Firefox Send).",
-    "description": "Description of the extension."
+    "description": "Description of the extension.",
+    "hash": "03d0ff9650a611702e21c941bea4d972"
   },
   "composeActionButtonTitle": {
     "message": "Thunderbird Send, Agrega un adjunto para empezar",
-    "description": "The title for the button, which opens the popup."
+    "description": "The title for the button, which opens the popup.",
+    "hash": "e212511f0cd4ead2b68121509a2c11ce"
   },
   "composeActionButtonLabel": {
     "message": "Thunderbird Send",
-    "description": "The label for the button, which opens the popup."
+    "description": "The label for the button, which opens the popup.",
+    "hash": "44406eacb6713e0ffe5601867b571d17"
   },
 
   // errors or other messages (mostly for settings)
   "errorShowingMessage": {
     "message": "No se pudo mostrar este mensaje.",
-    "description": "When there is an error when showing the error/info/…."
+    "description": "When there is an error when showing the error/info/….",
+    "hash": "a9440e4f824a372841d4de2b7e2643ee"
   },
   "couldNotLoadOptions": {
-    "message": "No se pudo cargar los ajustes.",
-    "description": "When one or all settings could not be loaded."
+    "message": "No se pudieron cargar los ajustes.",
+    "description": "When one or all settings could not be loaded.",
+    "hash": "9497a5d2c9473aeb2ed9601f46c456be"
   },
   "couldNotSaveOption": {
     "message": "No se pudo guardar este ajuste.",
-    "description": "When a setting could not be saved."
+    "description": "When a setting could not be saved.",
+    "hash": "6bcb9e36d2c33172b948515a9c50aa8e"
   },
   "messageUndoButton": {
     "message": "Deshacer",
-    "description": "The text of a button that undoes the last action."
+    "description": "The text of a button that undoes the last action.",
+    "hash": "a85e775d7404b86c8060a20efd31241c"
   },
   "couldNotUndoAction": {
     "message": "No se pudo deshacer la acción.",
-    "description": "Shown when an action cannot be undone."
+    "description": "Shown when an action cannot be undone.",
+    "hash": "d2883c6ca0164afc4f360f3e02e3166a"
   },
   "resettingOptionsWorked": {
-    "message": "¡Se reestablecieron los ajustes a los valores por defecto!",
-    "description": "The message shown, when the options of the settings were reset."
+    "message": "¡Se restablecieron los ajustes a los valores por defecto!",
+    "description": "The message shown, when the options of the settings were reset.",
+    "hash": "257b99ed2a074fccbfc658d770b50107"
   },
   "resettingOptionsFailed": {
-    "message": "¡No se pudo reestablecer los ajustes!",
-    "description": "The message shown, when the options of the settings could not have been reset."
+    "message": "¡No se pudieron restablecer los ajustes!",
+    "description": "The message shown, when the options of the settings could not have been reset.",
+    "hash": "76e950d2db72a824482411ca6564fb1f"
   },
 
   // options
   "someSettingsAreManaged": {
     "message": "Algunos ajustes están siendo administrados por tu administrador de sistemas y no se pueden cambiar.",
-    "description": "The message, which appears, when settings are pre-defined (as managed options) by administrators."
+    "description": "The message, which appears, when settings are pre-defined (as managed options) by administrators.",
+    "hash": "148604ebbeb7df28974d8233f1418d1f"
   },
   "optionIsDisabledBecauseManaged": {
     "message": "Esta opción está deshabilitada, porque ha sido configurada por tu administrador de sistemas.",
-    "description": "The title (tooltip) shown, when hovering over a disabled, managed option."
+    "description": "The title (tooltip) shown, when hovering over a disabled, managed option.",
+    "hash": "50fb70682c64e1a1fb4d8884b33cca64"
   },
   "optionLearnMore": {
     "message": "Aprender más",
-    "description": "When a link to an explainer needs to be added, this is the link text."
+    "description": "When a link to an explainer needs to be added, this is the link text.",
+    "hash": "9085b09f4748be12ab0c241d2e643b31"
   },
   "optionsResetButton": {
-    "message": "Reestablecer todos los ajustes",
-    "description": "The button to delete all current settings and load the defaults, shown in the add-on settings."
+    "message": "Restablecer todos los ajustes",
+    "description": "The button to delete all current settings and load the defaults, shown in the add-on settings.",
+    "hash": "4bb60c6c7e7b9e2ff987c244e76ee044"
   },
 
   // options footer
@@ -70,438 +85,494 @@
     "message": "Este complemento ha sido traducido por $TRANSLATORS$.",
     "description": "The credit text for the translator. See https://github.com/TinyWebEx/common/blob/master/CONTRIBUTING.md#translator-credit-inside-of-add-on for how to translate this.",
     "placeholders": {
-      "translators": {
-        "content": "$1",
-        "example": "<a href=\"https://github.com/rugk/\">@rugk</a>"
-      }
-    }
+      "translators": { "content": "$1", "example": "<a href=\"https://github.com/rugk/\">@rugk</a>" }
+    },
+    "hash": "a6f5deecd624d5f8cd58350c72dd8fdf"
   },
   "translatorLink": {
     "message": "https://sr.ht/~sekinfo/",
-    "description": "The link to the translator's GitHub profile."
+    "description": "The link to the translator's GitHub profile.",
+    "hash": "4d3e264a9b174cc708698a20c68e50fc"
   },
   "translatorUsername": {
     "message": "sekinfo",
-    "description": "The username that the translator wants to be referred to."
+    "description": "The username that the translator wants to be referred to.",
+    "hash": "0001939e1fe5f05e240fd2a81b751f99"
   },
 
   // ARIA labels/descriptions
   "dismissIconDescription": {
     "message": "Cerrar este mensaje",
-    "description": "the aria label for the close button of the message box"
+    "description": "the aria label for the close button of the message box",
+    "hash": "632720ab193dcacba4286cb364124856"
   },
   "ariaMessageLoading": {
     "message": "mensaje de carga",
-    "description": "the aria label to label the message box as an info message box"
+    "description": "the aria label to label the message box as an info message box",
+    "hash": "570016a957498a1fa1b3e818eb282adb"
   },
   "ariaMessageInfo": {
     "message": "mensaje informativo",
-    "description": "the aria label to label the message box as an info message box"
+    "description": "the aria label to label the message box as an info message box",
+    "hash": "5f54e42067e19895a2641b17a5233418"
   },
   "ariaMessageSuccess": {
     "message": "mensaje de éxito",
-    "description": "the aria label to label the message box as an success message box"
+    "description": "the aria label to label the message box as an success message box",
+    "hash": "334387b4ae53483d17f11519a70dd3af"
   },
   "ariaMessageError": {
     "message": "mensaje de error",
-    "description": "the aria label to label the message box as an error message box"
+    "description": "the aria label to label the message box as an error message box",
+    "hash": "fcda6eedc61727fe8aae7392a0a541a5"
   },
   "ariaMessageWarning": {
     "message": "mensaje de advertencia",
-    "description": "the aria label to label the message box as an warning message box"
+    "description": "the aria label to label the message box as an warning message box",
+    "hash": "8a5dd7528bead1ccd27cb7430d797bd2"
   },
   "infoButton": {
-    "message": "ℹ️ Información"
+    "message": "ℹ️ Información",
+    "hash": "171abeeb1189da7b938b19f3786431da"
   },
   "optionsButton": {
-    "message": "⚙️ Opciones"
+    "message": "⚙️ Opciones",
+    "hash": "81f0637f8571cec14f88abf6eda188d9"
   },
   "donateButton": {
-    "message": "❤️ Donar"
+    "message": "❤️ Donar",
+    "hash": "2b73ca0ac809838239c3ac0d891403c2"
   },
   "resetButton": {
-    "message": "Reestablecer todos los ajustes"
+    "message": "Reestablecer todos los ajustes",
+    "hash": "4bb60c6c7e7b9e2ff987c244e76ee044"
   },
   "manageTitle": {
-    "message": "Configuración de cuenta"
+    "message": "Configuración de cuenta",
+    "hash": "3eed52a909b5fce3fc87b1840b3adf6a"
   },
   "manageNote": {
-    "message": "Esta es la configuración para la cuenta seleccionada de Thunderbird Send. Para las opciones globales/preferencias, haz clic en el botón de arriba o vaya al menú de Thunderbird (≡) > 🧩 Complementos y temas."
+    "message": "Esta es la configuración para la cuenta seleccionada de Thunderbird Send. Para las opciones globales/preferencias, haz clic en el botón de arriba o vaya al menú de Thunderbird (≡) > 🧩 Complementos y temas.",
+    "hash": "dc3d59bea8745f633680b97f36753007"
   },
   "manageGetList": {
     "message": "Haz clic en este link para una lista de $link$ y sus respectivos límites del tamaño de archivo.",
     "placeholders": {
-      "link": {
-        "content": "$1"
-      }
-    }
+      "link": { "content": "$1" }
+    },
+    "hash": "41aaf0cc0d0542a291533a8ae6635ec4"
   },
   "manageListLinkText": {
-    "message": "servicios Send públicos"
+    "message": "servicios Send públicos",
+    "hash": "d064305b6169921b7686168cabf89b89"
   },
   "manageService": {
-    "message": "URL del servicio Send:"
+    "message": "URL del servicio Send:",
+    "hash": "66d04de4ce35a8811ea3e228d00abc4b"
   },
   "manageVerifyButton": {
-    "message": "Verificar"
+    "message": "Verificar",
+    "hash": "3ec990258b0577f355ad1c4f634b0852"
   },
   "manageDownloadLimit": {
-    "message": "Límite de descargas por defecto:"
+    "message": "Límite de descargas por defecto:",
+    "hash": "3f1be22509a6f80471e6f40f4d8c0287"
   },
   "manageDownloadLimitHelp": {
-    "message": "Los enlaces vencerán después de este número de descargas. Asegúrate de que este valor es menor que el número máximo de descargas que permite este servicio Send."
+    "message": "Los enlaces vencerán después de este número de descargas. Asegúrate de que este valor es menor que el número máximo de descargas que permite este servicio Send.",
+    "hash": "e696432d746bbb29086d887b7997f740"
   },
   "manageTimeLimit": {
-    "message": "Tiempo límite por defecto:"
+    "message": "Tiempo límite por defecto:",
+    "hash": "d3d49d4ff11268789042454ce629262b"
   },
   "manageTimeLimitHelp": {
-    "message": "Los enlaces vencerán después de este tiempo. Asegúrate de que este valor es menor que el tiempo máximo que permite este servicio Send."
+    "message": "Los enlaces vencerán después de este tiempo. Asegúrate de que este valor es menor que el tiempo máximo que permite este servicio Send.",
+    "hash": "d9b425c16a17ab33d9e50ff45fdfb639"
   },
   "manageDays": {
-    "message": "días"
+    "message": "días",
+    "hash": "58a3b3c7a7282d2c5bb3227a3c77de7f"
   },
   "manageHours": {
-    "message": "horas"
+    "message": "horas",
+    "hash": "2ea7b79ca5e303e298c5a0c497df1a77"
   },
   "manageMinutes": {
-    "message": "minutos"
+    "message": "minutos",
+    "hash": "f4ea5db97ec0862be67da7286b7b3b38"
   },
   "manageMaxSize": {
-    "message": "Tamaño máximo de archivo:"
+    "message": "Tamaño máximo de archivo:",
+    "hash": "919b227007eadf4b22c3b4916551d781"
   },
   "manageMaxSizeHelp": {
-    "message": "Tamaño máximo de archivo permitido por este servicio Send."
+    "message": "Tamaño máximo de archivo permitido por este servicio Send.",
+    "hash": "fd8acc33c44a4fa3385611ae684b6d4e"
   },
   "manageGiB": {
-    "message": "GiB"
+    "message": "GiB",
+    "hash": "60f4d26c41f2ec82dc56b8029734de3f"
   },
   "manageSuccess": {
-    "message": "¡Servidor Send verificado!"
+    "message": "¡Servidor Send verificado!",
+    "hash": "a9ae6ebc027a2841df6ebde2aa9844c8"
   },
   "manageError": {
-    "message": "No se pudo verificar el servidor Send"
+    "message": "No se pudo verificar el servidor Send",
+    "hash": "a4580221c2ad7eb5402c9c36973e500a"
   },
   "popupFile": {
-    "message": "Nombre de archivo:"
+    "message": "Nombre de archivo:",
+    "hash": "bfd79f083b9579774c395da0904d84b7"
   },
   "popupTotalSize": {
-    "message": "Tamaño total:"
+    "message": "Tamaño total:",
+    "hash": "b348703e816406cdbcdbbfa9a7ddfa6b"
   },
   "popupSize": {
-    "message": "Tamaño:"
+    "message": "Tamaño:",
+    "hash": "7ff31afb628c96239f8312a80de35c55"
   },
   "popupDownloadLimit": {
-    "message": "Límite de descargas:"
+    "message": "Límite de descargas:",
+    "hash": "e3f502d1f36c542d2cc9682143374a15"
   },
   "popupDownloadLimitDesc": {
-    "message": "El enlace vencerá después de este número de descargas. Asegúrate de que este valor es menor que el número máximo de descargas que permite este servicio Send."
+    "message": "El enlace vencerá después de este número de descargas. Asegúrate de que este valor es menor que el número máximo de descargas que permite este servicio Send.",
+    "hash": "069b1d9c2ad9cdf526ad05ac3347c975"
   },
   "popupTimeLimit": {
-    "message": "Límite de tiempo:"
+    "message": "Límite de tiempo:",
+    "hash": "1b9204f79fb030377c9a9ca8921d6417"
   },
   "popupDays": {
-    "message": "días"
+    "message": "días",
+    "hash": "58a3b3c7a7282d2c5bb3227a3c77de7f"
   },
   "popupHours": {
-    "message": "horas"
+    "message": "horas",
+    "hash": "2ea7b79ca5e303e298c5a0c497df1a77"
   },
   "popupMinutes": {
-    "message": "minutos"
+    "message": "minutos",
+    "hash": "f4ea5db97ec0862be67da7286b7b3b38"
   },
   "popupTimeLimitDesc": {
-    "message": "El enlace vencerá después de este tiempo. Asegúrate de que este valor es menor que el tiempo máximo que permite este servicio Send."
+    "message": "El enlace vencerá después de este tiempo. Asegúrate de que este valor es menor que el tiempo máximo que permite este servicio Send.",
+    "hash": "865668efc84b83a7f5295241dbc764db"
   },
   "popupPwdProtect": {
-    "message": "Proteger con una contraseña (haz clic aquí)"
+    "message": "Proteger con una contraseña (haz clic aquí)",
+    "hash": "ff18e5ed7259bb18786cf63b03d3ee27"
   },
   "popupPwdWarning": {
-    "message": "Usa métodos diferentes para enviar la contraseña y el enlace a los destinatarios. Incluir la contraseña en el mismo correo que el enlace no ofrece ninguna seguridad adicional."
+    "message": "Usa métodos diferentes para enviar la contraseña y el enlace a los destinatarios. Incluir la contraseña en el mismo correo que el enlace no ofrece ninguna seguridad adicional.",
+    "hash": "f8f18c0cbbcc9cad5d7e46fa5c48c6c5"
   },
   "popupPassword": {
-    "message": "Contraseña (opcional):"
+    "message": "Contraseña (opcional):",
+    "hash": "b2e7336fc750ef65b3d149be181d6299"
   },
   "popupPwdPlaceholder": {
-    "message": "Contraseña"
+    "message": "Contraseña",
+    "hash": "98366484e203f7da68c037522bc7134e"
   },
   "popupPwdShow": {
-    "message": "Mostrar contraseña"
+    "message": "Mostrar contraseña",
+    "hash": "edbb6de06e1cd2905cbffda7ea9b4406"
   },
   "popupPwdHelp": {
-    "message": "Opcionalmente protege el archivo con una contraseña generada localmente."
+    "message": "Opcionalmente protege el archivo con una contraseña generada localmente.",
+    "hash": "aa06d94d701032b4a52fb5befcdbd713"
   },
   "popupPwdPronunciation": {
-    "message": "Pronunciación:"
+    "message": "Pronunciación:",
+    "hash": "f659481b15f195c4eee444f10c3b0481"
   },
   "popupPwdSuggest": {
-    "message": "Sugerir una contraseña fuerte (haz clic para mostrar)"
+    "message": "Sugerir una contraseña fuerte (haz clic para mostrar)",
+    "hash": "988e91c110204b22fef2bdb06b373ebe"
   },
   "popupPwdGenOpt1": {
-    "message": "Contraseña con símbolos (15 caracteres)"
+    "message": "Contraseña con símbolos (15 caracteres)",
+    "hash": "6c842c9ebc83ccb7a20a77f6e08487ae"
   },
   "popupPwdGenOpt1Title": {
-    "message": "Contraseña con letras mayúsculas/minúsculas, números y símbolos"
+    "message": "Contraseña con letras mayúsculas/minúsculas, números y símbolos",
+    "hash": "1361f68430fae1e758562d55617381d1"
   },
   "popupPwdGenOpt2": {
-    "message": "Contraseña (15 caracteres)"
+    "message": "Contraseña (15 caracteres)",
+    "hash": "32af040b155684311e69c34828c4f7b5"
   },
   "popupPwdGenOpt2Title": {
-    "message": "Contraseña con solamente letras mayúsculas/minúsculas y números"
+    "message": "Contraseña con solamente letras mayúsculas/minúsculas y números",
+    "hash": "cfee915972a69d4e469c29be2bb724c0"
   },
   "popupPwdGenOpt3": {
-    "message": "Frase de seguridad, palabras largas (6)"
+    "message": "Frase de seguridad, palabras largas (6)",
+    "hash": "ddd3db8827cc7adcc4655b26ebcab41a"
   },
   "popupPwdGenOpt3Title": {
-    "message": "Frase de seguridad con palabras largas de hasta 9 caracteres"
+    "message": "Frase de seguridad con palabras largas de hasta 9 caracteres",
+    "hash": "899d05414cd9687618cbe1cc3da03cb9"
   },
   "popupPwdGenOpt4": {
-    "message": "Frase de seguridad, palabras cortas (8)"
+    "message": "Frase de seguridad, palabras cortas (8)",
+    "hash": "e53121902d2e139c27d02143ea2627b7"
   },
   "popupPwdGenOpt4Title": {
-    "message": "Frase de seguridad con palabras cortas de hasta 5 caracteres"
+    "message": "Frase de seguridad con palabras cortas de hasta 5 caracteres",
+    "hash": "117e76553653f53cccc675c7a40ba910"
   },
   "popupPwdGenOpt5": {
-    "message": "Contraseña de emojis (7)"
+    "message": "Contraseña de emojis (7)",
+    "hash": "480e6e7d8e541a196a1a78a5b7abc5b7"
   },
   "popupPwdGenOpt5Title": {
-    "message": "Contraseña de emojis con los emojis básicos y de familia, rol, género, cabello y otros"
+    "message": "Contraseña de emojis con los emojis básicos y de familia, rol, género, cabello y otros",
+    "hash": "2d1903da251644055cc21db9c4676f61"
   },
   "popupPwdGenOpt6": {
-    "message": "Contraseña de emojis (8)"
+    "message": "Contraseña de emojis (8)",
+    "hash": "279692f4a8832e5d073b34337e271aeb"
   },
   "popupPwdGenOpt6Title": {
-    "message": "Contraseña de emojis con solamente los emojis básicos"
+    "message": "Contraseña de emojis con solamente los emojis básicos",
+    "hash": "78673867881a1e0663133b3454fb5df3"
   },
   "popupPwdGenButton": {
-    "message": "🔒 Generar contraseña"
+    "message": "🔒 Generar contraseña",
+    "hash": "40c73863f8ae1f8b03e0c868591b6fd2"
   },
   "popupUploadButton": {
-    "message": "📤 Cargar y generar enlace"
+    "message": "📤 Cargar y generar enlace",
+    "hash": "2d43dbbc1badf8d84d55460326795e7d"
   },
   "popupCancelButton": {
-    "message": "❌ Cancelar"
+    "message": "❌ Cancelar",
+    "hash": "f52c4113711df2acfbb7b40e5f6dbe6e"
   },
   "popupB": {
-    "message": "B"
+    "message": "B",
+    "hash": "bcdd4ddfd851cce6e4fb6dcc3773ade4"
   },
   "optionsTitle": {
-    "message": "Opciones"
+    "message": "Opciones",
+    "hash": "531dad0078a72193602b18495f0ad4e9"
   },
   "optionsNote": {
-    "message": "Estas son las opciones globales/preferencias para Thunderbird Send. Para las páginas de configuración de cuentas, vaya al menú de Thunderbird (≡) > ⚙️ Ajustes > ✏️ Redacción > Adjuntos."
+    "message": "Estas son las opciones globales/preferencias para Thunderbird Send. Para las páginas de configuración de cuentas, vaya al menú de Thunderbird (≡) > ⚙️ Ajustes > ✏️ Redacción > Adjuntos.",
+    "hash": "c7c25098ef3e3b3cfb63075aafb3b6c0"
   },
   "optionsNotifLabel": {
-    "message": "Mostrar notificaciones de escritorio"
+    "message": "Mostrar notificaciones de escritorio",
+    "hash": "8456520206478c303e4784149b6aebd4"
   },
   "optionsPopupLabel": {
-    "message": "Usar ventanas emergentes que salen de la barra de acciones"
+    "message": "Usar ventanas emergentes que salen de la barra de acciones",
+    "hash": "9741c4e10aac9917e891c53888a8f5fd"
   },
   "optionsPopupDesc": {
-    "message": "Usar ventanas emergentes que salen de la barra de acciones en la ventana de redacción en vez de ventanas emergentes independientes. Requiere Thunderbid 115 o mayor para automáticamente abrirlas."
+    "message": "Usar ventanas emergentes que salen de la barra de acciones en la ventana de redacción en vez de ventanas emergentes independientes. Requiere Thunderbid 115 o mayor para automáticamente abrirlas.",
+    "hash": "c804c2d1c2c80aef8c5323fb92187eba"
   },
   "optionsLinkLabel": {
-    "message": "Crear un enlace para el servicio Send"
+    "message": "Crear un enlace para el servicio Send",
+    "hash": "cd69090c97d8ab00237a27771c66a2da"
   },
   "optionsLinkDesc": {
-    "message": "Agregar un enlace de “Aprender más” para el servicio Send en el pie de página de los mensajes."
+    "message": "Agregar un enlace de “Aprender más” para el servicio Send en el pie de página de los mensajes.",
+    "hash": "6b188549b8f02fd517085693a3cc7790"
   },
   "notifInstallTitle": {
     "message": "$name$ instalado",
     "placeholders": {
-      "name": {
-        "content": "$1"
-      }
-    }
+      "name": { "content": "$1" }
+    },
+    "hash": "7968f8c4726481eddd48de2a9065f558"
   },
   "notifInstallMessage": {
     "message": "¡Gracias por instalar el complemento de “$name$”!\nVersión: $version$",
     "placeholders": {
-      "name": {
-        "content": "$1"
-      },
-      "version": {
-        "content": "$2"
-      }
-    }
+      "name": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "d156dc0e9e67425e261ac8a5e83236c7"
   },
   "notifUpdateTitle": {
     "message": "$name$ actualizado",
     "placeholders": {
-      "name": {
-        "content": "$1"
-      }
-    }
+      "name": { "content": "$1" }
+    },
+    "hash": "d5dd219605c83b165e09257038110e82"
   },
   "notifUpdateMessage": {
     "message": "El complemento de “$name$” ha sido actualizado a la versión $version$. Haz clic para ver las notas de lanzamiento.\n\n❤️ ¡Muchas gracias a los donantes generosos que me han permitido seguir trabajando en este complemento!",
     "placeholders": {
-      "name": {
-        "content": "$1"
-      },
-      "version": {
-        "content": "$2"
-      }
-    }
+      "name": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "a549ba04bb830cf149f17c6cb738e03a"
   },
   "notifUnsupportedVersionTitle": {
-    "message": "❌ Versión del servidor Send no soportada"
+    "message": "❌ Versión del servidor Send no soportada",
+    "hash": "bd3928cd84235a71de15c2b7b36215cb"
   },
   "notifUnsupportedVersionMessage": {
     "message": "Error: El servicio Send “$service$” tiene una versión no soportada: $version$. Este complemento requiere por lo menos la versión 3.",
     "placeholders": {
-      "service": {
-        "content": "$1"
-      },
-      "version": {
-        "content": "$2"
-      }
-    }
+      "service": { "content": "$1" },
+      "version": { "content": "$2" }
+    },
+    "hash": "3e7f558c49bf43079940d3426c4ed5db"
   },
   "notifUnableVersionTitle": {
-    "message": "❌ No se pudo determinar la versión del servidor Send"
+    "message": "❌ No se pudo determinar la versión del servidor Send",
+    "hash": "3bddd18f7ed4bef4e6c67bcabb9a37f8"
   },
   "notifUnableVersionMessage": {
     "message": "Error: No se pudo determinar la versión del servidor Send de “$service$”. Por favor revisa tu conexión de Internet y configuración.",
     "placeholders": {
-      "service": {
-        "content": "$1"
-      }
-    }
+      "service": { "content": "$1" }
+    },
+    "hash": "c54b14bf3d7209e8ae889d9ffc08eb4b"
   },
   "notifOpenPopupTitle": {
-    "message": "ℹ️ Abre la ventana emergente para continuar"
+    "message": "ℹ️ Abre la ventana emergente para continuar",
+    "hash": "1817f1f9bc641fb7970bc96e1d365cbe"
   },
   "notifOpenPopupMessage": {
-    "message": "El complemento no pudo abrir la ventana emergente directamente. Para continuar, por favor haz clic en el botón de “Thunderbird Send” en la barra de acciones en la ventana de redacción."
+    "message": "El complemento no pudo abrir la ventana emergente directamente. Para continuar, por favor haz clic en el botón de “Thunderbird Send” en la barra de acciones en la ventana de redacción.",
+    "hash": "22c729622f5c1f910a5c13ec1a009bf9"
   },
   "notifUploadTitle": {
-    "message": "📤 Encriptando y enviando adjunto"
+    "message": "📤 Encriptando y enviando adjunto",
+    "hash": "79ae78b363e411e3ce5866bd4fff734b"
   },
   "notifUploadCancelTitle": {
-    "message": "❌ La carga del adjunto fue abortada"
+    "message": "❌ La carga del adjunto fue abortada",
+    "hash": "3627661cc73364a20e20b717cc9c0a1d"
   },
   "notifUploadCancelMessage": {
     "message": "La carga del archivo “$filename$” fue abortada.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      }
-    }
+      "filename": { "content": "$1" }
+    },
+    "hash": "390e29a3cfbc886049afec7ca23f51eb"
   },
   "notifUploadUnableTitle": {
-    "message": "❌ No se pudo cargar el adjunto"
+    "message": "❌ No se pudo cargar el adjunto",
+    "hash": "d54d1b00c07e08d62e340633383e6633"
   },
   "notifUploadUnableMessage": {
     "message": "Error: No se pudo cargar el archivo “$filename$”: $error$. El límite de descarga o tiempo está probablemente por encima del máximo que permite este servicio Send.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      },
-      "error": {
-        "content": "$2"
-      }
-    }
+      "filename": { "content": "$1" },
+      "error": { "content": "$2" }
+    },
+    "hash": "a82e2cb8880222e68fa17541f0740740"
   },
   "notifUnablePasswordTitle": {
-    "message": "❌ No se pudo agregar una contraseña al adjunto"
+    "message": "❌ No se pudo agregar una contraseña al adjunto",
+    "hash": "ed8e5324d9d0fab8449767a0786f2352"
   },
   "notifUnablePasswordMessage": {
     "message": "Error: No se pudo agregar una contraseña al archivo “$filename$”.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      }
-    }
+      "filename": { "content": "$1" }
+    },
+    "hash": "f82f8a26c50043595eee4d6599a6b6d1"
   },
   "notifUploadDoneTitle": {
-    "message": "🔗 Se encriptó y se cargó el adjunto"
+    "message": "🔗 Se encriptó y se cargó el adjunto",
+    "hash": "b86dbbf0a7a70f98d9f62ede0b6e1a31"
   },
   "notifUploadDoneMessage": {
     "message": "El archivo “$filename$” fue exitosamente encriptado y cargado en $time$! Se vence después de:",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      },
-      "time": {
-        "content": "$2"
-      }
-    }
+      "filename": { "content": "$1" },
+      "time": { "content": "$2" }
+    },
+    "hash": "1d18cfc5e4d8ca26ca22f1a88b351a46"
   },
   "notifUploadErrorMessage": {
     "message": "Error: No se pudo cargar el archivo “$filename$”: $error$. Por favor revisa tu conexión de Internet.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      },
-      "error": {
-        "content": "$2"
-      }
-    }
+      "filename": { "content": "$1" },
+      "error": { "content": "$2" }
+    },
+    "hash": "5a6656c7f489b32f51896569b2badc4a"
   },
   "notifCancelAlreadyTitle": {
-    "message": "❌ Ya fue cancelada la carga"
+    "message": "❌ Ya fue cancelada la carga",
+    "hash": "f1bb458acdaac8e7f97853580c5fa3f1"
   },
   "notifCancelAlreadyMessage": {
     "message": "Error: La carga del archivo “$filename$” ya fue cancelada.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      }
-    }
+      "filename": { "content": "$1" }
+    },
+    "hash": "bf3178861f443794f59cbac4d8598cf7"
   },
   "notifUploadCancelingTitle": {
-    "message": "ℹ️ Cancelando la carga"
+    "message": "ℹ️ Cancelando la carga",
+    "hash": "1804bc8e3f7f991d702269d0918b243a"
   },
   "notifUploadCancelingMessage": {
     "message": "Cancelando la carga del archivo “$filename$”.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      }
-    }
+      "filename": { "content": "$1" }
+    },
+    "hash": "b9973740701556249942d61029f6d1a2"
   },
   "notifNotFoundTitle": {
-    "message": "❌ No se pudo encontrar el archivo"
+    "message": "❌ No se pudo encontrar el archivo",
+    "hash": "348c767599faea62248248131850fe45"
   },
   "notifNotFoundCancelMessage": {
-    "message": "Error: No se pudo encontrar el archivo para cancelar la carga. Posiblemente ya fue eliminado."
+    "message": "Error: No se pudo encontrar el archivo para cancelar la carga. Posiblemente ya fue eliminado.",
+    "hash": "b83d970a7edf504e70cf2703fae27852"
   },
   "notifNotFoundDeleteMessage": {
-    "message": "Error: No se pudo encontrar el archivo cargado para eliminarlo. Posiblemente ya fue eliminado."
+    "message": "Error: No se pudo encontrar el archivo cargado para eliminarlo. Posiblemente ya fue eliminado.",
+    "hash": "e1bfe6922c9064ffcc912d2fd916073b"
   },
   "notifDeletingTitle": {
-    "message": "ℹ️ Eliminando archivo"
+    "message": "ℹ️ Eliminando archivo",
+    "hash": "78be45dab5a98c8e25689cc10919ffe8"
   },
   "notifDeletingMessage": {
     "message": "Eliminando el archivo “$filename$”.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      }
-    }
+      "filename": { "content": "$1" }
+    },
+    "hash": "80f233a41e4d4ca1ff269280477508b7"
   },
   "notifDeleteSuccessTitle": {
-    "message": "🗑️ Archivo eliminado"
+    "message": "🗑️ Archivo eliminado",
+    "hash": "8294775af921cf8ec24d84e0234d9683"
   },
   "notifDeleteSuccessMessage": {
     "message": "El archivo cargado “$filename$” fue eliminado existosamente.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      }
-    }
+      "filename": { "content": "$1" }
+    },
+    "hash": "81dda5d3b5a9c7dbebcb2f6856eaa7c2"
   },
   "notifDeleteUnableTitle": {
-    "message": "❌ No se pudo eliminar el archivo"
+    "message": "❌ No se pudo eliminar el archivo",
+    "hash": "ab8139fc0f3edca0238e21d2f35e0557"
   },
   "notifDeleteUnableMessage": {
     "message": "Error: No se pudo eliminar el archivo cargado “$filename$”: $text$. Posiblemente ya se venció o fue eliminado.",
     "placeholders": {
-      "filename": {
-        "content": "$1"
-      },
-      "text": {
-        "content": "$2"
-      }
-    }
-  }
+      "filename": { "content": "$1" },
+      "text": { "content": "$2" }
+    },
+    "hash": "9f8c70423ec767a037cf8a1b4d8b06a4"
+  },
+
+  "__WET_LOCALE__": { "message": "es" }
 }
